@@ -399,6 +399,89 @@ section{padding:8rem 4rem;border-top:1px solid var(--border)}
 footer{padding:1.8rem 4rem;border-top:1px solid var(--border);display:flex;justify-content:flex-start;align-items:center;flex-wrap:wrap;gap:1rem}
 footer p{font-size:.85rem;color:var(--text-secondary);letter-spacing:.08em}
 
+/* ── LIGHT MODE ── */
+[data-theme="light"]{
+  --bg:#F7F6F2;--bg-alt:#EEECEA;--bg-card:#FFFFFF;--bg-card2:#F0EFEB;
+  --text-primary:#111111;--text-secondary:#666666;
+  --accent:#B89800;--border:#DDDBD4;--border2:#C8C5BC;
+}
+[data-theme="light"] body{background:var(--bg);color:var(--text-primary)}
+[data-theme="light"] .hero-grid{background:repeating-linear-gradient(0deg,transparent,transparent 79px,rgba(0,0,0,.03) 80px),repeating-linear-gradient(90deg,transparent,transparent 79px,rgba(0,0,0,.03) 80px)}
+[data-theme="light"] .cm-cat-hdr{background:#E8E5DE;color:var(--accent)}
+[data-theme="light"] .tool-chip{background:#E8E5DE;color:var(--text-secondary);border-color:var(--border)}
+[data-theme="light"] .feat-card.previewable{background:linear-gradient(180deg,#f5f0d8 0%,var(--bg-card2) 60%)}
+[data-theme="light"] .paa-col{background:var(--bg-card2)}
+[data-theme="light"] .proj-item,.c-icon{background:var(--bg-card)}
+[data-theme="light"] .cm-h-panel{background:var(--bg-card)}
+[data-theme="light"] .cm-cat{background:var(--bg-card)}
+[data-theme="light"] nav{background:rgba(247,246,242,.92)}
+[data-theme="light"] .mq-wrap{background:var(--bg-alt)}
+[data-theme="light"] .kpi-section{background:var(--bg-alt)}
+[data-theme="light"] #chatWidget .chat-win{background:var(--bg-card);border-color:var(--border)}
+[data-theme="light"] .chat-msg.bot{background:var(--bg-card2)}
+[data-theme="light"] .chat-input-row input{background:var(--bg-card2);color:var(--text-primary);border-color:var(--border)}
+[data-theme="light"] .chat-btn-toggle{background:var(--accent);color:#fff}
+
+/* ── NAV ACTION BUTTONS ── */
+.nav-actions{display:flex;align-items:center;gap:.6rem;margin-left:2rem}
+.nav-icon-btn{background:none;border:1px solid var(--border2);color:var(--text-secondary);font-family:inherit;font-size:.75rem;font-weight:800;letter-spacing:.1em;padding:.38rem .7rem;cursor:pointer;transition:all .2s;border-radius:2px;line-height:1}
+.nav-icon-btn:hover{border-color:var(--accent);color:var(--accent)}
+.nav-icon-btn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;display:block}
+@media(max-width:900px){.nav-actions{margin-left:.8rem;gap:.4rem}.nav-icon-btn{padding:.32rem .55rem;font-size:.7rem}}
+
+/* ── KO/EN TEXT TOGGLE ── */
+html:not(.lang-en) .en-only{display:none!important}
+html.lang-en .ko-only{display:none!important}
+
+/* ── KPI SECTION ── */
+.kpi-section{background:var(--bg-alt);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:4rem 4rem}
+.kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.kpi-item{padding:2.5rem 2rem;position:relative;text-align:center}
+.kpi-item+.kpi-item{border-left:1px solid var(--border)}
+.kpi-num{font-size:clamp(3rem,5vw,4.8rem);font-weight:900;color:var(--text-primary);line-height:1;letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+.kpi-num .kpi-unit{font-size:.55em;font-weight:800;color:var(--accent);margin-left:.05em}
+.kpi-sub{font-size:.78rem;font-weight:700;letter-spacing:.1em;color:var(--accent);text-transform:uppercase;margin-bottom:.6rem}
+.kpi-label{font-size:.9rem;color:var(--text-secondary);margin-top:.7rem;line-height:1.5;text-wrap:pretty}
+@media(max-width:900px){
+  .kpi-section{padding:2.5rem 1.5rem}
+  .kpi-grid{grid-template-columns:1fr 1fr;gap:0}
+  .kpi-item{padding:1.8rem 1rem}
+  .kpi-item:nth-child(3){border-left:none;border-top:1px solid var(--border)}
+  .kpi-item:nth-child(4){border-top:1px solid var(--border)}
+  .kpi-num{font-size:clamp(2.2rem,8vw,3.2rem)}
+}
+@media(max-width:480px){
+  .kpi-grid{grid-template-columns:1fr 1fr}
+}
+
+/* ── CHATBOT ── */
+#chatWidget{position:fixed;bottom:2rem;right:2rem;z-index:500;display:flex;flex-direction:column;align-items:flex-end;gap:.7rem}
+.chat-btn-toggle{width:52px;height:52px;border-radius:50%;background:var(--accent);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(255,232,18,.35);transition:transform .25s,box-shadow .25s}
+.chat-btn-toggle:hover{transform:scale(1.08);box-shadow:0 6px 28px rgba(255,232,18,.5)}
+.chat-btn-toggle svg{width:24px;height:24px;stroke:#0A0A0A;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.chat-win{width:320px;background:#161616;border:1px solid var(--border2);border-radius:8px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.5);display:none;flex-direction:column}
+.chat-win.open{display:flex}
+.chat-hdr{padding:.9rem 1.2rem;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:.7rem}
+.chat-hdr-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);animation:hfdot 2s ease-in-out infinite}
+.chat-hdr-name{font-size:.88rem;font-weight:800;color:var(--text-primary);letter-spacing:.02em}
+.chat-hdr-sub{font-size:.72rem;color:var(--text-secondary);margin-left:auto}
+.chat-msgs{height:280px;overflow-y:auto;padding:1rem;display:flex;flex-direction:column;gap:.6rem;scroll-behavior:smooth}
+.chat-msgs::-webkit-scrollbar{width:4px}
+.chat-msgs::-webkit-scrollbar-track{background:transparent}
+.chat-msgs::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px}
+.chat-msg{max-width:85%;padding:.55rem .85rem;border-radius:6px;font-size:.85rem;line-height:1.55;text-wrap:pretty}
+.chat-msg.bot{background:#1e1e1e;color:var(--text-primary);align-self:flex-start;border-bottom-left-radius:2px}
+.chat-msg.user{background:var(--accent);color:#0A0A0A;align-self:flex-end;font-weight:600;border-bottom-right-radius:2px}
+.chat-suggestions{display:flex;flex-wrap:wrap;gap:.4rem;padding:.5rem 1rem .8rem}
+.chat-sug{font-size:.75rem;border:1px solid var(--border2);color:var(--text-secondary);background:none;padding:.3rem .7rem;border-radius:999px;cursor:pointer;transition:all .2s;font-family:inherit}
+.chat-sug:hover{border-color:var(--accent);color:var(--accent)}
+.chat-input-row{display:flex;gap:.5rem;padding:.8rem 1rem;border-top:1px solid var(--border)}
+.chat-input-row input{flex:1;background:#111;border:1px solid var(--border2);color:var(--text-primary);font-family:inherit;font-size:.85rem;padding:.45rem .75rem;border-radius:3px;outline:none;transition:border-color .2s}
+.chat-input-row input:focus{border-color:var(--accent)}
+.chat-input-row button{background:var(--accent);border:none;color:#0A0A0A;font-weight:800;font-size:.8rem;padding:.45rem .8rem;border-radius:3px;cursor:pointer;transition:opacity .2s}
+.chat-input-row button:hover{opacity:.85}
+@media(max-width:900px){#chatWidget{bottom:1.2rem;right:1.2rem}.chat-win{width:calc(100vw - 2.4rem)}}
+
 @media(max-width:1100px){
   .feat-grid{grid-template-columns:repeat(2,1fr)}
   .preview-shot.wide{width:100%}
@@ -472,10 +555,16 @@ footer p{font-size:.85rem;color:var(--text-secondary);letter-spacing:.08em}
 <nav>
   <a class="n-logo" href="#">YEJI KIM ✦ HR</a>
   <div class="n-links">
-    <a href="#about">소개</a>
-    <a href="#careermap">커리어맵</a>
-    <a href="#projects">프로젝트</a>
-    <a href="#contact">연락</a>
+    <a href="#about"><span class="ko-only">소개</span><span class="en-only">About</span></a>
+    <a href="#careermap"><span class="ko-only">커리어맵</span><span class="en-only">Career</span></a>
+    <a href="#projects"><span class="ko-only">프로젝트</span><span class="en-only">Projects</span></a>
+    <a href="#contact"><span class="ko-only">연락</span><span class="en-only">Contact</span></a>
+  </div>
+  <div class="nav-actions">
+    <button class="nav-icon-btn" id="langBtn" aria-label="언어 전환" title="Switch Language">KO</button>
+    <button class="nav-icon-btn" id="themeBtn" aria-label="테마 전환" title="Toggle Theme">
+      <svg id="themeIcon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
   </div>
 </nav>
 
@@ -506,9 +595,12 @@ footer p{font-size:.85rem;color:var(--text-secondary);letter-spacing:.08em}
     </div>
   </div>
   <div class="hero-stack">
-    <div class="h-line h-l1"><span class="h-word"><span class="em">HR</span>에 <span class="em">진심</span><span class="em dot">.</span></span></div>
-    <div class="h-line h-l2"><span class="h-word">김예지&nbsp;<span class="romanized" style="font-size: 60px">YEJI&nbsp;KIM</span></span></div>
-    <div class="h-line h-l4"><span class="h-word"> 2 0 0 1 . 0 2 . 1 4   (만 25세)</span></div>
+    <div class="h-line h-l1">
+      <span class="h-word ko-only"><span class="em">HR</span>에 <span class="em">진심</span><span class="em dot">.</span></span>
+      <span class="h-word en-only"><span class="em">Genuine</span> about <span class="em">HR</span><span class="em dot">.</span></span>
+    </div>
+    <div class="h-line h-l2"><span class="h-word">김예지&nbsp;<span class="romanized" style="font-size:60px">YEJI&nbsp;KIM</span></span></div>
+    <div class="h-line h-l4"><span class="h-word">2001.02.14<span class="ko-only">&nbsp;(만 25세)</span><span class="en-only">&nbsp;(Age 25)</span></span></div>
   </div>
 </section>
 
@@ -537,7 +629,7 @@ footer p{font-size:.85rem;color:var(--text-secondary);letter-spacing:.08em}
 <!-- ═══ 01 ABOUT ═══ -->
 <section id="about">
   <p class="sec-label">01 — About</p>
-  <h2 class="sec-display">"비효율을 방치하지 않습니다."</h2>
+  <h2 class="sec-display"><span class="ko-only">"비효율을 방치하지 않습니다."</span><span class="en-only">"I Don't Let Inefficiency Slide."</span></h2>
   <div class="about-grid">
     <div class="about-prose">
       <p>3개 회사에서 <strong>채용 및 인력 운영·HR 데이터 관리·프로세스 개선</strong>을 수행하며</p>
@@ -578,10 +670,36 @@ footer p{font-size:.85rem;color:var(--text-secondary);letter-spacing:.08em}
   </div>
 </section>
 
+<!-- ═══ KPI BAR ═══ -->
+<div class="kpi-section">
+  <div class="kpi-grid">
+    <div class="kpi-item">
+      <div class="kpi-sub"><span class="ko-only">개선 제안</span><span class="en-only">Proposals</span></div>
+      <div class="kpi-num">83<span class="kpi-unit">%</span></div>
+      <div class="kpi-label"><span class="ko-only">시스템 개선사항 실제 반영률</span><span class="en-only">System improvement adoption rate</span></div>
+    </div>
+    <div class="kpi-item">
+      <div class="kpi-sub"><span class="ko-only">경험 기업</span><span class="en-only">Companies</span></div>
+      <div class="kpi-num">3</div>
+      <div class="kpi-label"><span class="ko-only">직접 HR 실무를 수행한 기업 수</span><span class="en-only">Companies with hands-on HR experience</span></div>
+    </div>
+    <div class="kpi-item">
+      <div class="kpi-sub"><span class="ko-only">팀 내 성과</span><span class="en-only">Team Rank</span></div>
+      <div class="kpi-num">#<span style="font-size:.7em">1</span></div>
+      <div class="kpi-label"><span class="ko-only">맨파워코리아 KPI 달성 팀 내 1위</span><span class="en-only">Top KPI achiever at ManpowerGroup</span></div>
+    </div>
+    <div class="kpi-item">
+      <div class="kpi-sub"><span class="ko-only">글로벌 전시</span><span class="en-only">Global Expos</span></div>
+      <div class="kpi-num">3</div>
+      <div class="kpi-label"><span class="ko-only">해외전시 참가 지원 (CES·SCEWC·ACE)</span><span class="en-only">Global exhibitions supported (CES·SCEWC·ACE)</span></div>
+    </div>
+  </div>
+</div>
+
 <!-- ═══ 02 CAREER MAP ═══ -->
 <section id="careermap">
   <p class="sec-label">02 — Career Map</p>
-  <h2 class="sec-display">커리어 타임라인</h2>
+  <h2 class="sec-display"><span class="ko-only">커리어 타임라인</span><span class="en-only">Career Timeline</span></h2>
 
   <div class="cm-h-wrap">
     <div class="cm-timeline">
@@ -829,7 +947,7 @@ footer p{font-size:.85rem;color:var(--text-secondary);letter-spacing:.08em}
 <!-- ═══ 03 PROJECT ═══ -->
 <section id="projects">
   <p class="sec-label">03 — Project</p>
-  <h2 class="sec-display">주요 프로젝트</h2>
+  <h2 class="sec-display"><span class="ko-only">주요 프로젝트</span><span class="en-only">Key Projects</span></h2>
 
   <!-- Company tabs -->
   <div class="proj-tab-wrap" id="projTabs">
@@ -1189,7 +1307,7 @@ footer p{font-size:.85rem;color:var(--text-secondary);letter-spacing:.08em}
 <section id="contact" style="text-align:center;padding:10rem 4rem">
   <p class="sec-label" style="display:flex;justify-content:center">04 — Contact</p>
   <div class="contact-head">
-    <span class="water-text" data-text="더 나은 HR을 끊임없이 고민합니다.">더 나은 HR을 끊임없이 고민합니다.</span>
+    <span class="water-text ko-only" data-text="더 나은 HR을 끊임없이 고민합니다.">더 나은 HR을 끊임없이 고민합니다.</span><span class="water-text en-only" data-text="Always Seeking Better HR.">Always Seeking Better HR.</span>
   </div>
   <div class="contact-icons">
     <a class="c-icon-item" href="tel:+821031334421" aria-label="전화">
@@ -1239,8 +1357,10 @@ if (window.matchMedia('(min-width:901px)').matches) {
 }
 
 // HERO ANIMATION
+// Only animate visible h-word (ko or en based on lang setting)
+const visibleHWords=()=>document.querySelectorAll('.h-word:not(.en-only), html.lang-en .h-word.en-only');
 gsap.set('.h-word',{y:'105%'});
-gsap.to('.h-word',{y:0,duration:1.0,stagger:.15,ease:'power4.out',delay:.2});
+gsap.to('.h-word:not(.en-only), html:not(.lang-en) .h-word',{y:0,duration:1.0,stagger:.15,ease:'power4.out',delay:.2});
 
 // SCROLL: section displays
 gsap.utils.toArray('.sec-display,.sec-label').forEach(el=>{
@@ -1340,6 +1460,156 @@ document.querySelectorAll('.paa-keyword.kpi span[data-count]').forEach(el=>{
     tick();
   }});
 });
+
+// ── THEME TOGGLE ──
+(function(){
+  const btn=document.getElementById('themeBtn');
+  const icon=document.getElementById('themeIcon');
+  const sun='<circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>';
+  const moon='<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
+  let dark=localStorage.getItem('theme')!=='light';
+  function applyTheme(){
+    document.documentElement.dataset.theme=dark?'dark':'light';
+    icon.innerHTML=dark?moon:sun;
+    localStorage.setItem('theme',dark?'dark':'light');
+  }
+  applyTheme();
+  btn.addEventListener('click',()=>{dark=!dark;applyTheme()});
+})();
+
+// ── LANGUAGE TOGGLE ──
+(function(){
+  const btn=document.getElementById('langBtn');
+  let en=localStorage.getItem('lang')==='en';
+  function applyLang(){
+    document.documentElement.classList.toggle('lang-en',en);
+    btn.textContent=en?'EN':'KO';
+    document.documentElement.lang=en?'en':'ko';
+    localStorage.setItem('lang',en?'en':'ko');
+  }
+  applyLang();
+  btn.addEventListener('click',()=>{en=!en;applyLang()});
+})();
+
+// ── SCROLL BACKGROUND COLOR ──
+(function(){
+  const sections=[
+    {id:'hero',    h:0,  s:0,  l:3.9},
+    {id:'about',   h:42, s:8,  l:4.6},
+    {id:'careermap',h:220,s:6, l:4.3},
+    {id:'projects',h:28, s:7,  l:4.2},
+    {id:'contact', h:195,s:5,  l:4.5},
+  ];
+  const root=document.documentElement;
+  let last=sections[0];
+  function lerp(a,b,t){return a+(b-a)*t}
+  function blend(a,b,t){
+    root.style.setProperty('--bg',`hsl(${lerp(a.h,b.h,t)},${lerp(a.s,b.s,t)}%,${lerp(a.l,b.l,t)}%)`);
+  }
+  window.addEventListener('scroll',()=>{
+    if(document.documentElement.dataset.theme==='light')return;
+    const wy=window.scrollY+window.innerHeight*0.45;
+    for(let i=sections.length-1;i>=0;i--){
+      const el=document.getElementById(sections[i].id);
+      if(el&&el.offsetTop<=wy){
+        const next=sections[Math.min(i+1,sections.length-1)];
+        const cur=sections[i];
+        const t=el?Math.min(1,(wy-el.offsetTop)/(window.innerHeight)):0;
+        blend(cur,next,Math.min(t,0.6));
+        break;
+      }
+    }
+  });
+})();
+
+// ── CHATBOT ──
+(function(){
+  const qa=[
+    {k:['안녕','hello','hi','하이','반가'],a:'안녕하세요! 저는 김예지의 포트폴리오 챗봇이에요 😊\nHR 경력, 프로젝트, 연락처 등 뭐든 물어보세요!'},
+    {k:['나이','나이가','몇살','생년','출생','생일','age'],a:'2001년 2월 14일생으로, 만 25세입니다.'},
+    {k:['경력','커리어','이력','career','어디','회사'],a:'경희대학교 졸업 후\n맨파워코리아(채용 컨설턴트 인턴)\n→ CJ(HR 데이터 관리)\n→ Global Afro(HR 운영·글로벌)\n→ NAVER(채용 운영)\n순으로 HR 커리어를 쌓아왔습니다. (2020~2026)'},
+    {k:['naver','네이버'],a:'NAVER 인사팀에서 채용 운영을 담당했습니다.\nClaude 기반 AI 채용 대시보드를 직접 기획·개발하여 정기 회의에서 시연했고, 채용 프로세스 개선사항의 83%를 실제 반영시켰습니다.'},
+    {k:['cj','씨제이'],a:'CJ에서 HR 데이터 관리를 담당했습니다.\n연차관리·프로젝트 관리·조직별 직급분포 보고서 등을 제작했고, 일부 자료는 브로슈어로 제작되어 인력 운영 회의 자료로 활용되었습니다.'},
+    {k:['맨파워','manpower'],a:'맨파워코리아 IT BPO팀에서 채용 컨설턴트 인턴으로 근무했습니다.\n인재풀 DB와 Tech Book을 구축하여 입사 첫 달 포지션 수락 건수 팀 내 최다 달성, 인턴십 연장 요청을 받았습니다.'},
+    {k:['global afro','글로벌 아프로','아프로','afro'],a:'Global Afro에서 HR 운영 및 글로벌 지원을 담당했습니다.\nCES·SCEWC·ACE 등 해외 전시 참가 지원, 글로벌 인턴십 온보딩 매뉴얼 제작·배포, 외국인 임직원 비자 연장 서류 지원을 수행했습니다.'},
+    {k:['강점','잘하는','특기','장점','skill','ability'],a:'1️⃣ HR 운영 올라운더 — 채용·데이터·AI·글로벌 HR 전반\n2️⃣ 비효율 발견 → 직접 해결책 설계·실행\n3️⃣ AI 활용 능력 — Claude 기반 업무 자동화 경험\n4️⃣ 데이터 기반 사고 — Excel·Tableau 활용 보고서 제작'},
+    {k:['ai','인공지능','대시보드','자동화'],a:'Claude 기반의 채용 운영 AI 대시보드를 직접 기획·개발했습니다.\n매일의 업무 리스트업, 캘린더 관리, 공고별 히스토리 검색을 자동화했으며, 정기 회의에서 직접 시연했습니다.'},
+    {k:['학교','대학','경희대','교육','전공'],a:'경희대학교(서울)를 졸업했습니다.\n재학 중 MS Excel 실습 과정(오픈랩, 2023.07)과 Tableau 실습 과정(오픈랩, 2022.08)을 수료했습니다.'},
+    {k:['연락','contact','전화','이메일','email','phone','링크드인','linkedin'],a:'📞 전화: 010-3133-4421\n📧 이메일: 4ever.lovemalife@gmail.com\n💼 LinkedIn: linkedin.com/in/yeji-kim-hr\n\n편하게 연락 주세요!'},
+    {k:['이메일','email','메일'],a:'📧 4ever.lovemalife@gmail.com'},
+    {k:['전화','phone','번호'],a:'📞 010-3133-4421'},
+    {k:['글로벌','global','해외','international','외국어','영어'],a:'Global Afro에서 외국인 임직원 비자 행정·금융 가이드를 담당했습니다.\nOPIc 영어 IH (2024.08) 보유, 해외 전시 3회 참가 지원 경험이 있습니다.'},
+    {k:['83%','83퍼'],a:'NAVER에서 채용 프로세스 개선 제안을 드렸고, 그 중 83%가 실제 업무에 반영되었습니다. 단순한 제안에 그치지 않고 실행까지 이끌어낸 결과입니다.'},
+    {k:['포트폴리오','portfolio','사이트'],a:'지금 보시는 이 사이트가 김예지의 포트폴리오입니다 😊\n각 섹션을 둘러보시면 경력, 프로젝트 상세 내용을 확인하실 수 있어요!'},
+  ];
+  const fallback='자세한 내용은 예지에게 직접 물어보세요! 😊\n📧 4ever.lovemalife@gmail.com';
+
+  window.toggleChat=function(){
+    const win=document.getElementById('chatWin');
+    win.classList.toggle('open');
+  };
+
+  function addMsg(text,type){
+    const msgs=document.getElementById('chatMsgs');
+    const div=document.createElement('div');
+    div.className='chat-msg '+type;
+    div.innerHTML=text.replace(/\n/g,'<br>');
+    msgs.appendChild(div);
+    msgs.scrollTop=msgs.scrollHeight;
+  }
+
+  function findAnswer(q){
+    const lower=q.toLowerCase();
+    for(const item of qa){
+      if(item.k.some(k=>lower.includes(k))) return item.a;
+    }
+    return fallback;
+  }
+
+  window.chatSend=function(){
+    const input=document.getElementById('chatInput');
+    const q=input.value.trim();
+    if(!q) return;
+    document.getElementById('chatSugs').style.display='none';
+    addMsg(q,'user');
+    input.value='';
+    setTimeout(()=>addMsg(findAnswer(q),'bot'),400);
+  };
+
+  window.chatAsk=function(q){
+    document.getElementById('chatSugs').style.display='none';
+    addMsg(q,'user');
+    setTimeout(()=>addMsg(findAnswer(q),'bot'),400);
+  };
+})();
 </script>
+
+<!-- ═══ CHATBOT ═══ -->
+<div id="chatWidget">
+  <div class="chat-win" id="chatWin">
+    <div class="chat-hdr">
+      <div class="chat-hdr-dot"></div>
+      <div class="chat-hdr-name">예지 AI 어시스턴트</div>
+      <div class="chat-hdr-sub">뭐든 물어보세요!</div>
+    </div>
+    <div class="chat-msgs" id="chatMsgs">
+      <div class="chat-msg bot">안녕하세요! 저는 김예지의 포트폴리오 챗봇이에요 🙂<br>HR 경력, 프로젝트, 연락처 등 무엇이든 물어보세요!</div>
+    </div>
+    <div class="chat-suggestions" id="chatSugs">
+      <button class="chat-sug" onclick="chatAsk(this.textContent)">주요 경력이 뭔가요?</button>
+      <button class="chat-sug" onclick="chatAsk(this.textContent)">네이버에서 뭐 했어요?</button>
+      <button class="chat-sug" onclick="chatAsk(this.textContent)">강점이 뭔가요?</button>
+      <button class="chat-sug" onclick="chatAsk(this.textContent)">연락처 알려줘요</button>
+    </div>
+    <div class="chat-input-row">
+      <input type="text" id="chatInput" placeholder="질문을 입력하세요..." onkeydown="if(event.key==='Enter')chatSend()">
+      <button onclick="chatSend()">전송</button>
+    </div>
+  </div>
+  <button class="chat-btn-toggle" id="chatToggle" onclick="toggleChat()" aria-label="챗봇 열기">
+    <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+  </button>
+</div>
+
 </body>
 </html>
