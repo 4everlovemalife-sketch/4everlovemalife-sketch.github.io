@@ -49,6 +49,15 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
 /* HERO */
 .hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:0 4rem;overflow:hidden}
 .hero-grid{position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 79px,rgba(255,255,255,.025) 80px),repeating-linear-gradient(90deg,transparent,transparent 79px,rgba(255,255,255,.025) 80px);pointer-events:none}
+/* Hero decorative art */
+.hero-art{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.hero-rings{position:absolute;right:-8%;top:50%;transform:translateY(-50%);width:min(68vw,680px);height:min(68vw,680px);opacity:1;animation:heroRingRotate 60s linear infinite}
+@keyframes heroRingRotate{from{transform:translateY(-50%) rotate(0deg)}to{transform:translateY(-50%) rotate(360deg)}}
+.hero-glow{position:absolute;right:10%;top:50%;transform:translate(50%,-50%);width:min(40vw,380px);height:min(40vw,380px);border-radius:50%;background:radial-gradient(circle,rgba(255,232,18,.07) 0%,rgba(255,232,18,.02) 50%,transparent 80%);pointer-events:none;animation:heroPulse 6s ease-in-out infinite}
+@keyframes heroPulse{0%,100%{opacity:.7;transform:translate(50%,-50%) scale(1)}50%{opacity:1;transform:translate(50%,-50%) scale(1.12)}}
+.hero-dot-field{position:absolute;inset:0}
+.h-fdot{position:absolute;border-radius:50%;background:var(--accent);animation:hfdot 4s ease-in-out infinite}
+@keyframes hfdot{0%,100%{opacity:.2;transform:scale(1)}50%{opacity:.7;transform:scale(1.6)}}
 
 .hero-stack{display:flex;flex-direction:column;gap:.4rem;position:relative;z-index:2}
 .h-line{overflow:hidden;display:flex;align-items:baseline;gap:.4rem}
@@ -436,6 +445,29 @@ footer p{font-size:.85rem;color:var(--text-secondary);letter-spacing:.08em}
 <!-- ═══ HERO ═══ -->
 <section class="hero" id="hero">
   <div class="hero-grid"></div>
+  <div class="hero-art" aria-hidden="true">
+    <svg class="hero-rings" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg" fill="none">
+      <circle cx="540" cy="300" r="500" stroke="rgba(255,232,18,0.03)" stroke-width="1"/>
+      <circle cx="540" cy="300" r="400" stroke="rgba(255,232,18,0.04)" stroke-width="1"/>
+      <circle cx="540" cy="300" r="300" stroke="rgba(255,232,18,0.055)" stroke-width="1"/>
+      <circle cx="540" cy="300" r="210" stroke="rgba(255,232,18,0.07)" stroke-width="0.8"/>
+      <circle cx="540" cy="300" r="130" stroke="rgba(255,232,18,0.1)" stroke-width="0.7"/>
+      <circle cx="540" cy="300" r="65" stroke="rgba(255,232,18,0.18)" stroke-width="0.5"/>
+      <line x1="40" y1="0" x2="40" y2="600" stroke="rgba(255,232,18,0.025)" stroke-width="0.5"/>
+      <line x1="80" y1="0" x2="80" y2="600" stroke="rgba(255,232,18,0.015)" stroke-width="0.5"/>
+      <circle cx="100" cy="520" r="2.5" fill="rgba(255,232,18,0.35)"/>
+      <circle cx="55" cy="160" r="1.8" fill="rgba(255,232,18,0.25)"/>
+      <circle cx="20" cy="380" r="1.5" fill="rgba(255,232,18,0.2)"/>
+    </svg>
+    <div class="hero-glow"></div>
+    <div class="hero-dot-field">
+      <span class="h-fdot" style="width:3px;height:3px;top:22%;left:62%;animation-delay:0s"></span>
+      <span class="h-fdot" style="width:2px;height:2px;top:68%;left:38%;animation-delay:1.4s"></span>
+      <span class="h-fdot" style="width:2.5px;height:2.5px;top:78%;left:72%;animation-delay:0.8s"></span>
+      <span class="h-fdot" style="width:2px;height:2px;top:35%;left:88%;animation-delay:2.2s"></span>
+      <span class="h-fdot" style="width:3px;height:3px;top:14%;left:78%;animation-delay:3s"></span>
+    </div>
+  </div>
   <div class="hero-stack">
     <div class="h-line h-l1"><span class="h-word"><span class="em">HR</span>에 <span class="em">진심</span><span class="em dot">.</span></span></div>
     <div class="h-line h-l2"><span class="h-word">김예지&nbsp;<span class="romanized" style="font-size: 60px">YEJI&nbsp;KIM</span></span></div>
@@ -578,6 +610,8 @@ footer p{font-size:.85rem;color:var(--text-secondary);letter-spacing:.08em}
         <div class="cm-cat">
           <div class="cm-cat-hdr">교육</div>
           <div class="cm-cat-body">
+            <div class="cm-cat-item">MS Excel 실습 과정 (오픈랩, 2023.07)</div>
+            <div class="cm-cat-item">Tableau 실습 과정 (오픈랩, 2022.08)</div>
           </div>
         </div>
         <div class="cm-cat">
@@ -592,7 +626,7 @@ footer p{font-size:.85rem;color:var(--text-secondary);letter-spacing:.08em}
         <div class="cm-cat">
           <div class="cm-cat-hdr">교외활동</div>
           <div class="cm-cat-body">
-            <div class="cm-cat-item">경기도청청년온라인해외봉사단 에티오피아팀</div>
+            <div class="cm-cat-item">경기도청년해외봉사단 에티오피아팀</div>
             <div class="cm-cat-item">크라우드펀딩 프로젝트 팀장 <a class="cm-link" href="https://tumblbug.com/deunhae" target="_blank" rel="noopener" style="height: 20.8732px">(프로젝트 바로가기)</a></div>
             <div class="cm-cat-item">대한전기협회 탄소중립 서포터즈</div>
             <div class="cm-cat-item">하와이 국외보훈사적지탐방단<br>(KBS ‘역사를 걷다, 미래를 다지다’ 출연)</div>
@@ -807,7 +841,7 @@ footer p{font-size:.85rem;color:var(--text-secondary);letter-spacing:.08em}
             <div class="paa-col">
               <span class="paa-lbl act">Action</span>
               <div class="paa-keyword act">생성형 AI 활용</div>
-              <div class="paa-text">매일 그날의 업무를 리스트업하고, 뭘 먼저 할 지 고민하고,<br>캘린더를 띄우고, 공고별 히스토리를 검색하는 수고를 덜기 위해.<br>Claude Sonnet 기반의 채용 운영 AI 대시보드를 직접 기획·개발하여 정기 회의에서 시연했습니다.</div>
+              <div class="paa-text">매일 그날의 업무를 리스트업하고, 뭘 먼저 할 지 고민하고,<br>캘린더를 띄우고, 공고별 히스토리를 검색하는 수고를 덜기 위해.<br>Claude 기반의 채용 운영 AI 대시보드를 직접 기획·개발하여 정기 회의에서 시연했습니다.</div>
               <div class="tools-row">
                 <span class="tool-chip">VS Code</span>
                 <span class="tool-chip">Node.js</span>
@@ -1247,12 +1281,13 @@ gsap.utils.toArray('.proj-item').forEach((el,i)=>{
 
 // SCROLL: contact + fill animation
 gsap.from('.contact-head',{y:40,opacity:0,duration:1.0,ease:'power3.out',
-  scrollTrigger:{trigger:'.contact-head',start:'top 85%'}});
-ScrollTrigger.create({trigger:'#contact',start:'top 80%',once:true});
+  scrollTrigger:{trigger:'.contact-head',start:'top 95%',once:true}});
 gsap.utils.toArray('.c-icon-item').forEach((el,i)=>{
   gsap.from(el,{y:25,opacity:0,duration:.7,delay:i*.1,ease:'power3.out',
-    scrollTrigger:{trigger:el,start:'top 88%'}});
+    scrollTrigger:{trigger:el,start:'top 98%',once:true}});
 });
+// Recalculate triggers after all assets (base64 images) are loaded
+window.addEventListener('load',()=>ScrollTrigger.refresh());
 
 // COUNT-UP for numeric values
 document.querySelectorAll('.paa-keyword.kpi span[data-count]').forEach(el=>{
