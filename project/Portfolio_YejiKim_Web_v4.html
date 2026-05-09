@@ -1,0 +1,1294 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>김예지 | HR Portfolio</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0A0A0A;--bg-alt:#111111;--bg-card:#161616;--bg-card2:#1A1A1A;
+  --text-primary:#F0F0F0;--text-secondary:#888888;
+  --accent:#FFE812;--border:#222222;--border2:#2A2A2A;
+  --prob:#E8615C;--act:#FFE812;--ach:#6BCB77;
+}
+html{scroll-behavior:smooth;cursor:none}
+body{background:var(--bg);color:var(--text-primary);font-family:'Pretendard',-apple-system,sans-serif;font-size:18px;line-height:1.9;overflow-x:hidden}
+
+/* CURSOR */
+.c-dot{position:fixed;width:6px;height:6px;background:var(--accent);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s}
+.c-ring{position:fixed;width:36px;height:36px;border:1.5px solid rgba(255,232,18,.4);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .3s,height .3s,background .3s}
+.c-ring.on{width:52px;height:52px;background:rgba(255,232,18,.08);border-color:var(--accent)}
+
+/* PROGRESS */
+#prog{position:fixed;top:0;left:0;height:2px;background:var(--accent);z-index:9997;width:0%;transition:width .05s linear}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.4rem 3.5rem}
+.n-logo{font-size:.85rem;font-weight:800;letter-spacing:.18em;color:var(--accent);text-decoration:none;text-transform:uppercase;cursor:none}
+.n-links{display:flex;gap:2.8rem}
+.n-links a{font-size:.85rem;font-weight:600;letter-spacing:.1em;color:var(--text-secondary);text-decoration:none;text-transform:uppercase;transition:color .2s;cursor:none}
+.n-links a:hover{color:var(--accent)}
+
+/* HERO */
+.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:0 4rem;overflow:hidden}
+.hero-grid{position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 79px,rgba(255,255,255,.025) 80px),repeating-linear-gradient(90deg,transparent,transparent 79px,rgba(255,255,255,.025) 80px);pointer-events:none}
+
+.hero-stack{display:flex;flex-direction:column;gap:.4rem;position:relative;z-index:2}
+.h-line{overflow:hidden;display:flex;align-items:baseline;gap:.4rem}
+.h-word{display:inline-block;transform:translateY(105%)}
+
+/* line 1 — HR에 진심 */
+.h-l1{font-weight:900;line-height:.95;letter-spacing:-.04em;font-size:clamp(4rem,11vw,10rem);color:var(--text-primary)}
+.h-l1 .em{position:relative;display:inline-block}
+.h-l1 .em::before{
+  content:'';position:absolute;left:-.05em;right:-.05em;bottom:.05em;height:.18em;
+  background:var(--accent);z-index:-1;opacity:0;transform:scaleX(0);transform-origin:left center;
+  animation:hl 1.6s cubic-bezier(.7,0,.3,1) 1.4s forwards;
+}
+@keyframes hl{0%{opacity:0;transform:scaleX(0)}30%{opacity:1;transform:scaleX(1)}100%{opacity:.85;transform:scaleX(1)}}
+.h-l1 .em.dot{display:inline-block;color:var(--accent);animation:bp 2.4s ease-in-out 2.6s infinite}
+@keyframes bp{0%,100%{transform:scale(1)}50%{transform:scale(1.18)}}
+
+/* line 2 — 김예지 + YEJI KIM (combined) */
+.h-l2{font-weight:900;line-height:.95;letter-spacing:-.03em;font-size:clamp(2.6rem,6.8vw,6rem);color:var(--text-primary);margin-top:1.5rem;display:flex;align-items:baseline;gap:1.6rem;flex-wrap:wrap}
+.h-l2 .romanized{font-weight:800;letter-spacing:.04em;font-size:clamp(1.4rem,3.6vw,2.8rem);color:var(--accent)}
+
+/* line 4 — DOB */
+.h-l4{font-weight:500;line-height:1.2;letter-spacing:.32em;font-size:clamp(1rem,1.5vw,1.25rem);color:var(--text-secondary);margin-top:1.5rem;display:flex;gap:.4rem;align-items:baseline;flex-wrap:wrap}
+.h-l4 .age{letter-spacing:.04em;color:var(--text-secondary);opacity:.7;margin-left:.6rem;font-size:.85em}
+
+/* MARQUEE */
+.mq-wrap{overflow:hidden;background:var(--bg-alt);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:.8rem 0}
+.mq-track{display:flex;animation:mq 30s linear infinite;width:max-content}
+.mq-item{font-size:.9rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);white-space:nowrap;padding:0 2rem}
+.mq-item span{color:var(--border2);margin:0 .8rem}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* SECTIONS */
+section{padding:8rem 4rem;border-top:1px solid var(--border)}
+.sec-label{font-size:.85rem;font-weight:700;letter-spacing:.22em;color:var(--accent);text-transform:uppercase;margin-bottom:1.2rem}
+.sec-display{font-size:clamp(2.6rem,5.5vw,4.6rem);font-weight:900;line-height:1.05;letter-spacing:-.03em;margin-bottom:4rem;text-wrap:pretty}
+
+/* 01 ABOUT */
+.about-grid{display:grid;grid-template-columns:5fr 7fr;gap:5rem;align-items:start}
+.about-prose{font-size:1.1rem;line-height:1.95;color:var(--text-secondary);text-wrap:pretty}
+.about-prose p+p{margin-top:1.2rem}
+.about-prose strong{color:var(--text-primary);font-weight:600}
+.str-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.str-card{background:var(--bg-card);border:1px solid var(--border);padding:1.7rem 1.5rem;border-radius:3px;transition:border-color .3s,transform .3s;cursor:none}
+.str-card:hover{border-color:var(--accent);transform:translateY(-3px)}
+.str-icon{font-size:1.4rem;margin-bottom:.8rem}
+.str-title{font-size:1.05rem;font-weight:800;margin-bottom:.55rem;color:var(--text-primary);letter-spacing:-.01em}
+.str-desc{font-size:.92rem;color:var(--text-secondary);line-height:1.65;text-wrap:pretty}
+.str-desc-sub{font-size:.85rem;color:var(--text-secondary);line-height:1.65;text-wrap:pretty;opacity:.75;margin-top:.3rem;font-style:italic}
+
+/* 02 CAREER MAP — HORIZONTAL TIMELINE LINE */
+.cm-h-wrap{margin-top:2rem;position:relative}
+.cm-timeline{position:relative;padding:1rem 4% 0;margin-bottom:.5rem}
+.cm-timeline-axis{position:relative;height:1px;background:linear-gradient(90deg,transparent 0%,rgba(255,255,255,.18) 6%,rgba(255,255,255,.28) 50%,rgba(255,255,255,.18) 94%,transparent 100%);width:100%}
+.cm-year-mark{position:absolute;top:-.6rem;transform:translateX(-50%);font-size:.78rem;font-weight:700;letter-spacing:.04em;color:var(--text-secondary);opacity:.55;font-variant-numeric:tabular-nums}
+.cm-year-tick{position:absolute;top:0;width:1px;height:8px;background:rgba(255,255,255,.25);transform:translateX(-50%)}
+
+.cm-h-bar{position:relative;display:grid;grid-template-columns:repeat(5,1fr);gap:0;padding:1.4rem 0 0}
+.cm-h-node{position:relative;display:flex;flex-direction:column;align-items:center;cursor:none;padding:0 .4rem;background:none;border:none;font-family:inherit}
+.cm-h-dot{width:18px;height:18px;border-radius:50%;background:var(--bg);border:2px solid rgba(255,255,255,.35);position:relative;z-index:2;transition:all .3s ease;margin-bottom:1rem}
+.cm-h-dot::after{
+  content:'';position:absolute;inset:-8px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,232,18,.55) 0%,rgba(255,232,18,.15) 45%,transparent 75%);
+  opacity:0;transform:scale(.6);pointer-events:none;
+  animation:firefly 2.4s ease-in-out infinite;
+}
+.cm-h-node:nth-child(1) .cm-h-dot::after{animation-delay:0s}
+.cm-h-node:nth-child(2) .cm-h-dot::after{animation-delay:.45s}
+.cm-h-node:nth-child(3) .cm-h-dot::after{animation-delay:.9s}
+.cm-h-node:nth-child(4) .cm-h-dot::after{animation-delay:1.35s}
+.cm-h-node:nth-child(5) .cm-h-dot::after{animation-delay:1.8s}
+@keyframes firefly{
+  0%,100%{opacity:0;transform:scale(.6)}
+  50%{opacity:1;transform:scale(1.15)}
+}
+.cm-h-node.has-active .cm-h-dot::after,
+.cm-h-bar.any-active .cm-h-node:not(.active) .cm-h-dot::after{animation-play-state:paused;opacity:0}
+.cm-h-dot::before{
+  content:'';position:absolute;inset:5px;border-radius:50%;background:var(--border2);transition:background .3s ease;
+}
+.cm-h-node.active .cm-h-dot{background:var(--accent);border-color:var(--accent);box-shadow:0 0 0 6px rgba(255,232,18,.16),0 0 32px rgba(255,232,18,.55)}
+.cm-h-node:hover .cm-h-dot{border-color:rgba(255,232,18,.85)}
+.cm-h-co{font-size:1.1rem;font-weight:800;color:var(--text-primary);text-align:center;line-height:1.3;text-wrap:pretty;letter-spacing:-.01em}
+.cm-h-role{font-size:.88rem;font-weight:500;color:var(--text-secondary);margin-top:.4rem;text-align:center;line-height:1.4;text-wrap:pretty;min-height:2.4rem}
+.cm-h-date{font-size:.78rem;font-weight:700;letter-spacing:.04em;color:var(--text-secondary);opacity:.7;margin-top:.6rem;text-align:center;line-height:1.3;font-variant-numeric:tabular-nums}
+.cm-h-node.active .cm-h-co{color:var(--accent)}
+.cm-h-node.active .cm-h-role{color:var(--text-primary)}
+.cm-h-node.active .cm-h-date{color:var(--accent);opacity:1}
+
+/* Detail panel below the bar */
+.cm-h-panel{margin-top:4rem;background:var(--bg-card);border:1px solid var(--border);border-radius:6px;padding:0;overflow:hidden;min-height:0}
+.cm-h-panel-inner{padding:2.5rem 3rem}
+.cm-h-tag{display:inline-block;font-size:.82rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--accent);color:var(--accent);padding:.3rem .9rem;margin-bottom:1.5rem}
+.cm-h-summary{font-size:1.1rem;color:var(--text-primary);font-weight:600;margin-bottom:1.6rem;text-wrap:pretty;line-height:1.55}
+.cm-cats{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin-top:.5rem}
+.cm-cats.cols-4{grid-template-columns:repeat(4,1fr)}
+.cm-cat{background:var(--bg-card2);border:1px solid var(--border);border-radius:3px;overflow:hidden}
+.cm-cat-hdr{background:#0e0e0e;padding:.7rem 1rem;font-size:.88rem;font-weight:700;color:var(--accent);letter-spacing:.06em;border-bottom:1px solid var(--border)}
+.cm-cat-body{padding:.85rem 1rem}
+.cm-cat-item{font-size:.92rem;color:var(--text-secondary);line-height:1.65;display:flex;gap:.4rem;align-items:baseline;text-wrap:pretty;margin-bottom:.3rem}
+.cm-cat-item:last-child{margin-bottom:0}
+.cm-cat-item::before{content:'·';color:var(--accent);flex-shrink:0}
+.cm-cat-item .cm-link{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(255,232,18,.4);padding-bottom:1px;cursor:none;transition:color .2s}
+.cm-cat-item .cm-link:hover{color:#fff;border-bottom-color:#fff}
+.cm-2cols{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-top:.5rem}
+.cm-flow{display:flex;gap:0;align-items:center;flex-wrap:wrap;margin-top:.6rem;margin-bottom:1.2rem}
+.cm-flow-step{background:var(--bg-card2);border:1px solid var(--border);padding:.5rem 1rem;font-size:.88rem;color:var(--text-secondary);white-space:nowrap;text-wrap:pretty}
+.cm-flow-arr{color:var(--border2);padding:0 .4rem;font-size:1rem}
+.cm-bullets{margin-top:.7rem;list-style:none}
+.cm-bullets li{font-size:.95rem;color:var(--text-secondary);line-height:1.8;padding-left:1.1rem;position:relative;text-wrap:pretty;margin-bottom:.2rem}
+.cm-bullets li::before{content:'';position:absolute;left:0;top:.85rem;width:5px;height:5px;background:var(--accent)}
+
+.cm-empty{text-align:center;color:var(--text-secondary);font-size:.95rem;padding:4rem 0;line-height:1.7}
+.cm-empty .cm-empty-hint{color:var(--accent);font-weight:700;letter-spacing:.05em}
+
+/* Exhibition logos for Global Afro */
+.exh-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:1.2rem 0}
+.exh-card{background:var(--bg-card2);border:1px solid var(--border);border-radius:4px;padding:1.2rem 1.1rem;display:flex;flex-direction:column;gap:.6rem;transition:border-color .3s,transform .3s}
+.exh-card:hover{border-color:rgba(255,232,18,.5);transform:translateY(-2px)}
+.exh-logo{display:flex;align-items:center;gap:.6rem;padding-bottom:.7rem;border-bottom:1px solid var(--border)}
+.exh-logo-mark{width:38px;height:38px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:.78rem;letter-spacing:-.02em;line-height:1;flex-shrink:0;color:#fff}
+.exh-logo-mark.ces{background:linear-gradient(135deg,#0a3a8a,#1565d8);font-style:italic}
+.exh-logo-mark.scewc{background:linear-gradient(135deg,#005f99,#00b4d8);font-size:.62rem}
+.exh-logo-mark.ace{background:linear-gradient(135deg,#c8102e,#e63946);font-size:.7rem}
+.exh-name{font-size:.92rem;font-weight:800;color:var(--text-primary);line-height:1.2}
+.exh-meta{font-size:.7rem;font-weight:600;color:var(--text-secondary);letter-spacing:.04em;margin-top:.15rem}
+.exh-partners-lbl{font-size:.66rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--text-secondary);opacity:.7}
+.exh-partners{display:flex;flex-direction:column;gap:.25rem}
+.exh-partner{font-size:.85rem;color:var(--text-secondary);line-height:1.5;text-wrap:pretty}
+.exh-partner a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(255,232,18,.3);transition:color .2s;cursor:none}
+.exh-partner a:hover{color:#fff;border-bottom-color:#fff}
+
+/* 03 PROJECT */
+.proj-tab-wrap{display:flex;gap:1.5rem;justify-content:center;margin-bottom:3.5rem;flex-wrap:wrap}
+.proj-tab{cursor:none;display:flex;flex-direction:column;align-items:center;gap:.9rem;padding:0;background:none;border:none;font-family:inherit}
+.proj-tab-disc{
+  width:140px;height:140px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.15rem;font-weight:800;letter-spacing:.02em;text-align:center;line-height:1.2;
+  border:2px solid var(--border2);background:var(--bg-card);color:var(--text-secondary);
+  transition:all .35s cubic-bezier(.5,0,.3,1);position:relative;
+}
+.proj-tab-disc::after{
+  content:'';position:absolute;inset:-8px;border-radius:50%;border:1px solid transparent;transition:border-color .35s;
+}
+.proj-tab:hover .proj-tab-disc::after{border-color:rgba(255,232,18,.55)}
+.proj-tab.active .proj-tab-disc{
+  background:var(--accent);color:#0A0A0A;border-color:var(--accent);
+  box-shadow:0 0 0 6px rgba(255,232,18,.1),0 14px 40px -8px rgba(255,232,18,.35);
+}
+.proj-tab-meta{font-size:.82rem;font-weight:600;color:var(--text-secondary);letter-spacing:.08em;text-align:center;text-transform:uppercase}
+.proj-tab.active .proj-tab-meta{color:var(--accent)}
+
+.proj-stage{position:relative}
+.proj-company{display:none;animation:fadeUp .5s ease-out}
+.proj-company.show{display:block}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+.proj-co-hdr{display:flex;align-items:baseline;gap:1.2rem;margin-bottom:2.5rem;padding-bottom:1.2rem;border-bottom:1px solid var(--border2);flex-wrap:wrap}
+.proj-co-name{font-size:1.85rem;font-weight:900;color:var(--text-primary)}
+.proj-co-role{font-size:.92rem;color:var(--text-secondary);font-weight:500;background:var(--bg-card);border:1px solid var(--border);padding:.35rem .9rem;border-radius:2px}
+
+.proj-item{background:var(--bg-card);border:1px solid var(--border);border-radius:4px;margin-bottom:2rem;overflow:hidden;transition:border-color .3s}
+.proj-item:hover{border-color:rgba(255,232,18,.35)}
+.proj-hdr{padding:1.5rem 2rem;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap}
+.proj-num{font-size:.82rem;font-weight:800;letter-spacing:.1em;color:var(--accent);background:rgba(255,232,18,.1);border:1px solid rgba(255,232,18,.3);padding:.3rem .7rem}
+.proj-title{font-size:1.25rem;font-weight:800;color:var(--text-primary);text-wrap:pretty}
+.proj-body{padding:2rem}
+
+/* PAA — refreshed */
+.paa{display:grid;grid-template-columns:1fr 1.4fr 1fr;gap:1rem;margin-bottom:1.5rem}
+.paa-col{background:var(--bg-card2);border:1px solid var(--border);border-radius:4px;padding:1.6rem 1.4rem;display:flex;flex-direction:column;gap:1rem}
+.paa-lbl{align-self:flex-start;font-size:.72rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;padding:.35rem .9rem;border-radius:999px}
+.paa-lbl.prob{background:rgba(232,97,92,.12);border:1px solid rgba(232,97,92,.4);color:var(--prob)}
+.paa-lbl.act{background:rgba(255,232,18,.12);border:1px solid rgba(255,232,18,.45);color:var(--act)}
+.paa-lbl.ach{background:rgba(107,203,119,.13);border:1px solid rgba(107,203,119,.4);color:var(--ach)}
+
+.paa-keyword{font-size:1.85rem;font-weight:900;line-height:1.15;letter-spacing:-.02em;text-wrap:pretty}
+.paa-keyword.prob{color:var(--prob)}
+.paa-keyword.act{color:var(--act)}
+.paa-keyword.ach{color:var(--ach)}
+.paa-keyword.ach.kpi{font-size:3.6rem;line-height:1}
+.paa-keyword.ach.kpi sup{font-size:1.6rem;font-weight:800;margin-left:.1em;vertical-align:top;position:relative;top:.6rem}
+
+.paa-text{font-size:.95rem;color:var(--text-secondary);line-height:1.75;text-wrap:pretty}
+.paa-text strong{color:var(--text-primary);font-weight:700}
+.paa-text ul{list-style:none;margin-top:.4rem}
+.paa-text li{padding-left:.95rem;position:relative;margin-bottom:.4rem;text-wrap:pretty}
+.paa-text li::before{content:'·';position:absolute;left:0;color:var(--accent)}
+
+/* TOOLS */
+.tools-row{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.6rem}
+.tool-chip{font-size:.78rem;font-weight:700;letter-spacing:.06em;border:1px solid var(--border);color:var(--text-secondary);padding:.28rem .75rem;background:#0e0e0e;border-radius:2px}
+
+/* ACTION SUB-BLOCKS — file/book icon style */
+.act-blocks{display:grid;grid-template-columns:1fr;gap:1.2rem;margin-top:.5rem}
+.act-blocks.cols-2{grid-template-columns:1fr 1fr}
+.act-block{display:flex;flex-direction:column;gap:.7rem}
+.act-block-icon{
+  width:42px;height:42px;border-radius:8px;display:flex;align-items:center;justify-content:center;
+  background:rgba(255,232,18,.08);border:1px solid rgba(255,232,18,.25);
+}
+.act-block-icon svg{width:22px;height:22px;stroke:var(--accent);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.act-block-title{font-size:1rem;font-weight:800;color:var(--text-primary);text-wrap:pretty;letter-spacing:-.01em}
+.act-block-desc{font-size:.92rem;color:var(--text-secondary);line-height:1.7;text-wrap:pretty}
+
+/* PROBLEM SUB-BLOCKS */
+.prob-blocks{display:flex;flex-direction:column;gap:.5rem;margin-top:.4rem}
+.prob-row{display:flex;gap:.6rem;align-items:flex-start;font-size:.92rem;color:var(--text-secondary);line-height:1.65;text-wrap:pretty}
+.prob-row::before{content:'!';flex-shrink:0;width:20px;height:20px;border-radius:50%;background:rgba(232,97,92,.15);color:var(--prob);font-size:.78rem;font-weight:900;display:flex;align-items:center;justify-content:center;margin-top:.1rem}
+
+/* ACHIEVEMENT */
+.ach-detail{font-size:.95rem;color:var(--text-secondary);line-height:1.7;text-wrap:pretty}
+.ach-detail strong{color:var(--text-primary)}
+.status-row{display:flex;gap:.4rem;flex-wrap:wrap;margin-top:.4rem}
+.status-chip{font-size:.78rem;font-weight:700;padding:.32rem .75rem;border-radius:2px}
+.status-chip.done{background:rgba(107,203,119,.12);border:1px solid rgba(107,203,119,.35);color:#6BCB77}
+.status-chip.ing{background:rgba(255,232,18,.1);border:1px solid rgba(255,232,18,.3);color:var(--accent)}
+
+/* FEATURES — for #01 NAVER */
+.feat-section{margin-top:1.5rem}
+.feat-hdr{display:flex;align-items:baseline;justify-content:space-between;gap:.8rem;margin-bottom:.2rem;flex-wrap:wrap}
+.feat-title-bar{font-size:.9rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.feat-hint{font-size:.82rem;color:var(--text-secondary);font-weight:500;text-wrap:pretty}
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.7rem;margin-top:1rem}
+.feat-card{
+  background:var(--bg-card2);border:1px solid var(--border);padding:1.1rem 1rem 1rem;
+  border-radius:3px;position:relative;transition:border-color .3s,transform .3s;
+}
+.feat-card.previewable{cursor:none;border-color:rgba(255,232,18,.35);background:linear-gradient(180deg,#1c1a0d 0%,var(--bg-card2) 60%)}
+.feat-card.previewable:hover{border-color:var(--accent);transform:translateY(-2px)}
+.feat-card.previewable.open{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent),0 0 30px -5px rgba(255,232,18,.4)}
+.feat-preview-tag{
+  position:absolute;top:.5rem;right:.5rem;
+  font-size:.55rem;font-weight:800;letter-spacing:.12em;
+  padding:.2rem .45rem;border-radius:2px;
+  background:var(--accent);color:#0A0A0A;
+}
+.feat-card.previewable.open .feat-preview-tag{background:#0A0A0A;color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
+.feat-icon{margin-bottom:.55rem;width:24px;height:24px}
+.feat-icon svg{width:24px;height:24px;stroke:var(--accent);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.feat-name{font-size:.95rem;font-weight:800;color:var(--text-primary);margin-bottom:.4rem;line-height:1.35;text-wrap:pretty}
+.feat-desc{font-size:.82rem;color:var(--text-secondary);line-height:1.55;text-wrap:pretty}
+
+/* PREVIEW REVEAL — UFO beam */
+.preview-stage{
+  margin-top:1.2rem;height:0;overflow:hidden;transition:height .55s cubic-bezier(.6,0,.2,1);position:relative;
+}
+.preview-stage.open{height:auto}
+.preview-stage-inner{padding:2.2rem 0 .5rem;position:relative}
+.preview-stage::before{
+  content:'';position:absolute;left:50%;top:-2px;width:1px;height:0;
+  background:linear-gradient(180deg,var(--accent),transparent);
+  transform:translateX(-50%);transition:height .45s ease-out;z-index:1;
+}
+.preview-stage.open::before{height:30px}
+
+/* light beam */
+.beam{
+  position:absolute;left:50%;top:0;width:0;height:0;pointer-events:none;
+  transform:translateX(-50%);
+}
+.preview-stage.open .beam{
+  width:240px;height:60px;
+  background:radial-gradient(ellipse 120px 30px at center top,rgba(255,232,18,.45),rgba(255,232,18,.18) 35%,transparent 75%);
+  filter:blur(2px);
+  animation:beamIn .7s ease-out forwards;
+}
+@keyframes beamIn{
+  0%{opacity:0;transform:translateX(-50%) scaleY(0)}
+  60%{opacity:1;transform:translateX(-50%) scaleY(1)}
+  100%{opacity:.7;transform:translateX(-50%) scaleY(1)}
+}
+
+.preview-shots{display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap;align-items:flex-start;position:relative;z-index:2}
+.preview-shot{
+  position:relative;background:#fff;border-radius:6px;border:1px solid #1f1f1f;
+  width:340px;max-width:100%;box-shadow:0 18px 48px -12px rgba(0,0,0,.7),0 0 0 1px rgba(255,232,18,.15);
+  opacity:0;transform:translateY(-12px);
+  animation:shotIn .65s cubic-bezier(.3,0,.25,1) .25s forwards;
+}
+.preview-shot.wide{width:520px}
+.preview-shot:nth-child(2){animation-delay:.4s}
+.preview-shot:nth-child(3){animation-delay:.55s}
+@keyframes shotIn{to{opacity:1;transform:translateY(0)}}
+.preview-shot img{width:100%;display:block;border-radius:6px}
+
+/* protruding caption */
+.preview-cap{
+  position:absolute;left:0;right:auto;bottom:-.2rem;transform:translate(-1.4rem,90%);
+  background:#0e0e0e;border:1px solid var(--border2);border-left:2px solid var(--accent);
+  padding:.7rem 1rem;font-size:.82rem;color:var(--text-secondary);line-height:1.55;
+  border-radius:2px;max-width:300px;text-wrap:pretty;
+}
+.preview-cap b{color:var(--accent);font-weight:800;display:block;margin-bottom:.2rem;font-size:.86rem;letter-spacing:.05em}
+.preview-shot:nth-child(2) .preview-cap{left:auto;right:0;transform:translate(1.4rem,90%)}
+.preview-shot.wide .preview-cap{left:1rem;transform:translate(0,90%)}
+
+/* extra bottom space when open */
+.preview-stage.open{padding-bottom:6rem}
+
+/* 04 CONTACT — water wave */
+.contact-head{font-size:clamp(2.6rem,6vw,5.4rem);font-weight:900;line-height:1.1;letter-spacing:-.03em;margin-bottom:4rem;text-align:center;text-wrap:pretty}
+.water-text{position:relative;display:inline-block;color:transparent;-webkit-text-stroke:1.5px rgba(240,240,240,.55);font-weight:900}
+.water-text::before{
+  content:attr(data-text);
+  position:absolute;left:0;top:0;width:100%;height:100%;
+  color:var(--accent);-webkit-text-stroke:0;
+  -webkit-mask-image:linear-gradient(180deg,transparent 0%,transparent 50%,#000 50%,#000 100%);
+          mask-image:linear-gradient(180deg,transparent 0%,transparent 50%,#000 50%,#000 100%);
+  -webkit-mask-size:100% 100%;mask-size:100% 100%;
+  pointer-events:none;
+}
+.water-text::after{
+  content:attr(data-text);
+  position:absolute;left:0;top:0;width:100%;height:100%;
+  color:var(--accent);-webkit-text-stroke:0;opacity:.85;
+  -webkit-mask-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 200' preserveAspectRatio='none'><path d='M0 100 Q 60 70 120 100 T 240 100 T 360 100 T 480 100 T 600 100 T 720 100 T 840 100 T 960 100 T 1080 100 T 1200 100 L 1200 200 L 0 200 Z' fill='black'/></svg>");
+          mask-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 200' preserveAspectRatio='none'><path d='M0 100 Q 60 70 120 100 T 240 100 T 360 100 T 480 100 T 600 100 T 720 100 T 840 100 T 960 100 T 1080 100 T 1200 100 L 1200 200 L 0 200 Z' fill='black'/></svg>");
+  -webkit-mask-size:200% 100%;mask-size:200% 100%;
+  -webkit-mask-repeat:repeat-x;mask-repeat:repeat-x;
+  animation:waveMove 3.6s linear infinite;
+  pointer-events:none;
+}
+@keyframes waveMove{
+  0%{-webkit-mask-position:0 0;mask-position:0 0}
+  100%{-webkit-mask-position:200% 0;mask-position:200% 0}
+}
+
+.contact-icons{display:flex;gap:5rem;justify-content:center;margin-bottom:2rem;flex-wrap:wrap}
+.c-icon-item{display:flex;flex-direction:column;align-items:center;gap:.7rem;text-decoration:none;cursor:none;transition:transform .25s}
+.c-icon-item:hover{transform:translateY(-5px)}
+.c-icon{width:62px;height:62px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;transition:border-color .25s,background .25s;border-radius:4px}
+.c-icon svg{width:28px;height:28px;stroke:var(--text-primary);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;transition:stroke .25s}
+.c-icon-item:hover .c-icon{border-color:var(--accent);background:rgba(255,232,18,.06)}
+.c-icon-item:hover .c-icon svg{stroke:var(--accent)}
+.c-label{font-size:.85rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--text-secondary)}
+
+footer{padding:1.8rem 4rem;border-top:1px solid var(--border);display:flex;justify-content:flex-start;align-items:center;flex-wrap:wrap;gap:1rem}
+footer p{font-size:.85rem;color:var(--text-secondary);letter-spacing:.08em}
+
+@media(max-width:1100px){
+  .feat-grid{grid-template-columns:repeat(2,1fr)}
+  .preview-shot.wide{width:100%}
+}
+@media(max-width:900px){
+  html{cursor:auto}
+  .c-dot,.c-ring{display:none}
+  nav{padding:1rem 1.5rem}
+  section{padding:5rem 1.5rem}
+  .hero{padding:0 1.5rem}
+  .about-grid{grid-template-columns:1fr;gap:2.5rem}
+  .cm-h-bar{grid-template-columns:1fr;gap:.8rem;padding-top:1rem}
+  .cm-h-bar::before{display:none}
+  .cm-h-node{flex-direction:row;justify-content:flex-start;gap:1rem;padding:.7rem 1rem;border:1px solid var(--border);border-radius:4px;background:var(--bg-card)}
+  .cm-h-date{height:auto;margin:0}
+  .cm-h-co,.cm-h-role{margin:0;text-align:left}
+  .cm-h-panel{margin-top:1.5rem}
+  .cm-h-panel-inner{padding:1.5rem}
+  .cm-cats,.cm-2cols{grid-template-columns:1fr}
+  .proj-tab-disc{width:110px;height:110px;font-size:.95rem}
+  .paa{grid-template-columns:1fr;gap:.7rem}
+  .feat-grid{grid-template-columns:1fr}
+  .act-blocks.cols-2{grid-template-columns:1fr}
+  .preview-cap{position:static;transform:none!important;max-width:none;margin-top:.6rem}
+  .contact-icons{gap:2rem}
+}
+</style>
+</head>
+<body style="font-size: 16px">
+<div id="prog"></div>
+<div class="c-dot" id="dot"></div>
+<div class="c-ring" id="ring"></div>
+
+<nav>
+  <a class="n-logo" href="#">YEJI KIM ✦ HR</a>
+  <div class="n-links">
+    <a href="#about">소개</a>
+    <a href="#careermap">커리어맵</a>
+    <a href="#projects">프로젝트</a>
+    <a href="#contact">연락</a>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero" id="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-stack">
+    <div class="h-line h-l1"><span class="h-word">'<span class="em">HR</span>'에 '<span class="em">진심</span>'<span class="em dot">.</span></span></div>
+    <div class="h-line h-l2"><span class="h-word">김예지&nbsp;<span class="romanized" style="font-size: 60px">YEJI&nbsp;KIM</span></span></div>
+    <div class="h-line h-l4"><span class="h-word"> 2 0 0 1 . 0 2 . 1 4   (만 25세)</span></div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="mq-wrap">
+  <div class="mq-track">
+    <div class="mq-item">HR OPERATION<span>✦</span></div>
+    <div class="mq-item">AI DASHBOARD<span>✦</span></div>
+    <div class="mq-item">DATA REPORTING<span>✦</span></div>
+    <div class="mq-item">RECRUITING OPS<span>✦</span></div>
+    <div class="mq-item">ONBOARDING<span>✦</span></div>
+    <div class="mq-item">PROCESS DESIGN<span>✦</span></div>
+    <div class="mq-item">CLAUDE · CHATGPT<span>✦</span></div>
+    <div class="mq-item">GLOBAL HR<span>✦</span></div>
+    <div class="mq-item">HR OPERATION<span>✦</span></div>
+    <div class="mq-item">AI DASHBOARD<span>✦</span></div>
+    <div class="mq-item">DATA REPORTING<span>✦</span></div>
+    <div class="mq-item">RECRUITING OPS<span>✦</span></div>
+    <div class="mq-item">ONBOARDING<span>✦</span></div>
+    <div class="mq-item">PROCESS DESIGN<span>✦</span></div>
+    <div class="mq-item">CLAUDE · CHATGPT<span>✦</span></div>
+    <div class="mq-item">GLOBAL HR<span>✦</span></div>
+  </div>
+</div>
+
+<!-- ═══ 01 ABOUT ═══ -->
+<section id="about">
+  <p class="sec-label">01 — About</p>
+  <h2 class="sec-display">"비효율을 방치하지 않습니다."</h2>
+  <div class="about-grid">
+    <div class="about-prose">
+      <p>3개 회사에서 <strong>채용 및 인력 운영·HR 데이터 관리·프로세스 개선</strong>을 수행하며</p>
+      <p style="margin-top:.2rem"><strong>HR 올라운더</strong>로 성장해왔습니다.</p>
+      <p>단순히 주어진 업무를 수행하는 것에 그치지 않고,</p>
+      <p style="margin-top:.2rem">끊임없이 <strong>Why?</strong>를 던지며 더 나은 방식을 찾습니다.</p>
+      <p style="margin-top:.2rem">AI 도구를 활용하여 채용 운영 대시보드를 자체 기획·개발하고,</p>
+      <p style="margin-top:.2rem">시스템 개선 사항의 <strong>83%</strong>를 실제 반영시킨 실행력을 갖추고 있습니다.</p>
+    </div>
+    <div>
+      <div class="str-grid">
+        <div class="str-card">
+          <div class="str-icon">🔧</div>
+          <div class="str-title">HR 운영 올라운더</div>
+          <div class="str-desc" style="opacity: 0.7">헤드헌팅·채용·글로벌 인력관리·보상·비용까지.</div>
+          <div class="str-desc-sub" style="opacity: 1; text-align: left; margin: 4px 0px 0px; height: 23.2923px; font-size: 14.72px">HR 운영 실무 전반을 직접 수행한 경험</div>
+        </div>
+        <div class="str-card">
+          <div class="str-icon">📊</div>
+          <div class="str-title">데이터 기반 HR</div>
+          <div class="str-desc" style="opacity: 0.7">연차 사용률, 프로젝트 관리, 인센티브 계산, KPI 관리까지.</div>
+          <div class="str-desc-sub" style="opacity: 1; font-size: 14.72px; height: 19.0882px">HR 데이터를 가공하고 관리한 경험</div>
+        </div>
+        <div class="str-card">
+          <div class="str-icon">🤖</div>
+          <div class="str-title">AI 업무 자동화</div>
+          <div class="str-desc" style="opacity: 0.7">Claude Sonnet을 활용한 AI 대시보드 기획·개발까지.</div>
+          <div class="str-desc-sub" style="opacity: 1; font-size: 14.72px">반복 업무를 AI로 자동화해 실무에 적용한 경험</div>
+        </div>
+        <div class="str-card">
+          <div class="str-icon">🌍</div>
+          <div class="str-title">글로벌 HR</div>
+          <div class="str-desc" style="opacity: 0.7">글로벌 온보딩, 외국인 임직원 비자 행정·금융 가이드까지.</div>
+          <div class="str-desc-sub" style="opacity: 1; height: 1.4449px; font-size: 14px">글로벌 인력 운영을 직접 지원한 경험</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 02 CAREER MAP ═══ -->
+<section id="careermap">
+  <p class="sec-label">02 — Career Map</p>
+  <h2 class="sec-display">커리어 타임라인</h2>
+
+  <div class="cm-h-wrap">
+    <div class="cm-timeline">
+      <div class="cm-timeline-axis"></div>
+      <span class="cm-year-tick" style="left:0%"></span><span class="cm-year-mark" style="left:0%">2020</span>
+      <span class="cm-year-tick" style="left:25%"></span><span class="cm-year-mark" style="left:25%">2021</span>
+      <span class="cm-year-tick" style="left:50%"></span><span class="cm-year-mark" style="left:50%">2023</span>
+      <span class="cm-year-tick" style="left:75%"></span><span class="cm-year-mark" style="left:75%">2024</span>
+      <span class="cm-year-tick" style="left:100%"></span><span class="cm-year-mark" style="left:100%">2026</span>
+    </div>
+    <div class="cm-h-bar" id="cmBar">
+      <button class="cm-h-node" data-key="khu">
+        <div class="cm-h-dot"></div>
+        <div class="cm-h-co">경희대학교(서울)</div>
+        <div class="cm-h-role">경영학과 학사</div>
+        <div class="cm-h-date">2020.03 — 2024.08</div>
+      </button>
+      <button class="cm-h-node" data-key="afro">
+        <div class="cm-h-dot"></div>
+        <div class="cm-h-co">Global Afro</div>
+        <div class="cm-h-role">해외전시 서포터</div>
+        <div class="cm-h-date">2023.03 — 2024.01</div>
+      </button>
+      <button class="cm-h-node" data-key="manpower">
+        <div class="cm-h-dot"></div>
+        <div class="cm-h-co">맨파워코리아</div>
+        <div class="cm-h-role">IT BPO팀 채용 컨설턴트 인턴</div>
+        <div class="cm-h-date">2022.04 — 2022.07</div>
+      </button>
+      <button class="cm-h-node" data-key="cj">
+        <div class="cm-h-dot"></div>
+        <div class="cm-h-co">CJ제일제당</div>
+        <div class="cm-h-role">R&amp;D 인사팀 인턴사원</div>
+        <div class="cm-h-date">2023.01 — 2023.03</div>
+      </button>
+      <button class="cm-h-node" data-key="naver">
+        <div class="cm-h-dot"></div>
+        <div class="cm-h-co">NAVER</div>
+        <div class="cm-h-role">Recruiting Operation팀 사원(계약)</div>
+        <div class="cm-h-date">2024.12 — 현재</div>
+      </button>
+    </div>
+
+    <div class="cm-h-panel" id="cmPanel">
+      <div class="cm-h-panel-inner">
+        <div class="cm-empty">반딧불을 클릭하여 상세 내용 펼쳐보기</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hidden source data -->
+  <div style="display:none" id="cmData">
+    <div data-key="khu">
+      <span class="cm-h-tag">경영학과 졸업</span>
+      <div class="cm-cats cols-4">
+        <div class="cm-cat">
+          <div class="cm-cat-hdr">자격증</div>
+          <div class="cm-cat-body">
+            <div class="cm-cat-item">OPIc(영어) IH (2024.08)</div>
+            <div class="cm-cat-item">운전면허 2종 보통 (2021.10)</div>
+          </div>
+        </div>
+        <div class="cm-cat">
+          <div class="cm-cat-hdr">교육</div>
+          <div class="cm-cat-body">
+            <div class="cm-cat-item">디지털 리터러시
+— MS Excel 실습 과정 (오픈랩, 2023.07)</div>
+            <div class="cm-cat-item">디지털 리터러시
+— Tableau 실습 과정 (오픈랩, 2022.08)</div>
+          </div>
+        </div>
+        <div class="cm-cat">
+          <div class="cm-cat-hdr">교내활동</div>
+          <div class="cm-cat-body">
+            <div class="cm-cat-item">경영전략학회 Top-Zone</div>
+            <div class="cm-cat-item">중앙밴드동아리 칸타빌레 (임원진)</div>
+            <div class="cm-cat-item">국제교류동아리 IFCC</div>
+            <div class="cm-cat-item">독서토론동아리 BooKHU</div>
+          </div>
+        </div>
+        <div class="cm-cat">
+          <div class="cm-cat-hdr">교외활동</div>
+          <div class="cm-cat-body">
+            <div class="cm-cat-item">경기도청청년온라인해외봉사단 에티오피아팀</div>
+            <div class="cm-cat-item">크라우드펀딩 프로젝트 팀장 <a class="cm-link" href="https://tumblbug.com/deunhae" target="_blank" rel="noopener" style="height: 20.8732px">(프로젝트 바로가기)</a></div>
+            <div class="cm-cat-item">대한전기협회 탄소중립 서포터즈</div>
+            <div class="cm-cat-item">하와이 국외보훈사적지탐방단
+(KBS ‘역사를 걷다, 미래를 다지다’ 출연)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div data-key="afro">
+      <span class="cm-h-tag">글로벌 B2B 비즈니스 지원</span>
+      <div class="cm-h-summary">국내 테크 스타트업의 해외 전시 참가를 지원하며 B2B 미팅·현장 통역·콜드메일링을 담당했습니다.</div>
+      <div class="exh-grid">
+        <div class="exh-card">
+          <div class="exh-logo">
+            <div class="exh-logo-mark ces">CES</div>
+            <div>
+              <div class="exh-name">CES 2024</div>
+              <div class="exh-meta">미국 · 라스베거스</div>
+            </div>
+          </div>
+          <div class="exh-partners-lbl">협업 스타트업</div>
+          <div class="exh-partners">
+            <div class="exh-partner">휴먼퍼포먼스랩 (AI 맞춤형 인솔 제조업)</div>
+            <div class="exh-partner">
+</div>
+          </div>
+        </div>
+        <div class="exh-card">
+          <div class="exh-logo">
+            <div class="exh-logo-mark scewc">SCEWC</div>
+            <div>
+              <div class="exh-name">SCEWC 2023</div>
+              <div class="exh-meta">스페인 · 바르셀로나</div>
+            </div>
+          </div>
+          <div class="exh-partners-lbl">협업 스타트업</div>
+          <div class="exh-partners">
+            <div class="exh-partner"><a href="https://www.greennetworks.io" target="_blank" rel="noopener">나인와트 (건물 에너지 효율화 솔루션 기업)</a></div>
+            <div class="exh-partner"><a href="https://greendict.kr" target="_blank" rel="noopener"></a></div>
+          </div>
+        </div>
+        <div class="exh-card">
+          <div class="exh-logo">
+            <div class="exh-logo-mark ace">ACE</div>
+            <div>
+              <div class="exh-name">ACE 2023</div>
+              <div class="exh-meta">캐나다 · 토론토</div>
+            </div>
+          </div>
+          <div class="exh-partners-lbl">협업 스타트업</div>
+          <div class="exh-partners">
+            <div class="exh-partner">일신종합환경 (친환경 수처리 기업)</div>
+            <div class="exh-partner">
+</div>
+          </div>
+        </div>
+      </div>
+      <ul class="cm-bullets">
+        <li>맞춤형 콜드이메일 전략으로 서포터 중 최고 회신율 달성</li>
+        <li>ACE 2023 캐나다 바이어 한국 본사 방문 비즈니스 미팅 성사</li>
+      </ul>
+    </div>
+
+    <div data-key="manpower">
+      <span class="cm-h-tag">IT 인력 파견 &amp; 채용</span>
+      <div class="cm-h-summary">외국계 기업 IT 포지션 채용 · 후보자 발굴부터 고객사 송부까지 전 과정 수행</div>
+      <div style="font-size:.9rem;color:var(--text-secondary);margin-bottom:.6rem;font-weight:600">담당 업무</div>
+      <div class="cm-flow">
+        <div class="cm-flow-step">공고 포스팅</div>
+        <div class="cm-flow-arr">→</div>
+        <div class="cm-flow-step">이력서 스크리닝 + 포지션 제안</div>
+        <div class="cm-flow-arr">→</div>
+        <div class="cm-flow-step">사전 인터뷰 진행</div>
+        <div class="cm-flow-arr">→</div>
+        <div class="cm-flow-step">Candidate Report 작성</div>
+        <div class="cm-flow-arr">→</div>
+        <div class="cm-flow-step">고객사 송부</div>
+      </div>
+      <div class="cm-2cols">
+        <div class="cm-cat">
+          <div class="cm-cat-hdr">협력 고객사</div>
+          <div class="cm-cat-body">
+            <div class="cm-cat-item">포르쉐코리아 · 티파니앤코</div>
+            <div class="cm-cat-item">지멘스코리아 · 한국3M 등</div>
+            <div class="cm-cat-item">외국계 기업 IT 특화 포지션</div>
+          </div>
+        </div>
+        <div class="cm-cat">
+          <div class="cm-cat-hdr">채용 KPI 관리</div>
+          <div class="cm-cat-body">
+            <div class="cm-cat-item">파견 인원 수 정기 트래킹</div>
+            <div class="cm-cat-item">오퍼 수락률 Excel 관리</div>
+            <div class="cm-cat-item">주간·월간 KPI 업데이트</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div data-key="cj">
+      <span class="cm-h-tag">연구소 HRBP</span>
+      <div class="cm-h-summary">R&amp;D 연구소 인사팀에서 글로벌 HR · 데이터 관리 · 인력 운영 전반 수행</div>
+      <div class="cm-cats">
+        <div class="cm-cat">
+          <div class="cm-cat-hdr">GLOBAL HR</div>
+          <div class="cm-cat-body">
+            <div class="cm-cat-item">글로벌 인턴십 운영</div>
+            <div class="cm-cat-item">외국인 입사자 비자 서류 마련</div>
+            <div class="cm-cat-item">해외대사관 컨택·납세증명서 교부</div>
+            <div class="cm-cat-item">비자 연장 처리 지원</div>
+          </div>
+        </div>
+        <div class="cm-cat">
+          <div class="cm-cat-hdr">HR 데이터 관리</div>
+          <div class="cm-cat-body">
+            <div class="cm-cat-item">연차관리 파일 제작</div>
+            <div class="cm-cat-item">프로젝트 관리 파일</div>
+            <div class="cm-cat-item">조직별 직급분포 HR 보고서<br><span style="font-size:.85rem;color:var(--accent);padding-left:.8rem;display:block;margin-top:.2rem">→ 브로슈어로 제작되어 인력 운영 회의 자료로 활용</span></div>
+            <div class="cm-cat-item">발령관리 파일 (동명이인·휴복직자)</div>
+          </div>
+        </div>
+        <div class="cm-cat">
+          <div class="cm-cat-hdr">인력관리</div>
+          <div class="cm-cat-body">
+            <div class="cm-cat-item"><strong style="color:var(--text-primary);font-size:.92rem">발령</strong> 휴복직 운영·조직도 업데이트</div>
+            <div class="cm-cat-item"><strong style="color:var(--text-primary);font-size:.92rem">비용</strong> 교육비·급여계좌·사택·의료비</div>
+            <div class="cm-cat-item"><strong style="color:var(--text-primary);font-size:.92rem">보상</strong> 인센티브 자동화·바우처·선물</div>
+            <div class="cm-cat-item"><strong style="color:var(--text-primary);font-size:.92rem">채용</strong> Talent Map·오픈서칭 툴 관리</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div data-key="naver">
+      <span class="cm-h-tag">채용 프로세스 운영 및 데이터 관리</span>
+      <div class="cm-h-summary">대규모 신입·경력 공채 · 추천채용 · 글로벌 인턴십 등 채용 전 과정 운영 및 개선</div>
+      <div class="cm-cats">
+        <div class="cm-cat">
+          <div class="cm-cat-hdr">채용 운영</div>
+          <div class="cm-cat-body">
+            <div class="cm-cat-item">대규모 신입·경력 공채</div>
+            <div class="cm-cat-item">추천채용 · 글로벌 인턴십</div>
+            <div class="cm-cat-item">산학협력 프로젝트</div>
+            <div class="cm-cat-item">2026 NAVER AI CHALLENGE</div>
+          </div>
+        </div>
+        <div class="cm-cat">
+          <div class="cm-cat-hdr">HR 데이터 관리</div>
+          <div class="cm-cat-body">
+            <div class="cm-cat-item">지원자 마스터파일 구축</div>
+            <div class="cm-cat-item">지원이력·경로 통합 관리</div>
+            <div class="cm-cat-item">기업문화 적합도 검사 및 코딩테스트 데이터 관리</div>
+          </div>
+        </div>
+        <div class="cm-cat">
+          <div class="cm-cat-hdr">온보딩 &amp; 응대</div>
+          <div class="cm-cat-body">
+            <div class="cm-cat-item">신규 입사자 발령 처리</div>
+            <div class="cm-cat-item">웰컴키트 제작·배부</div>
+            <div class="cm-cat-item">1:1 채용문의 응대</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 03 PROJECT ═══ -->
+<section id="projects">
+  <p class="sec-label">03 — Project</p>
+  <h2 class="sec-display">주요 프로젝트</h2>
+
+  <!-- Company tabs -->
+  <div class="proj-tab-wrap" id="projTabs">
+    <button class="proj-tab active" data-co="naver">
+      <div class="proj-tab-disc">NAVER</div>
+      <div class="proj-tab-meta">3 PROJECTS</div>
+    </button>
+    <button class="proj-tab" data-co="cj">
+      <div class="proj-tab-disc">CJ제일제당</div>
+      <div class="proj-tab-meta">1 PROJECT</div>
+    </button>
+    <button class="proj-tab" data-co="manpower">
+      <div class="proj-tab-disc">맨파워<br>코리아</div>
+      <div class="proj-tab-meta">1 PROJECT</div>
+    </button>
+  </div>
+
+  <div class="proj-stage" id="projStage">
+
+    <!-- ── NAVER ── -->
+    <div class="proj-company show" data-co="naver">
+      <div class="proj-co-hdr">
+        <div class="proj-co-name">NAVER</div>
+        <div class="proj-co-role">Recruiting Operation팀 · 사원(계약)</div>
+      </div>
+
+      <!-- #01 AI 대시보드 -->
+      <div class="proj-item">
+        <div class="proj-hdr">
+          <span class="proj-num"># 01</span>
+          <span class="proj-title">AI 채용 업무관리 대시보드 기획 및 구현</span>
+        </div>
+        <div class="proj-body">
+          <div class="paa">
+            <!-- Problem -->
+            <div class="paa-col">
+              <span class="paa-lbl prob">Problem</span>
+              <div class="paa-keyword prob">현황 파편화</div>
+              <div class="prob-blocks">
+                <div class="prob-row">공고별 전형 현황이 분산된 엑셀로 관리되어 실시간 파악 불가</div>
+                <div class="prob-row">수기 우선순위 판단으로 누락·지연 반복 발생</div>
+                <div class="prob-row">반복 수작업이 고부가 업무 시간 잠식</div>
+              </div>
+            </div>
+            <!-- Action -->
+            <div class="paa-col">
+              <span class="paa-lbl act">Action</span>
+              <div class="paa-keyword act">생성형 AI 활용</div>
+              <div class="paa-text">Claude Sonnet 4.6 + ChatGPT 5.4를 활용해 채용 운영 AI 대시보드를 직접 기획·개발했습니다.</div>
+              <div class="tools-row">
+                <span class="tool-chip">VS Code</span>
+                <span class="tool-chip">Node.js</span>
+                <span class="tool-chip">Claude Sonnet 4.6</span>
+                <span class="tool-chip">ChatGPT 5.4</span>
+                <span class="tool-chip">Homebrew</span>
+              </div>
+            </div>
+            <!-- Achievement -->
+            <div class="paa-col">
+              <span class="paa-lbl ach">Achievement</span>
+              <div class="paa-keyword ach">AI 대시보드</div>
+              <div class="ach-detail">2차 리더 긍정평가 획득<br>PoC 진행 중 → 유관 부서 협업 예정<br>인터뷰 어레인지·주간 리포트 자동화 추가 개발 중</div>
+              <div class="status-row">
+                <span class="status-chip done">✓ 2차 리더 승인</span>
+                <span class="status-chip ing">→ PoC 진행중</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 핵심 기능 -->
+          <div class="feat-section">
+            <div class="feat-hdr">
+              <div class="feat-title-bar">핵심 기능</div>
+              <div class="feat-hint">* VIEW 라벨이 붙은 블록을 클릭하면 실제 구현 화면을 확인할 수 있습니다.</div>
+            </div>
+            <div class="feat-grid">
+              <!-- 통합 대시보드 (PREVIEW) -->
+              <div class="feat-card previewable" data-preview="dash">
+                <span class="feat-preview-tag">VIEW</span>
+                <div class="feat-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg></div>
+                <div class="feat-name">통합 대시보드</div>
+                <div class="feat-desc">공고별 진척도 &amp; 전형별 합격률 실시간 시각화</div>
+              </div>
+              <!-- 스마트 task 리스트 (PREVIEW) -->
+              <div class="feat-card previewable" data-preview="todo">
+                <span class="feat-preview-tag">VIEW</span>
+                <div class="feat-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M8 9h9"/><path d="M8 13h9"/><path d="M8 17h6"/></svg></div>
+                <div class="feat-name">스마트 Task 리스트</div>
+                <div class="feat-desc">중요도·대상자 수·지연도·리소스 종합 계산 → 우선순위 자동 산출</div>
+              </div>
+              <!-- 일정 자동 등록 (PREVIEW) -->
+              <div class="feat-card previewable" data-preview="cal">
+                <span class="feat-preview-tag">VIEW</span>
+                <div class="feat-icon"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 9h18"/><path d="M8 3v4"/><path d="M16 3v4"/></svg></div>
+                <div class="feat-name">일정 자동 등록</div>
+                <div class="feat-desc">공고 URL 입력 시 일정 크롤링·파싱 후 캘린더 자동 반영</div>
+              </div>
+              <!-- 양방향 데이터 연동 -->
+              <div class="feat-card">
+                <div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M7 7h10l-3-3"/><path d="M17 7l-3 3"/><path d="M17 17H7l3 3"/><path d="M7 17l3-3"/></svg></div>
+                <div class="feat-name">양방향 데이터 연동</div>
+                <div class="feat-desc">엑셀 현황파일 ↔ 웹 대시보드 실시간 동기화</div>
+              </div>
+              <!-- 지연 현황 계산 -->
+              <div class="feat-card">
+                <div class="feat-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+                <div class="feat-name">지연 현황 계산</div>
+                <div class="feat-desc">전형 지연 일수 자동 계산</div>
+              </div>
+              <!-- 자동 팝업 알림 -->
+              <div class="feat-card">
+                <div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 5 2 6 2 6H4s2-1 2-6"/><path d="M10 19a2 2 0 0 0 4 0"/></svg></div>
+                <div class="feat-name">자동 팝업 알림</div>
+                <div class="feat-desc">매일 업무 시작 시간에 맞춘 자동 팝업알림 발송</div>
+              </div>
+            </div>
+
+            <!-- PREVIEW STAGES -->
+            <div class="preview-stage" id="preview-dash">
+              <div class="beam"></div>
+              <div class="preview-stage-inner">
+                <div class="preview-shots">
+                  <div class="preview-shot wide">
+                    <img src="assets/screen1.jpg" alt="OVERVIEW 대시보드">
+                    <div class="preview-cap">① 현황 요약 패널
+전체 공고 진행 상황 실시간 집계                 
+채용유형·전형 단계별 분포 한눈에 파악</div>
+                  </div>
+                </div>
+                <div class="preview-shots" style="margin-top:5rem">
+                  <div class="preview-shot">
+                    <img src="assets/screen2.jpg" alt="공고 현황 목록">
+                    <div class="preview-cap">② 공고 현황 목록
+채용유형별 색상 구분 · 공고별 달성률 실시간 표시
+클릭 시 상세 funnel 확인</div>
+                  </div>
+                  <div class="preview-shot">
+                    <img src="assets/screen4.jpg" alt="전형별 인원 Funnel">
+                    <div class="preview-cap">③ 전형별 인원 Funnel 합격률 자동 계산
+인입→입사 전환율 시각화로 단계별 병목 즉시 파악</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="preview-stage" id="preview-todo">
+              <div class="beam"></div>
+              <div class="preview-stage-inner">
+                <div class="preview-shots">
+                  <div class="preview-shot wide">
+                    <img src="assets/screen3.jpg" alt="스마트 TO DO 리스트">
+                    <div class="preview-cap">스마트 TO DO LIST
+전형 단계별 업무 자동 분류 
+리소스×중요도×지연도×대상자 수 종합 계산
+→ 순번 자동 부여 · 체크박스로 완료 처리</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="preview-stage" id="preview-cal">
+              <div class="beam"></div>
+              <div class="preview-stage-inner">
+                <div class="preview-shots">
+                  <div class="preview-shot wide">
+                    <img src="assets/screen-calendar.png" alt="채용 일정 캘린더">
+                    <div class="preview-cap">채용 일정 캘린더
+
+공고 URL 입력 시 일정 자동 파싱·반영
+전형 단계별 색상 구분</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- #02 ATS 83% -->
+      <div class="proj-item">
+        <div class="proj-hdr">
+          <span class="proj-num"># 02</span>
+          <span class="proj-title">채용 시스템 불편사항 83% 개선</span>
+        </div>
+        <div class="proj-body">
+          <div class="paa">
+            <div class="paa-col">
+              <span class="paa-lbl prob">Problem</span>
+              <div class="paa-keyword prob">ATS 비효율</div>
+              <div class="prob-blocks">
+                <div class="prob-row">공고문 수동 등록 (개별 클릭 방식)</div>
+                <div class="prob-row">일괄 발송 시 지원자 정보 미연동</div>
+                <div class="prob-row">반복적 시스템 오류로 실무 실수 발생</div>
+              </div>
+            </div>
+            <div class="paa-col">
+              <span class="paa-lbl act">Action</span>
+              <div class="paa-keyword act">팀 회의 주도</div>
+              <div class="act-blocks cols-2">
+                <div class="act-block">
+                  <div class="act-block-icon"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3 3-5 6-5s6 2 6 5"/><circle cx="17" cy="9" r="2.5"/><path d="M14 18c0-2 1.5-3.5 4-3.5s4 1.5 4 3.5"/></svg></div>
+                  <div class="act-block-title">페인포인트 취합</div>
+                  <div class="act-block-desc">팀 회의 개최 → 6가지 불편사항 구조화</div>
+                </div>
+                <div class="act-block">
+                  <div class="act-block-icon"><svg viewBox="0 0 24 24"><path d="M3 12h18"/><path d="M5 6h14"/><path d="M5 18h14"/><circle cx="9" cy="6" r="1.5"/><circle cx="15" cy="12" r="1.5"/><circle cx="9" cy="18" r="1.5"/></svg></div>
+                  <div class="act-block-title">AS-IS / TO-BE 기안</div>
+                  <div class="act-block-desc">시각화 자료로 상부 및 개발팀에 정식 기안</div>
+                </div>
+              </div>
+            </div>
+            <div class="paa-col">
+              <span class="paa-lbl ach">Achievement</span>
+              <div class="paa-keyword ach kpi"><span data-count="83">0</span><sup>%</sup></div>
+              <div class="ach-detail">6가지 개선 과제 중<br><strong>5가지 시스템 반영 완료</strong></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- #03 리드타임 67% -->
+      <div class="proj-item">
+        <div class="proj-hdr">
+          <span class="proj-num"># 03</span>
+          <span class="proj-title">인터뷰 일정 조율 리드타임 66.67% 단축 솔루션 기안</span>
+        </div>
+        <div class="proj-body">
+          <div class="paa">
+            <div class="paa-col">
+              <span class="paa-lbl prob">Problem</span>
+              <div class="paa-keyword prob">조율 지연</div>
+              <div class="paa-text">수작업 기반 인터뷰 일정 조율로 채용 리드타임이 지연되고,<br>실무 비효율이 반복 발생했습니다.</div>
+            </div>
+            <div class="paa-col">
+              <span class="paa-lbl act">Action</span>
+              <div class="paa-keyword act">대안 설계·분석</div>
+              <div class="act-blocks cols-2">
+                <div class="act-block">
+                  <div class="act-block-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M8 2v4"/><path d="M16 2v4"/><path d="M3 10h18"/><circle cx="12" cy="15" r="2"/></svg></div>
+                  <div class="act-block-title">보안 리스크 고려한 대안 설계</div>
+                  <div class="act-block-desc">사내 캘린더 활용 일정조율 로직 직접 설계<br>→ 시각화 매뉴얼(PPT) 상부 기안</div>
+                </div>
+                <div class="act-block">
+                  <div class="act-block-icon"><svg viewBox="0 0 24 24"><path d="M4 19V5"/><path d="M4 5h13l-2 3 2 3H4"/><path d="M4 13h11l-2 3 2 3H4"/></svg></div>
+                  <div class="act-block-title">외부 솔루션 다각도 분석</div>
+                  <div class="act-block-desc">국내외 주요 일정관리 업체 전수조사<br>→ 비교분석 보고서 제출</div>
+                </div>
+              </div>
+            </div>
+            <div class="paa-col">
+              <span class="paa-lbl ach">Achievement</span>
+              <div class="paa-keyword ach kpi"><span data-count="67">0</span><sup>%</sup></div>
+              <div class="ach-detail">기안 타당성 인정<br><strong>선정 외부 업체 + 2차 리더 도입 미팅 성사</strong></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── CJ제일제당 ── -->
+    <div class="proj-company" data-co="cj">
+      <div class="proj-co-hdr">
+        <div class="proj-co-name">CJ제일제당</div>
+        <div class="proj-co-role">R&amp;D 인사팀 · 인턴사원</div>
+      </div>
+
+      <div class="proj-item">
+        <div class="proj-hdr">
+          <span class="proj-num"># 01</span>
+          <span class="proj-title">글로벌 인턴십 온보딩 체계 구축</span>
+        </div>
+        <div class="proj-body">
+          <div class="paa">
+            <div class="paa-col">
+              <span class="paa-lbl prob">Problem</span>
+              <div class="paa-keyword prob">온보딩 부재</div>
+              <div class="prob-blocks">
+                <div class="prob-row">글로벌 인턴이 한국 금융 계좌 개설을 각자 처리</div>
+                <div class="prob-row">회사 측 공식 절차 부재로 온보딩 경험 저하</div>
+              </div>
+            </div>
+            <div class="paa-col">
+              <span class="paa-lbl act">Action</span>
+              <div class="paa-keyword act">절차 표준화</div>
+              <div class="act-blocks cols-2">
+                <div class="act-block">
+                  <div class="act-block-icon"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18"/><path d="M7 15h3"/></svg></div>
+                  <div class="act-block-title">금융사 직접 컨택 및 제휴 체결</div>
+                  <div class="act-block-desc">외국인 전용 계좌개설 절차 간소화</div>
+                </div>
+                <div class="act-block">
+                  <div class="act-block-icon"><svg viewBox="0 0 24 24"><circle cx="9" cy="9" r="3"/><path d="M3 20c0-3 3-5 6-5s6 2 6 5"/><path d="M16 6l2 2 4-4"/></svg></div>
+                  <div class="act-block-title">1:1 면담 자체 제안·진행</div>
+                  <div class="act-block-desc">글로벌 인턴 니즈 파악 → 매뉴얼 제작 기반 자료 확보</div>
+                </div>
+                <div class="act-block">
+                  <div class="act-block-icon"><svg viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="M9 13h6"/><path d="M9 17h4"/></svg></div>
+                  <div class="act-block-title">비자 행정 지원</div>
+                  <div class="act-block-desc">해외대사관 컨택, 납세증명서 교부 요청 등 외국인 입사자 비자 서류 마련</div>
+                </div>
+                <div class="act-block">
+                  <div class="act-block-icon"><svg viewBox="0 0 24 24"><path d="M12 2v4"/><path d="M12 18v4"/><path d="M2 12h4"/><path d="M18 12h4"/><circle cx="12" cy="12" r="6"/></svg></div>
+                  <div class="act-block-title">비자 연장 처리</div>
+                  <div class="act-block-desc">임원·인턴 포함 비자 연장 서류 일괄 지원</div>
+                </div>
+              </div>
+            </div>
+            <div class="paa-col">
+              <span class="paa-lbl ach">Achievement</span>
+              <div class="paa-keyword ach">온보딩 표준화</div>
+              <div class="ach-detail"><strong>면담 기반 니즈 파악</strong>을 통해<br>글로벌 인턴십 온보딩 매뉴얼 제작·배포 완료</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── 맨파워코리아 ── -->
+    <div class="proj-company" data-co="manpower">
+      <div class="proj-co-hdr">
+        <div class="proj-co-name">맨파워코리아</div>
+        <div class="proj-co-role">IT BPO팀 · 채용 컨설턴트 인턴</div>
+      </div>
+
+      <div class="proj-item">
+        <div class="proj-hdr">
+          <span class="proj-num"># 01</span>
+          <span class="proj-title">인재 DB &amp; Tech Book 구축으로 KPI 팀 내 최다 달성</span>
+        </div>
+        <div class="proj-body">
+          <div class="paa">
+            <div class="paa-col">
+              <span class="paa-lbl prob">Problem</span>
+              <div class="paa-keyword prob">인재 발굴 지연</div>
+              <div class="prob-blocks">
+                <div class="prob-row">기한 내 인력 확보 어려움 · KPI 수치 저조</div>
+                <div class="prob-row">후보자 정보 비체계적 관리 → 인재 발굴 시간 반복 소요</div>
+              </div>
+            </div>
+            <div class="paa-col">
+              <span class="paa-lbl act">Action</span>
+              <div class="paa-keyword act">DB·가이드 구축</div>
+              <div class="act-blocks cols-2">
+                <div class="act-block">
+                  <div class="act-block-icon"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6"/><path d="M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg></div>
+                  <div class="act-block-title">인재풀 데이터베이스 파일 구축</div>
+                  <div class="act-block-desc">보유기술, 커리어 특이사항 데이터화
+→ 지원자 즉각 발굴 가능한 DB 구축</div>
+                </div>
+                <div class="act-block">
+                  <div class="act-block-icon"><svg viewBox="0 0 24 24"><path d="M5 4v16a2 2 0 0 0 2 2h12V4H7a2 2 0 0 0-2 2z"/><path d="M9 4v18"/><path d="M12 8h4"/><path d="M12 12h4"/></svg></div>
+                  <div class="act-block-title">기술북 FOR RECRUITER 제작</div>
+                  <div class="act-block-desc">주요 포지션의 필수 기술스택 문서화
+→ IT 채용 담당자 전문성 제고</div>
+                </div>
+              </div>
+            </div>
+            <div class="paa-col">
+              <span class="paa-lbl ach">Achievement</span>
+              <div class="paa-keyword ach">팀 내 1위</div>
+              <div class="ach-detail">입사 첫 달<br><strong>포지션 수락 건수 팀 내 최다</strong><br>→ 인턴십 연장 요청</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ 04 CONTACT ═══ -->
+<section id="contact" style="text-align:center;padding:10rem 4rem">
+  <p class="sec-label" style="display:flex;justify-content:center">04 — Contact</p>
+  <div class="contact-head">
+    <span class="water-text" data-text="더 나은 HR을 끊임없이 고민합니다.">더 나은 HR을 끊임없이 고민합니다.</span>
+  </div>
+  <div class="contact-icons">
+    <a class="c-icon-item" href="tel:+821031334421" aria-label="전화">
+      <div class="c-icon">
+        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      </div>
+      <div class="c-label">Phone</div>
+    </a>
+    <a class="c-icon-item" href="mailto:4ever.lovemalife@gmail.com" aria-label="이메일">
+      <div class="c-icon">
+        <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+      </div>
+      <div class="c-label">Email</div>
+    </a>
+    <a class="c-icon-item" href="https://linkedin.com/in/yeji-kim-hr" target="_blank" rel="noopener" aria-label="LinkedIn">
+      <div class="c-icon">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 10v8"/><circle cx="8" cy="7" r="1.2"/><path d="M12 13v5"/><path d="M12 13c0-1.7 1.3-3 3-3s3 1.3 3 3v5"/></svg>
+      </div>
+      <div class="c-label">LinkedIn</div>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 김예지 KIM YEJI — HR PORTFOLIO</p>
+</footer>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+
+// PROGRESS
+window.addEventListener('scroll',()=>{
+  const p=(window.scrollY/(document.body.scrollHeight-window.innerHeight))*100;
+  document.getElementById('prog').style.width=p+'%';
+});
+
+// CURSOR (desktop only)
+if (window.matchMedia('(min-width:901px)').matches) {
+  const dot=document.getElementById('dot');
+  const ring=document.getElementById('ring');
+  let mx=0,my=0,rx=0,ry=0;
+  window.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px'});
+  (function lp(){rx+=(mx-rx)*.08;ry+=(my-ry)*.08;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(lp)})();
+  document.querySelectorAll('a,button,.str-card,.proj-item,.cm-cat,.c-icon-item,.proj-tab,.cm-h-node,.feat-card.previewable').forEach(el=>{
+    el.addEventListener('mouseenter',()=>ring.classList.add('on'));
+    el.addEventListener('mouseleave',()=>ring.classList.remove('on'));
+  });
+}
+
+// HERO ANIMATION
+gsap.set('.h-word',{y:'105%'});
+gsap.to('.h-word',{y:0,duration:1.0,stagger:.15,ease:'power4.out',delay:.2});
+
+// SCROLL: section displays
+gsap.utils.toArray('.sec-display,.sec-label').forEach(el=>{
+  gsap.from(el,{y:50,opacity:0,duration:.9,ease:'power3.out',
+    scrollTrigger:{trigger:el,start:'top 88%'}});
+});
+
+// SCROLL: about
+gsap.utils.toArray('.about-prose,.str-card').forEach((el,i)=>{
+  gsap.from(el,{y:30,opacity:0,duration:.75,delay:i*.07,ease:'power3.out',
+    scrollTrigger:{trigger:el,start:'top 88%'}});
+});
+
+// CAREER MAP — horizontal interactive
+(function(){
+  const bar=document.getElementById('cmBar');
+  const panel=document.getElementById('cmPanel');
+  const dataRoot=document.getElementById('cmData');
+  const map={};
+  dataRoot.querySelectorAll('[data-key]').forEach(el=>{ map[el.dataset.key]=el.innerHTML; });
+
+  function show(key){
+    bar.classList.add('any-active');
+    bar.querySelectorAll('.cm-h-node').forEach(n=>{
+      n.classList.toggle('active',n.dataset.key===key);
+    });
+    panel.innerHTML='<div class="cm-h-panel-inner">'+map[key]+'</div>';
+    gsap.fromTo(panel,{opacity:0,y:14},{opacity:1,y:0,duration:.5,ease:'power3.out'});
+  }
+
+  bar.querySelectorAll('.cm-h-node').forEach(node=>{
+    node.addEventListener('click',()=>show(node.dataset.key));
+  });
+  // No initial selection — user clicks a firefly dot to expand
+})();
+
+// PROJECT — company tab toggle
+(function(){
+  const tabs=document.querySelectorAll('#projTabs .proj-tab');
+  const cards=document.querySelectorAll('#projStage .proj-company');
+  tabs.forEach(t=>t.addEventListener('click',()=>{
+    const co=t.dataset.co;
+    tabs.forEach(x=>x.classList.toggle('active',x===t));
+    cards.forEach(c=>c.classList.toggle('show',c.dataset.co===co));
+    // close any open preview when switching
+    document.querySelectorAll('.preview-stage.open').forEach(s=>s.classList.remove('open'));
+    document.querySelectorAll('.feat-card.previewable.open').forEach(s=>s.classList.remove('open'));
+  }));
+})();
+
+// PREVIEW — UFO beam toggle
+(function(){
+  const cards=document.querySelectorAll('.feat-card.previewable');
+  cards.forEach(c=>{
+    c.addEventListener('click',()=>{
+      const key=c.dataset.preview;
+      const stage=document.getElementById('preview-'+key);
+      const isOpen=stage.classList.contains('open');
+      // close all
+      document.querySelectorAll('.preview-stage.open').forEach(s=>s.classList.remove('open'));
+      document.querySelectorAll('.feat-card.previewable.open').forEach(s=>s.classList.remove('open'));
+      if(!isOpen){
+        c.classList.add('open');
+        stage.classList.add('open');
+      }
+    });
+  });
+})();
+
+// SCROLL: proj items
+gsap.utils.toArray('.proj-item').forEach((el,i)=>{
+  gsap.from(el,{y:30,opacity:0,duration:.8,delay:i*.05,ease:'power3.out',
+    scrollTrigger:{trigger:el,start:'top 90%'}});
+});
+
+// SCROLL: contact + fill animation
+gsap.from('.contact-head',{y:40,opacity:0,duration:1.0,ease:'power3.out',
+  scrollTrigger:{trigger:'.contact-head',start:'top 85%'}});
+ScrollTrigger.create({trigger:'#contact',start:'top 80%',once:true});
+gsap.utils.toArray('.c-icon-item').forEach((el,i)=>{
+  gsap.from(el,{y:25,opacity:0,duration:.7,delay:i*.1,ease:'power3.out',
+    scrollTrigger:{trigger:el,start:'top 88%'}});
+});
+
+// COUNT-UP for numeric values
+document.querySelectorAll('.paa-keyword.kpi span[data-count]').forEach(el=>{
+  const target=parseInt(el.dataset.count);
+  ScrollTrigger.create({trigger:el,start:'top 85%',once:true,onEnter:()=>{
+    let start=0; const inc=target/55;
+    const tick=()=>{
+      start+=inc;
+      if(start>=target){el.textContent=target;return}
+      el.textContent=Math.round(start);
+      requestAnimationFrame(tick);
+    };
+    tick();
+  }});
+});
+</script>
+</body>
+</html>
+
+<style id="__om-edit-overrides">
+#about .str-grid >div:nth-child(4) :is(h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,label,span,a,em,strong,small,td,th,caption) { font-size: 14.72px !important }
+[data-om-id="0fd02726:85"] { height: 24.293px !important }
+[data-om-id="0fd02726:90"] { height: 24.2923px !important }
+#about .str-grid >div:nth-child(1) :is(h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,label,span,a,em,strong,small,td,th,caption) { font-size: 14px !important }
+#about .str-grid >div:nth-child(1) :is(h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,label,span,a,em,strong,small,td,th,caption) { font-size: 14.72px !important }
+[data-om-id="d72b2351:85"] { height: 25.2904px !important }
+[data-om-id="d72b2351:85"] { height: 27.2831px !important }
+</style>
