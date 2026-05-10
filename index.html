@@ -769,9 +769,9 @@ html.lang-en .ko-only{display:none!important}
       <div class="kpi-label"><span class="ko-only">직접 HR 실무를 수행한 기업 수</span><span class="en-only">Companies with hands-on HR experience</span></div>
     </div>
     <div class="kpi-item">
-      <div class="kpi-sub"><span class="ko-only">월별 최다</span><span class="en-only">Monthly Best</span></div>
+      <div class="kpi-sub"><span class="ko-only">팀 내 성과</span><span class="en-only">Team Rank</span></div>
       <div class="kpi-num"><span class="kpi-hash">#</span><span class="kpi-val" data-count="1">0</span></div><div class="kpi-bar"></div>
-      <div class="kpi-label"><span class="ko-only">월별 포지션 제안 최다 수락</span><span class="en-only">Most Position Offers Accepted (Monthly)</span></div>
+      <div class="kpi-label"><span class="ko-only">맨파워코리아 KPI 달성 팀 내 1위</span><span class="en-only">Top KPI achiever at ManpowerGroup</span></div>
     </div>
     <div class="kpi-item">
       <div class="kpi-sub"><span class="ko-only">글로벌 전시</span><span class="en-only">Global Expos</span></div>
@@ -1428,8 +1428,8 @@ html.lang-en .ko-only{display:none!important}
       <p>Faced with that change, I thought long and hard: <em>'So what should be an HR professional's real weapon?'</em></p>
     </div>
     <div class="essay-highlight">
-      <span class="ko-only">IT 서치펌 맨파워코리아에서의 인턴 경험이 답을 주었습니다. 당시 저는 팀 내 최고 응답률인 <strong>50%</strong>를 달성했는데, 그 비결은 알고리즘도, 기계적인 오퍼 메일도 아니었습니다. 후보자 한 명 한 명의 커리어 패스를 머릿속으로 그려보고, 이 기회가 그들의 삶에 어떤 의미가 될 수 있는지를 함께 상상하며 건넨 <strong>인간적인 연결</strong>이었습니다.</span>
-      <span class="en-only">My internship at IT search firm ManpowerGroup Korea gave me the answer. I achieved the team's highest response rate of <strong>50%</strong> — and the secret wasn't an algorithm or a mechanical offer email. It was the <strong>human connection</strong> I made by visualizing each candidate's career path in my mind and imagining together what this opportunity could mean for their life.</span>
+      <span class="ko-only">IT 서치펌 맨파워코리아에서의 인턴 경험이 답을 주었습니다. 당시 저는 팀 내 <strong>월별 포지션 제안 최다 수락</strong>을 달성했는데, 그 비결은 알고리즘도, 기계적인 오퍼 메일도 아니었습니다. 후보자 한 명 한 명의 커리어 패스를 머릿속으로 그려보고, 이 기회가 그들의 삶에 어떤 의미가 될 수 있는지를 함께 상상하며 건넨 <strong>인간적인 연결</strong>이었습니다.</span>
+      <span class="en-only">My internship at IT search firm ManpowerGroup Korea gave me the answer. I achieved the most position offer acceptances per month on the team — and the secret wasn't an algorithm or a mechanical offer email. It was the <strong>human connection</strong> I made by visualizing each candidate's career path in my mind and imagining together what this opportunity could mean for their life.</span>
     </div>
     <div class="essay-body ko-only">
       <p>AI가 사규를 읽고, 인재를 매칭하고, 일정을 자동화하는 시대라 해도 — 구성원의 입장에서 치열하게 고민하고, 지원자의 숨은 니즈를 발견해 그 마음을 움직이는 일은 여전히 <strong>사람만의 영역</strong>입니다. 저는 기술의 편리함을 적극 활용하되 맹신하지 않고, AI가 끝내 대체할 수 없는 <strong>공감과 설득의 HRer</strong>로 성장하겠습니다.</p>
@@ -1789,37 +1789,36 @@ Korea',
 (function(){
   function countUp(el, target, duration){
     const start = performance.now();
-    const step = ts => {
+    (function step(ts){
       const p = Math.min((ts-start)/duration, 1);
       const ease = 1 - Math.pow(1-p, 3);
       el.textContent = Math.floor(ease * target);
       if(p < 1) requestAnimationFrame(step);
       else el.textContent = target;
-    };
-    requestAnimationFrame(step);
+    })(performance.now());
   }
 
-  document.querySelectorAll('.kpi-item').forEach(item=>{
-    // data-count can be on .kpi-num OR .kpi-val
-    const numEl = item.querySelector('.kpi-num[data-count]');
-    const valEl = item.querySelector('.kpi-val[data-count]');
-    const container = numEl || (valEl ? valEl.closest('.kpi-num') : null) || item.querySelector('.kpi-num');
-    const countEl = numEl || valEl;
-    if(!countEl) return;
-    const displayEl = numEl ? item.querySelector('.kpi-val') : valEl;
-    if(!displayEl) return;
-    const target = parseInt(countEl.dataset.count);
-    ScrollTrigger.create({
-      trigger: item,
-      start: 'top 80%',
-      once: true,
-      onEnter: ()=>{
-        item.classList.add('counted');
-        countUp(displayEl, target, 1800);
-      }
+  const items = document.querySelectorAll('.kpi-item');
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(!entry.isIntersecting) return;
+      const item = entry.target;
+      if(item.dataset.counted) return;
+      item.dataset.counted = '1';
+      obs.unobserve(item);
+      item.classList.add('counted');
+      // data-count on .kpi-num OR .kpi-val
+      const numEl = item.querySelector('[data-count]');
+      if(!numEl) return;
+      const target = parseInt(numEl.dataset.count);
+      const displayEl = numEl.classList.contains('kpi-val') ? numEl : item.querySelector('.kpi-val');
+      if(displayEl) countUp(displayEl, target, 1800);
     });
-  });
+  }, {threshold: 0.3});
+
+  items.forEach(item => obs.observe(item));
 })();
+
 
 // ── CHATBOT ──
 (function(){
@@ -2132,18 +2131,11 @@ Korea',
       <div class="chat-hdr-name">예지 AI 어시스턴트</div>
       <div class="chat-hdr-sub">뭐든 물어보세요!</div>
     </div>
-    <div class="chat-msgs" id="chatMsgs">
-      <div class="chat-msg bot">안녕하세요! 저는 김예지의 포트폴리오 챗봇이에요 🙂<br>HR 경력, 프로젝트, 연락처 등 무엇이든 물어보세요!</div>
-    </div>
-    <div class="chat-suggestions" id="chatSugs">
-      <button class="chat-sug" onclick="chatAsk(this.textContent)">주요 경력이 뭔가요?</button>
-      <button class="chat-sug" onclick="chatAsk(this.textContent)">네이버에서 뭐 했어요?</button>
-      <button class="chat-sug" onclick="chatAsk(this.textContent)">강점이 뭔가요?</button>
-      <button class="chat-sug" onclick="chatAsk(this.textContent)">연락처 알려줘요</button>
-    </div>
+    <div class="chat-msgs" id="chatMsgs"></div>
+    <div class="chat-suggestions" id="chatSugs"></div>
     <div class="chat-input-row">
-      <input type="text" id="chatInput" placeholder="질문을 입력하세요..." onkeydown="if(event.key==='Enter')chatSend()">
-      <button onclick="chatSend()">전송</button>
+      <input type="text" id="chatInput" placeholder="질문을 입력하세요...">
+      <button id="chatSendBtn">전송</button>
     </div>
   </div>
   <button class="chat-btn-toggle" id="chatToggle" onclick="toggleChat()" aria-label="챗봇 열기">
