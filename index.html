@@ -65,7 +65,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
 
 .hero-stack{display:flex;flex-direction:column;gap:.4rem;position:relative;z-index:2}
 .h-line{overflow:hidden;display:flex;align-items:baseline;gap:.4rem}
-.h-word{display:inline-block;transform:translateY(105%)}
+.h-word{display:inline-block}
 
 /* line 1 — HR에 진심 */
 .h-l1{font-weight:900;line-height:.95;letter-spacing:-.04em;font-size:clamp(4rem,11vw,10rem);color:var(--text-primary)}
@@ -434,7 +434,7 @@ footer p{font-size:.85rem;color:var(--text-secondary);letter-spacing:.08em}
 [data-theme="light"] .kpi-item+.kpi-item{border-left-color:var(--border)}
 [data-theme="light"] .essay-section{background:var(--bg)}
 [data-theme="light"] .water-text{-webkit-text-stroke:2px rgba(0,0,0,.5);color:transparent}
-[data-theme="light"] .water-text::before,.water-text::after{filter:invert(1)}
+[data-theme="light"] .water-text::before,[data-theme="light"] .water-text::after{filter:invert(1)}
 [data-theme="light"] .c-icon{background:var(--bg-card);border-color:var(--border)}
 [data-theme="light"] .preview-stage{background:transparent}
 [data-theme="light"] #chatWidget .chat-win{background:var(--bg-card);border-color:var(--border)}
@@ -769,9 +769,9 @@ html.lang-en .ko-only{display:none!important}
       <div class="kpi-label"><span class="ko-only">직접 HR 실무를 수행한 기업 수</span><span class="en-only">Companies with hands-on HR experience</span></div>
     </div>
     <div class="kpi-item">
-      <div class="kpi-sub"><span class="ko-only">팀 내 성과</span><span class="en-only">Team Rank</span></div>
+      <div class="kpi-sub"><span class="ko-only">월별 최다</span><span class="en-only">Monthly Best</span></div>
       <div class="kpi-num"><span class="kpi-hash">#</span><span class="kpi-val" data-count="1">0</span></div><div class="kpi-bar"></div>
-      <div class="kpi-label"><span class="ko-only">맨파워코리아 KPI 달성 팀 내 1위</span><span class="en-only">Top KPI achiever at ManpowerGroup</span></div>
+      <div class="kpi-label"><span class="ko-only">월별 포지션 제안 최다 수락</span><span class="en-only">Most Position Offers Accepted (Monthly)</span></div>
     </div>
     <div class="kpi-item">
       <div class="kpi-sub"><span class="ko-only">글로벌 전시</span><span class="en-only">Global Expos</span></div>
@@ -1402,7 +1402,7 @@ html.lang-en .ko-only{display:none!important}
 <!-- ═══ ESSAY: HR 철학 ═══ -->
 <section class="essay-section" id="essay">
   <p class="sec-label"><span class="ko-only">왜 HR인가요?</span><span class="en-only">Why HR?</span></p>
-  <h2 class="sec-display" style="max-width:720px;margin-left:auto;margin-right:auto"><span class="ko-only">AI 시대에도 사람만이 할 수 있는 것</span><span class="en-only">What Only Humans Can Do in the Age of AI</span></h2>
+  <h2 class="sec-display" style="font-size:clamp(1.6rem,3.5vw,2.8rem);max-width:720px;margin-left:auto;margin-right:auto;line-height:1.3"><span class="ko-only">AI 시대에도 사람만이 할 수 있는 것</span><span class="en-only">What Only Humans Can Do in the Age of AI</span></h2>
   <div class="essay-inner">
     <div class="essay-quote-wrap">
       <div class="essay-quote">"Happiness is a perfume you cannot pour on others without getting a few drops on yourself."</div>
@@ -1800,16 +1800,22 @@ Korea',
   }
 
   document.querySelectorAll('.kpi-item').forEach(item=>{
-    const val = item.querySelector('.kpi-val[data-count]');
-    if(!val) return;
-    const target = parseInt(val.dataset.count);
+    // data-count can be on .kpi-num OR .kpi-val
+    const numEl = item.querySelector('.kpi-num[data-count]');
+    const valEl = item.querySelector('.kpi-val[data-count]');
+    const container = numEl || (valEl ? valEl.closest('.kpi-num') : null) || item.querySelector('.kpi-num');
+    const countEl = numEl || valEl;
+    if(!countEl) return;
+    const displayEl = numEl ? item.querySelector('.kpi-val') : valEl;
+    if(!displayEl) return;
+    const target = parseInt(countEl.dataset.count);
     ScrollTrigger.create({
       trigger: item,
       start: 'top 80%',
       once: true,
       onEnter: ()=>{
         item.classList.add('counted');
-        countUp(val, target, 1800);
+        countUp(displayEl, target, 1800);
       }
     });
   });
