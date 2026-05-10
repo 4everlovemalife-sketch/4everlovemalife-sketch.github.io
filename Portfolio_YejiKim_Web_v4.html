@@ -1584,10 +1584,10 @@ gsap.utils.toArray('.proj-item').forEach((el,i)=>{
 
 // SCROLL: contact + fill animation
 gsap.from('.contact-head',{y:40,opacity:0,duration:1.0,ease:'power3.out',
-  scrollTrigger:{trigger:'.contact-head',start:'top 95%',once:true}});
+  scrollTrigger:{trigger:'#contact',start:'top 80%',once:true}});
 gsap.utils.toArray('.c-icon-item').forEach((el,i)=>{
   gsap.from(el,{y:25,opacity:0,duration:.7,delay:i*.1,ease:'power3.out',
-    scrollTrigger:{trigger:el,start:'top 98%',once:true}});
+    scrollTrigger:{trigger:'#contact',start:'top 75%',once:true}});
 });
 // Recalculate triggers after all assets (base64 images) are loaded
 window.addEventListener('load',()=>ScrollTrigger.refresh());
