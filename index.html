@@ -466,9 +466,8 @@ footer p{font-size:.85rem;color:var(--text-secondary);letter-spacing:.08em}
 .nav-icon-btn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;display:block}
 @media(max-width:900px){.nav-actions{margin-left:.8rem;gap:.4rem}.nav-icon-btn{padding:.32rem .55rem;font-size:.7rem}}
 
-/* ── KO/EN TEXT TOGGLE ── */
-html:not(.lang-en) .en-only{display:none!important}
-html.lang-en .ko-only{display:none!important}
+/* ── KO only ── */
+.en-only{display:none!important}
 
 /* ── KPI SECTION ── */
 .kpi-section{background:var(--bg-alt);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:4rem 4rem}
@@ -621,12 +620,7 @@ html.lang-en .ko-only{display:none!important}
     <a href="#projects"><span class="ko-only">프로젝트</span><span class="en-only">Projects</span></a>
     <a href="#contact"><span class="ko-only">연락</span><span class="en-only">Contact</span></a>
   </div>
-  <div class="nav-actions">
-    <button class="nav-icon-btn" id="langBtn" aria-label="언어 전환" title="Switch Language">KO</button>
-    <button class="nav-icon-btn" id="themeBtn" aria-label="테마 전환" title="Toggle Theme">
-      <svg id="themeIcon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-    </button>
-  </div>
+  <div class="nav-actions"></div>
 </nav>
 
 <!-- ═══ HERO ═══ -->
@@ -1401,43 +1395,15 @@ html.lang-en .ko-only{display:none!important}
 
 <!-- ═══ ESSAY: HR 철학 ═══ -->
 <section class="essay-section" id="essay">
-  <p class="sec-label"><span class="ko-only">왜 HR인가요?</span><span class="en-only">Why HR?</span></p>
-  <h2 class="sec-display" style="font-size:clamp(1.6rem,3.5vw,2.8rem);max-width:720px;margin-left:auto;margin-right:auto;line-height:1.3"><span class="ko-only">AI 시대에도 사람만이 할 수 있는 것</span><span class="en-only">What Only Humans Can Do in the Age of AI</span></h2>
+  <p class="sec-label">왜 HR인가요?</p>
+  <h2 class="sec-display" style="font-size:clamp(1.6rem,3.5vw,2.8rem);max-width:720px;margin-left:auto;margin-right:auto;line-height:1.3">AI 시대에도 사람만이 할 수 있는 것</h2>
   <div class="essay-inner">
-    <div class="essay-quote-wrap">
-      <div class="essay-quote">"Happiness is a perfume you cannot pour on others without getting a few drops on yourself."</div>
-      <div class="essay-quote-attr">— Ralph Waldo Emerson</div>
-    </div>
-    <div class="essay-body ko-only">
-      <p>회사의 가치는, 결국 <strong>'어떤 사람들'로 이루어져 있느냐</strong>에 따라 결정됩니다. 비전이 아무리 선명해도 그것을 믿고 실행할 구성원들이 없다면 그것은 그저 벽에 걸린 액자일 뿐이니까요. 그래서 저는 HR 담당자의 진심과 고민이 채용 과정에서, 구성원들의 일상에서, 회사를 처음 마주하는 지원자의 첫인상에서 자연스레 스며든다고 믿습니다.</p>
-      <p>HR은 단순한 지원 직무가 아닙니다. 구성원의 업무 몰입을 설계하고, 그들의 삶에 영향을 미치는 일입니다. 평일 하루 8시간, 1년에 약 250일. 우리는 실은 삶의 가장 많은 시간을 '일'이라는 공간에서 보냅니다. 그 시간을 설계하는 자리에 서 있다는 것 — 이 사명감이 저를 멈추지 않게 합니다.</p>
-    </div>
-    <div class="essay-body en-only">
-      <p>A company's value is ultimately determined by <strong>the kind of people who make it up</strong>. No matter how clear the vision, without people who believe in it and execute it, it's nothing more than a frame on a wall. I believe that an HR professional's sincerity and dedication naturally permeates every moment — through the hiring process, in the daily lives of employees, in the first impression a candidate has of the company.</p>
-      <p>HR is not a simple support function. It designs employee engagement and shapes their lives. 8 hours a day on weekdays, about 250 days a year — we spend the longest stretch of our lives in the space called "work." Standing at the position that designs that time — this sense of mission is what keeps me going.</p>
-    </div>
-    <div class="essay-divider"><span>✦</span></div>
-    <div class="essay-subtitle ko-only">AI 시대에도, 사람만이 할 수 있는 것</div>
-    <div class="essay-subtitle en-only">What Only Humans Can Do, Even in the Age of AI</div>
-    <div class="essay-body ko-only">
-      <p>최근 3년간 제가 체감한 가장 큰 변화는 'AI와 자동화 툴의 대중화'입니다. 과거에는 인재를 '찾는 것' 자체가 HR의 능력이었다면, 이제는 AI 툴이 적합한 인재를 1초 만에 매칭해주는 시대가 되었습니다.</p>
-      <p>그 변화 앞에서 저는 오래 고민했습니다. <em>'그렇다면, HR 담당자의 진짜 무기는 무엇이어야 하는가?'</em></p>
-    </div>
-    <div class="essay-body en-only">
-      <p>The biggest change I've felt over the past three years is the mainstreaming of AI and automation tools. Where once the ability to <em>find</em> talent was itself an HR skill, we now live in an era where AI tools can match the right candidate in a second.</p>
-      <p>Faced with that change, I thought long and hard: <em>'So what should be an HR professional's real weapon?'</em></p>
-    </div>
+    <p style="font-size:.85rem;color:var(--text-secondary);letter-spacing:.06em;margin-bottom:2.5rem;text-align:center">✍ 김예지 에세이</p>
     <div class="essay-highlight">
-      <span class="ko-only">IT 서치펌 맨파워코리아에서의 인턴 경험이 답을 주었습니다. 당시 저는 팀 내 <strong>월별 포지션 제안 최다 수락</strong>을 달성했는데, 그 비결은 알고리즘도, 기계적인 오퍼 메일도 아니었습니다. 후보자 한 명 한 명의 커리어 패스를 머릿속으로 그려보고, 이 기회가 그들의 삶에 어떤 의미가 될 수 있는지를 함께 상상하며 건넨 <strong>인간적인 연결</strong>이었습니다.</span>
-      <span class="en-only">My internship at IT search firm ManpowerGroup Korea gave me the answer. I achieved the most position offer acceptances per month on the team — and the secret wasn't an algorithm or a mechanical offer email. It was the <strong>human connection</strong> I made by visualizing each candidate's career path in my mind and imagining together what this opportunity could mean for their life.</span>
+      IT 서치펌 맨파워코리아에서의 인턴 경험이 답을 주었습니다. 당시 저는 팀 내 <strong>월별 포지션 제안 최다 수락</strong>을 달성했는데, 그 비결은 알고리즘도, 기계적인 오퍼 메일도 아니었습니다. 후보자 한 명 한 명의 커리어 패스를 머릿속으로 그려보고, 이 기회가 그들의 삶에 어떤 의미가 될 수 있는지를 함께 상상하며 건넨 <strong>인간적인 연결</strong>이었습니다.
     </div>
-    <div class="essay-body ko-only">
-      <p>AI가 사규를 읽고, 인재를 매칭하고, 일정을 자동화하는 시대라 해도 — 구성원의 입장에서 치열하게 고민하고, 지원자의 숨은 니즈를 발견해 그 마음을 움직이는 일은 여전히 <strong>사람만의 영역</strong>입니다. 저는 기술의 편리함을 적극 활용하되 맹신하지 않고, AI가 끝내 대체할 수 없는 <strong>공감과 설득의 HRer</strong>로 성장하겠습니다.</p>
+    <div class="essay-body">
       <p>사람의 마음을 움직이는 것. 그것이 HR의 본질이고, 제가 이 일을 놓지 못하는 이유입니다.</p>
-    </div>
-    <div class="essay-body en-only">
-      <p>Even in an era where AI reads company policies, matches talent, and automates scheduling — deeply thinking from the employee's perspective, discovering a candidate's hidden needs, and moving their heart remains <strong>exclusively human territory</strong>. I will actively leverage the convenience of technology without blindly trusting it, growing into an <strong>HR professional defined by empathy and persuasion</strong> — the one thing AI can never replace.</p>
-      <p>Moving people's hearts. That is the essence of HR, and the reason I can't let go of this work.</p>
     </div>
   </div>
 </section>
@@ -1513,37 +1479,8 @@ try {
 } catch(e){ console.warn('Cursor init failed:', e); }
 
 
-// ── THEME TOGGLE ──
-(function(){
-  const btn=document.getElementById('themeBtn');
-  const icon=document.getElementById('themeIcon');
-  const sun='<circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>';
-  const moon='<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
-  let dark=localStorage.getItem('theme')!=='light';
-  function applyTheme(){
-    document.documentElement.dataset.theme=dark?'dark':'light';
-    icon.innerHTML=dark?moon:sun;
-    localStorage.setItem('theme',dark?'dark':'light');
-  }
-  applyTheme();
-  btn.addEventListener('click',()=>{dark=!dark;applyTheme()});
-})();
-
-
-// ── LANGUAGE TOGGLE ──
-(function(){
-  const btn=document.getElementById('langBtn');
-  let en=localStorage.getItem('lang')==='en';
-  function applyLang(){
-    document.documentElement.classList.toggle('lang-en',en);
-    btn.textContent=en?'EN':'KO';
-    document.documentElement.lang=en?'en':'ko';
-    localStorage.setItem('lang',en?'en':'ko');
-  }
-  applyLang();
-  btn.addEventListener('click',()=>{en=!en;applyLang()});
-})();
-
+// ── DARK MODE (fixed) ──
+document.documentElement.dataset.theme='dark';
 
 // ── SCROLL BACKGROUND COLOR ──
 (function(){
@@ -1574,122 +1511,6 @@ try {
       }
     }
   });
-})();
-
-
-// ── TRANSLATION MAP (project section) ──
-(function(){
-  const KO2EN = {
-    'AI 채용 업무관리 대시보드 기획 및 구현': 'AI Recruitment Operations Dashboard — Design & Implementation',
-    'AI 채용 데이터 분석 시스템 기획': 'AI Recruitment Data Analysis System Planning',
-    '현황 파편화': 'Fragmented Status Tracking',
-    '공고별 전형 현황이 분산된 엑셀로 관리되어 실시간 파악 불가': 'Recruitment status per posting managed in scattered Excel files — impossible to track in real time',
-    '수기 우선순위 판단으로 누락·지연 반복 발생': 'Manual priority assessment led to repeated omissions and delays',
-    '반복 수작업이 고부가 업무 시간 잠식': 'Repetitive manual work eating into high-value task time',
-    '생성형 AI 활용': 'Generative AI Application',
-    '매일 그날의 업무를 리스트업하고, 뭘 먼저 할 지 고민하고,': 'To eliminate the daily effort of listing tasks, deciding priorities,',
-    '캘린더를 띄우고, 공고별 히스토리를 검색하는 수고를 덜기 위해.': 'opening calendars, and searching per-posting history —',
-    'Claude 기반의 채용 운영 AI 대시보드를 직접 기획·개발하여 정기 회의에서 시연했습니다.': 'I personally designed and developed a Claude-powered recruitment operations AI dashboard and demoed it in a regular meeting.',
-    '2차 리더 긍정평가 획득': 'Positive evaluation from 2nd-level leader',
-    'PoC 진행 중 → 유관 부서 협업 예정': 'PoC in progress → cross-department collaboration planned',
-    '인터뷰 어레인지·주간 리포트 자동화 추가 개발 중': 'Interview arrangement & weekly report automation under development',
-    '핵심 기능': 'Key Features',
-    '통합 대시보드': 'Unified Dashboard',
-    '공고별 진척도 & 전형별 합격률 실시간 시각화': 'Real-time visualization of progress per posting & pass rates by stage',
-    '스마트 Task 리스트': 'Smart Task List',
-    '중요도·대상자 수·지연도·리소스 종합 계산 → 우선순위 자동 산출': 'Auto-calculates priority from importance × candidate count × delay × resources',
-    '일정 자동 등록': 'Auto Schedule Registration',
-    '공고 URL 입력 시 일정 크롤링·파싱 후 캘린더 자동 반영': 'Crawls & parses schedule from posting URL → auto-fills calendar',
-    '양방향 데이터 연동': 'Bidirectional Data Sync',
-    '엑셀 현황파일 ↔ 웹 대시보드 실시간 동기화': 'Excel status file ↔ web dashboard real-time sync',
-    '지연 현황 계산': 'Delay Status Calculation',
-    '전형 지연 일수 자동 계산': 'Auto-calculates days delayed per screening stage',
-    '자동 팝업 알림': 'Auto Pop-up Notifications',
-    '매일 업무 시작 시간에 맞춘 자동 팝업알림 발송': 'Automatic pop-up alerts timed to daily work start',
-    '* VIEW 라벨이 붙은 블록을 클릭하면 실제 구현 화면을 확인할 수 있습니다.': '* Click blocks labeled VIEW to see the actual implementation screen.',
-    '2차 리더 승인': '2nd Leader Approved',
-    'PoC 진행중': 'PoC In Progress',
-    '추천채용 지원자 관리 자동화 시스템 기획 및 구현': 'Referral Recruitment Applicant Management Automation System',
-    '관리 공백': 'Management Gap',
-    '추천채용 채널은 별도 운영 기준 부재로 추천인 관리가 비일관적': 'Referral channel lacked separate management standards — inconsistent recommender tracking',
-    '지원자-추천인 연결 데이터 누락으로 추천 효과 측정 불가': 'Missing applicant-recommender link data made it impossible to measure referral effectiveness',
-    '추천 이력이 비정형 데이터로 남아 추후 활용 불가': 'Referral history remained as unstructured data, making future use impossible',
-    '워크플로우 자동화': 'Workflow Automation',
-    '추천 지원자 입력부터 입사까지 전 과정의 데이터를 한 곳에서 관리하는 자동화 시스템 기획·개발': 'Designed & developed an automation system managing all data from referral application to onboarding in one place',
-    '추천채용 워크플로우': 'Referral Recruitment Workflow',
-    '성과 측정 가능': 'Measurable Outcomes',
-    '추천 효과 정량화 → 분기별 성과 보고 가능': 'Referral effectiveness quantified → quarterly performance reporting enabled',
-    '추천 채널 신뢰도 향상 → 재추천율 증가': 'Referral channel credibility improved → repeat referral rate increased',
-    '누적 데이터로 추천 네트워크 시각화 예정': 'Referral network visualization planned with accumulated data',
-    'IT 인력 파견 응답률 최적화 전략 수립 및 실행': 'IT Staffing Response Rate Optimization Strategy',
-    '낮은 응답률': 'Low Response Rate',
-    '헤드헌팅 이메일 응답률이 업계 평균(10~15%)에 머무름': 'Headhunting email response rate stagnating at industry average (10~15%)',
-    '메시지의 개인화 부족으로 후보자 관심 유도 실패': 'Lack of message personalization failing to generate candidate interest',
-    '일방적 포지션 소개로 후보자 요구 파악 선행되지 않음': 'One-way position introductions without first understanding candidate needs',
-    '데이터 기반 개인화': 'Data-Driven Personalization',
-    '후보자의 LinkedIn 프로필, 경력 패턴, 최근 활동을 분석하여 각 후보자에게 맞춤화된 메시지 전략을 수립했습니다.': "Analyzed candidates' LinkedIn profiles, career patterns, and recent activity to develop a personalized messaging strategy for each.",
-    '응답률 50% 달성': '50% Response Rate Achieved',
-    '업계 평균 대비 3~5배 높은 응답률 달성': 'Response rate 3~5× higher than industry average',
-    '맨파워그룹 서포터 중 최고 응답률 기록': 'Highest response rate among all ManpowerGroup supporters recorded',
-    '고품질 후보자 파이프라인 구축으로 성공적 채용 다수 성사': 'High-quality candidate pipeline built, multiple successful placements achieved',
-    '지원자 마스터파일 통합 관리 시스템 구축': 'Applicant Master File Integrated Management System',
-    '기존 지원자 데이터가 다수의 분산된 파일로 관리되어 중복·누락 발생': 'Existing applicant data managed across multiple scattered files — duplicates and omissions occurring',
-    '지원 경로 및 전형 이력 추적 불가': 'Application source and screening history untraceable',
-    '데이터 기반 채용 의사결정을 위한 구조화된 마스터 데이터 부재': 'No structured master data for data-driven recruitment decision-making',
-    '마스터파일 구조화': 'Master File Structuring',
-    '지원자 정보·전형 이력·지원 경로를 통합 관리하는 구조화된 마스터파일 설계 및 구축': 'Designed and built a structured master file integrating applicant info, screening history, and application source tracking',
-    '채용 데이터 기반 구축': 'Recruitment Data Foundation Established',
-    '지원자 이중관리 제거 및 실시간 현황 파악 가능': 'Eliminated duplicate applicant management, enabling real-time status tracking',
-    '전형 단계별 전환율 데이터 확보로 채용 병목 구간 식별': 'Stage-by-stage conversion rate data secured — recruitment bottlenecks identified',
-    '채용 데이터 시각화 기반 마련': 'Foundation for recruitment data visualization established',
-    '채용 프로세스 운영 효율화': 'Recruitment Process Operations Optimization',
-    '내용을 추가할 예정입니다.': 'Details to be added.',
-    '조직별 직급분포 보고서 기획 및 제작': 'Grade Distribution Report Design & Production by Organization',
-    '내용을 추가할 예정입니다.': 'Details to be added.',
-    'R&D 연구소 인사팀 인턴사원': 'HR Team Intern (R&D Lab)',
-    'Recruiting Operation팀 · 사원(계약)': 'Recruiting Operations Team · Staff (Contract)',
-    'IT BPO팀 채용 컨설턴트 인턴': 'IT BPO Team Recruitment Consultant Intern',
-    'CJ제일제당': 'CJ CheilJedang',
-    '맨파워코리아': 'ManpowerGroup Korea',
-    '주요 프로젝트': 'Key Projects',
-  };
-
-  const EN2KO = Object.fromEntries(Object.entries(KO2EN).map(([k,v])=>[v,k]));
-
-  function applyTranslations(toEn){
-    const map = toEn ? KO2EN : EN2KO;
-    const proj = document.getElementById('projects');
-    if(!proj) return;
-    // Walk text nodes
-    const walker = document.createTreeWalker(proj, NodeFilter.SHOW_TEXT, null);
-    const nodes = [];
-    while(walker.nextNode()) nodes.push(walker.currentNode);
-    nodes.forEach(node=>{
-      const txt = node.textContent;
-      if(map[txt.trim()]){
-        node.textContent = node.textContent.replace(txt.trim(), map[txt.trim()]);
-      }
-    });
-    // Also handle tab disc and meta
-    proj.querySelectorAll('.proj-tab-disc, .proj-tab-meta, .proj-co-role, .proj-title, .paa-keyword, .paa-lbl, .ach-detail, .feat-name, .feat-desc, .feat-hint, .prob-row, .paa-text, .status-chip').forEach(el=>{
-      const txt = el.textContent.trim();
-      if(map[txt]) el.textContent = map[txt];
-    });
-  }
-
-  // Hook into language toggle
-  const origLang = window.toggleLang;
-  window.toggleLang = function(){
-    const wasEn = document.documentElement.classList.contains('lang-en');
-    if(origLang) origLang();
-    const isNowEn = document.documentElement.classList.contains('lang-en');
-    if(wasEn !== isNowEn) applyTranslations(isNowEn);
-  };
-
-  // Apply on load if EN is active
-  if(document.documentElement.classList.contains('lang-en')){
-    applyTranslations(true);
-  }
 })();
 
 
@@ -1806,131 +1627,131 @@ try {
 
   const qa = [
     // ── 기본 정보 ──
-    { cat:0, k:['이름','name','누구','who'],
+    { cat:0, k:['이름','name','누구','who'], ql:'이름이 뭔가요?',
       ko:'김예지입니다! 경희대학교 경영학과를 졸업하고 현재 HR 전문가로 활동 중입니다.',
       en:"I'm Yeji Kim! I graduated from Kyung Hee University with a degree in Business Administration and currently work as an HR professional.",
-      f:{ko:['나이는?','어디 살아?','MBTI는?'],en:['How old are you?','Where do you live?',"What's your MBTI?"]}},
-    { cat:0, k:['나이','age','생년','born','1998'],
-      ko:'1998년생, 만 27세입니다!',
+      f:{ko:['나이는?','어디 사세요?','MBTI는?'],en:['How old are you?','Where do you live?',"What's your MBTI?"]}},
+    { cat:0, k:['나이','age','생년','born','2001'], ql:'나이는요?',
+      ko:'2001년생, 만 25세입니다!',
       en:"I was born in 1998, so I'm 27 years old!",
       f:{ko:['전공은?','학교는?'],en:['What was your major?','Which university?']}},
-    { cat:0, k:['학교','대학','경희','university','kyung hee','education','전공','major','경영'],
+    { cat:0, k:['학교','대학','경희','university','kyung hee','education','전공','major','경영'], ql:'학교·전공은?',
       ko:'경희대학교 경영학과를 졸업했습니다. 인사·조직 트랙을 이수하며 HR 이론의 기반을 다졌습니다.',
       en:"I graduated from Kyung Hee University, Department of Business Administration. I completed the HR & Organization track, building a solid foundation in HR theory.",
       f:{ko:['학점은?','부전공은?','동아리 활동은?'],en:['What was your GPA?','Any minor?','What clubs did you join?']}},
-    { cat:0, k:['학점','gpa','성적','grade'],
+    { cat:0, k:['학점','gpa','성적','grade'], ql:'학점은?',
       ko:'학점은 3.9/4.5입니다. 특히 인사관리, 조직행동론, 노사관계론 등 HR 관련 과목에서 우수한 성과를 거뒀습니다.',
       en:'My GPA was 3.9/4.5. I excelled particularly in HR-related courses like Personnel Management, Organizational Behavior, and Labor-Management Relations.',
-      f:{ko:['어떤 과목이 좋았어?','논문 썼어?'],en:['What was your favorite course?','Did you write a thesis?']}},
-    { cat:0, k:['mbti','성격','personality'],
-      ko:'ENFJ입니다! 사람과의 연결을 중시하고, 팀 전체가 성장하는 것에서 보람을 느낍니다. HR이 천직인 MBTI죠 😊',
+      f:{ko:['어떤 과목이 좋았나요?','논문 쓰셨나요?'],en:['What was your favorite course?','Did you write a thesis?']}},
+    { cat:0, k:['mbti','성격','personality'], ql:'MBTI는?',
+      ko:'ESTP입니다! 빠른 실행력과 현장 감각이 강점입니다. 직접 부딪히며 문제를 해결하는 걸 즐기고, 사람을 읽는 직관이 HR에서 특히 빛납니다 😊',
       en:"I'm ENFJ! I value human connection and find fulfillment in seeing the whole team grow. It's basically the perfect MBTI for HR 😊",
       f:{ko:['강점은?','약점은?'],en:['What are your strengths?','Any weaknesses?']}},
-    { cat:0, k:['거주','살','서울','위치','location','live'],
+    { cat:0, k:['거주','살','서울','위치','location','live'], ql:'어디 사세요?',
       ko:'서울에 거주하고 있습니다.',
       en:"I'm based in Seoul, South Korea.",
       f:{ko:['출신은?','이직 의향은?'],en:['Where are you from?','Open to relocation?']}},
-    { cat:0, k:['연락','contact','이메일','email','linkedin'],
+    { cat:0, k:['연락','contact','이메일','email','linkedin'], ql:'연락처는?',
       ko:'이메일: kimyeji.hr@gmail.com\nLinkedIn 및 상세 연락처는 Contact 섹션을 확인해 주세요!',
       en:'Email: kimyeji.hr@gmail.com\nFor LinkedIn and more contact details, please check the Contact section!',
-      f:{ko:['포트폴리오 공유 가능해?'],en:['Can you share your portfolio?']}},
+      f:{ko:['포트폴리오 공유 가능한가요?'],en:['Can you share your portfolio?']}},
 
     // ── 경력 & 프로젝트 ──
-    { cat:1, k:['경력','career','회사','company','직장','work','experience'],
+    { cat:1, k:['경력','career','회사','company','직장','work','experience'], ql:'경력 소개',
       ko:'CJ그룹 인재확보팀(2023~현재), 맨파워그룹 헤드헌터(2022), HR컨설팅 프리랜서(2021) 순으로 경력을 쌓아왔습니다. 자세히 알고 싶은 회사가 있으신가요?',
       en:"My career: CJ Group Talent Acquisition Team (2023~present), ManpowerGroup Headhunter (2022), HR Consulting Freelancer (2021). Want to know more about any specific role?",
-      f:{ko:['CJ에서 무슨 일 해?','맨파워는?','프리랜서 때는?'],en:['What do you do at CJ?','Tell me about ManpowerGroup','What did you do as a freelancer?']}},
-    { cat:1, k:['cj','씨제이','현재','current','채용','recruitment','talent'],
+      f:{ko:['CJ에서 어떤 일 하세요?','맨파워는?','프리랜서 때는?'],en:['What do you do at CJ?','Tell me about ManpowerGroup','What did you do as a freelancer?']}},
+    { cat:1, k:['cj','씨제이','현재','current','채용','recruitment','talent'], ql:'CJ 경험',
       ko:'CJ그룹 인재확보팀에서 근무 중입니다. 주요 업무:\n• 공채 및 경력직 채용 전반 운영\n• JD 작성 및 채용 공고 최적화\n• 서류·면접 전형 설계 및 운영\n• 채용 데이터 분석 및 개선안 도출\n• 온보딩 프로그램 기획\n\n입사 이후 채용 효율 83% 개선, 사내 추천 제도 도입으로 핵심 포지션 3개 충원에 기여했습니다.',
       en:'Currently working at CJ Group Talent Acquisition Team. Key responsibilities:\n• End-to-end recruitment operations (campus & experienced hire)\n• JD writing & job posting optimization\n• Screening & interview process design\n• Recruitment data analysis & improvement\n• Onboarding program planning\n\nAchievements: 83% improvement in recruitment efficiency, introduced employee referral program filling 3 key positions.',
-      f:{ko:['채용 효율 83%가 뭐야?','데이터 분석 어떻게 해?','온보딩 어떻게 설계했어?'],en:['What does 83% efficiency mean?','How do you do data analysis?','How did you design onboarding?']}},
-    { cat:1, k:['맨파워','manpower','헤드헌터','headhunter','서치펌','search'],
+      f:{ko:['채용 효율 83%가 뭔가요?','데이터 분석 어떻게 하세요?','온보딩 어떻게 설계하셨나요?'],en:['What does 83% efficiency mean?','How do you do data analysis?','How did you design onboarding?']}},
+    { cat:1, k:['맨파워','manpower','헤드헌터','headhunter','서치펌','search'], ql:'맨파워 경험',
       ko:'맨파워그룹에서 헤드헌터로 근무했습니다.\n\n가장 기억에 남는 성과는 응답률 50% 달성입니다. 업계 평균이 10~15%인데, 저는 후보자 데이터를 분석해 개인화된 메시지를 작성하고 타이밍을 최적화했습니다.\n\n"단순히 좋은 기회를 전달하는 것이 아니라, 그 사람이 왜 이 기회를 필요로 하는지를 먼저 이해해야 한다"는 것을 배웠습니다.',
       en:"I worked as a headhunter at ManpowerGroup.\n\nMy proudest achievement was a 50% response rate — the industry average is 10~15%. I analyzed candidate data, crafted personalized outreach messages, and optimized timing.\n\nI learned that 'it's not about delivering a good opportunity, but understanding WHY that person needs it first.'",
-      f:{ko:['어떻게 응답률을 높였어?','어떤 포지션 서치했어?','가장 어려운 채용은?'],en:['How did you achieve that response rate?','What positions did you search?','Hardest placement?']}},
-    { cat:1, k:['응답률','50%','response rate','메시지','outreach','개인화'],
+      f:{ko:['어떻게 응답률을 높이셨나요?','어떤 포지션 서치하셨나요?','가장 어려운 채용은?'],en:['How did you achieve that response rate?','What positions did you search?','Hardest placement?']}},
+    { cat:1, k:['응답률','50%','response rate','메시지','outreach','개인화'], ql:'응답률 비결',
       ko:'후보자 LinkedIn 프로필, 최근 게시물, 커리어 패턴을 분석해 각 사람에게 맞춤화된 3~4줄 메시지를 작성했습니다.\n예: 이직 공백이 있는 후보자에겐 성장 기회를, 현직 만족도가 높아 보이는 분에겐 업계 트렌드 공유부터 시작했습니다.\n\n업계 평균(10~15%) 대비 50% 응답률은 맨파워그룹 내 최고 성과였습니다.',
       en:"I analyzed candidate LinkedIn profiles, recent posts, and career patterns to craft personalized 3~4 line messages.\nE.g., for candidates with career gaps — I led with growth opportunities; for those seemingly satisfied in current roles — I started with industry trend insights.\n\nThe 50% response rate was the highest in ManpowerGroup, vs. the 10~15% industry average.",
-      f:{ko:['데이터 분석 도구는?','비슷한 방법을 CJ에서도 써?'],en:['What tools did you use?','Do you apply this at CJ too?']}},
-    { cat:1, k:['프리랜서','freelance','컨설팅','consulting','2021'],
+      f:{ko:['데이터 분석 도구는?','CJ에서도 비슷하게 활용하시나요?'],en:['What tools did you use?','Do you apply this at CJ too?']}},
+    { cat:1, k:['프리랜서','freelance','컨설팅','consulting','2021'], ql:'프리랜서 경험',
       ko:'HR 컨설팅 프리랜서로 스타트업 3곳의 채용 체계 수립, 직무 기술서 작성, 면접 가이드 개발을 지원했습니다. 소규모 조직에서 HR 0→1 세팅 경험을 쌓았습니다.',
       en:'As an HR consulting freelancer, I helped 3 startups establish their recruitment frameworks, write job descriptions, and develop interview guides. I gained experience building HR from 0 to 1 in small organizations.',
-      f:{ko:['스타트업 HR이 대기업이랑 달라?','가장 보람된 순간은?'],en:['How is startup HR different from large corps?','Most rewarding moment?']}},
-    { cat:1, k:['네이버','naver','프로젝트','project','데이터','data','분석'],
+      f:{ko:['스타트업 HR과 대기업의 차이는?','가장 보람된 순간은?'],en:['How is startup HR different from large corps?','Most rewarding moment?']}},
+    { cat:1, k:['네이버','naver','프로젝트','project','데이터','data','분석'], ql:'데이터 프로젝트',
       ko:'NAVER 채용 데이터 분석 프로젝트를 수행했습니다.\n• 채용 공고 텍스트 마이닝으로 핵심 역량 키워드 추출\n• 지원자 데이터 분석으로 Drop-off 구간 파악\n• 채용 퍼널 개선안 제안 → 전환율 27% 향상 기여',
       en:'Conducted a NAVER recruitment data analysis project.\n• Text mining of job postings to extract key competency keywords\n• Analyzed applicant data to identify drop-off points\n• Proposed funnel improvements → contributed to 27% conversion rate increase',
-      f:{ko:['어떤 분석 도구 썼어?','인사이트는?'],en:['What tools did you use?','Key insights?']}},
-    { cat:1, k:['글로벌','global','afro','아프로','해외','international','영어'],
+      f:{ko:['어떤 분석 도구 쓰셨나요?','인사이트는?'],en:['What tools did you use?','Key insights?']}},
+    { cat:1, k:['글로벌','global','afro','아프로','해외','international','영어'], ql:'글로벌 경험',
       ko:'글로벌 프로젝트 경험이 있습니다. 영어 커뮤니케이션으로 해외 파트너사와 협업하며 글로벌 채용 트렌드를 학습했습니다. 영어 비즈니스 커뮤니케이션 능력을 실전에서 검증했습니다.',
       en:"I have global project experience. I collaborated with overseas partners in English, learning global recruitment trends. My English business communication skills have been validated in real-world settings.",
       f:{ko:['영어 실력은?','해외 취업 생각 있어?'],en:['How is your English?','Open to working abroad?']}},
 
     // ── 역량 & 스킬 ──
-    { cat:2, k:['역량','강점','잘하는','skill','strength','competency','능력'],
+    { cat:2, k:['역량','강점','잘하는','skill','strength','competency','능력'], ql:'핵심 강점은?',
       ko:'3가지 핵심 역량을 꼽는다면:\n1️⃣ 데이터 기반 의사결정 — 채용 데이터 분석, 응답률 최적화\n2️⃣ 커뮤니케이션 — 후보자/HM 신뢰 구축, 개인화 접근\n3️⃣ 구조화된 프로세스 설계 — 채용 체계 0→1 구축 경험',
       en:'My 3 core competencies:\n1️⃣ Data-driven decision making — recruitment data analysis, response rate optimization\n2️⃣ Communication — building trust with candidates/hiring managers, personalized approach\n3️⃣ Structured process design — experience building recruitment systems from scratch',
-      f:{ko:['데이터 분석 어떻게 해?','소통 스타일은?','약점은 뭐야?'],en:['How do you do data analysis?','Communication style?','Any weaknesses?']}},
-    { cat:2, k:['도구','tool','엑셀','excel','파이썬','python','sql','tableau','분석도구'],
+      f:{ko:['데이터 분석 어떻게 하세요?','소통 스타일은?','보완하고 싶은 점은?'],en:['How do you do data analysis?','Communication style?','Any weaknesses?']}},
+    { cat:2, k:['도구','tool','엑셀','excel','파이썬','python','sql','tableau','분석도구'], ql:'활용 도구는?',
       ko:'활용 가능한 도구:\n• Excel/Sheets: VLOOKUP, 피벗, 데이터 시각화\n• Python: 기초 데이터 처리, 텍스트 분석\n• SQL: 기본 쿼리\n• Notion, Airtable: HR 데이터베이스 관리\n• Figma: 기초 UI 프로토타이핑',
       en:'Tools I can use:\n• Excel/Sheets: VLOOKUP, pivot tables, data visualization\n• Python: basic data processing, text analysis\n• SQL: basic queries\n• Notion, Airtable: HR database management\n• Figma: basic UI prototyping',
       f:{ko:['가장 자주 쓰는 도구는?','더 배우고 싶은 건?'],en:['Most frequently used tool?','What do you want to learn next?']}},
-    { cat:2, k:['영어','english','어학','toeic','opic','언어'],
+    { cat:2, k:['영어','english','어학','toeic','opic','언어'], ql:'영어 실력은?',
       ko:'비즈니스 영어 커뮤니케이션이 가능합니다. 글로벌 프로젝트에서 해외 파트너와 영문 이메일, 화상 미팅을 진행한 경험이 있습니다.',
       en:"I'm proficient in business English. I have experience with written and video communication with overseas partners in global projects.",
       f:{ko:['영어 이외 외국어는?','해외 근무 가능?'],en:['Any other languages?','Open to international assignments?']}},
-    { cat:2, k:['약점','weakness','단점','부족','개선'],
+    { cat:2, k:['약점','weakness','단점','부족','개선'], ql:'보완할 점은?',
       ko:'완벽주의적 성향이 있어 빠른 의사결정이 필요한 상황에서 속도가 느려질 때가 있습니다. 이를 인식하고, 70% 완성도로 빠르게 실행 후 개선하는 Agile 방식을 의식적으로 연습하고 있습니다.',
       en:"I tend toward perfectionism, which can slow me down when rapid decision-making is needed. I'm aware of this and consciously practice an Agile approach — execute at 70% and improve iteratively.",
-      f:{ko:['그 외 약점은?','강점이랑 어떻게 균형 잡아?'],en:['Any other weaknesses?','How do you balance this with your strengths?']}},
-    { cat:2, k:['자격증','certificate','자격','license'],
+      f:{ko:['그 외 약점은?','강점과 어떻게 균형을 잡으시나요?'],en:['Any other weaknesses?','How do you balance this with your strengths?']}},
+    { cat:2, k:['자격증','certificate','자격','license'], ql:'자격증은?',
       ko:'인사관리사 2급 취득 예정, 직업상담사 2급 보유, GAIQ(Google Analytics) 등 데이터 분석 관련 자격도 준비 중입니다.',
       en:"I'm planning to obtain Level 2 Personnel Management certification. I hold Level 2 Career Counselor certification and am preparing for GAIQ (Google Analytics) and other data analytics certifications.",
-      f:{ko:['왜 그 자격증을?','공부 어떻게 해?'],en:['Why those certifications?','How do you study?']}},
+      f:{ko:['왜 그 자격증을?','공부 방법이 궁금해요'],en:['Why those certifications?','How do you study?']}},
 
     // ── 활동 & 경험 ──
-    { cat:3, k:['동아리','club','밴드','band','활동','activity','음악','music'],
-      ko:'대학 시절 밴드 동아리에서 4년간 활동했습니다! 보컬을 담당했고, 정기 공연과 축제 무대에 섰습니다.\n음악은 협업과 팀워크를 온몸으로 배운 경험이에요. HR과 밴드 — 둘 다 "사람이 맞아야 소리가 난다"는 공통점이 있습니다 🎤',
+    { cat:3, k:['동아리','club','밴드','band','활동','activity','음악','music'], ql:'밴드·음악 활동',
+      ko:'대학 시절 밴드 동아리에서 4년간 활동했습니다! 보컬을 담당했고, 정기 공연과 축제 무대에 섰습니다.\n음악은 협업과 팀워크를 온몸으로 배운 경험입니다. HR과 밴드 — 둘 다 "사람이 맞아야 소리가 난다"는 공통점이 있습니다 🎤',
       en:"I was in a band club for 4 years in university! I was the vocalist and performed at regular concerts and festivals.\nMusic taught me collaboration and teamwork viscerally. HR and bands share something — 'people need to click for the sound to happen' 🎤",
-      f:{ko:['어떤 장르 좋아해?','지금도 음악 해?','가장 기억나는 공연은?'],en:['What genre do you like?','Still making music?','Most memorable performance?']}},
-    { cat:3, k:['취미','hobby','여가','leisure','좋아하는','interest'],
-      ko:'취미는 다양해요:\n🎤 밴드 보컬 (4년 활동)\n📚 HR 트렌드 리서치 및 아티클 작성\n☕ 카페 탐방 (생산적인 아지트 찾기)\n🏃 러닝 (생각 정리 시간)\n✈️ 여행 (새로운 문화와 사람 만나기)',
+      f:{ko:['어떤 장르를 좋아하세요?','지금도 음악 하세요?','가장 기억나는 공연은?'],en:['What genre do you like?','Still making music?','Most memorable performance?']}},
+    { cat:3, k:['취미','hobby','여가','leisure','좋아하는','interest'], ql:'취미는?',
+      ko:'취미는 다양합니다:\n🎤 밴드 보컬 (4년 활동)\n📚 HR 트렌드 리서치 및 아티클 작성\n☕ 카페 탐방 (생산적인 아지트 찾기)\n🏃 러닝 (생각 정리 시간)\n✈️ 여행 (새로운 문화와 사람 만나기)',
       en:'My hobbies are diverse:\n🎤 Band vocals (4 years)\n📚 HR trend research & article writing\n☕ Café hopping (finding productive hideouts)\n🏃 Running (clearing my head)\n✈️ Travel (meeting new cultures & people)',
-      f:{ko:['여행 가장 기억나는 곳은?','HR 아티클 어디에 써?'],en:['Most memorable travel destination?','Where do you write HR articles?']}},
-    { cat:3, k:['봉사','volunteer','사회','community','공헌'],
+      f:{ko:['여행 가장 기억나는 곳은?','HR 글은 어디에 쓰세요?'],en:['Most memorable travel destination?','Where do you write HR articles?']}},
+    { cat:3, k:['봉사','volunteer','사회','community','공헌'], ql:'봉사·멘토링',
       ko:'대학생 멘토링 프로그램에서 취업 준비생 대상 커리어 멘토링을 진행했습니다. HR 전문가로서 후배들의 첫 커리어 설계를 돕는 것이 보람 있었습니다.',
       en:'I conducted career mentoring for job-seekers through a university student mentoring program. As an HR professional, helping juniors design their first career path was very rewarding.',
       f:{ko:['멘토링에서 가장 많이 받는 질문은?','취준생에게 조언 한마디?'],en:['Most common question from mentees?','One piece of advice for job seekers?']}},
-    { cat:3, k:['브런치','글','에세이','essay','writing','작성','아티클','article'],
+    { cat:3, k:['브런치','글','에세이','essay','writing','작성','아티클','article'], ql:'에세이·글쓰기',
       ko:'HR과 커리어에 관한 에세이를 브런치 스타일로 작성합니다. "사람을 뽑는다는 것의 무게", 맨파워 시절 응답률 50% 이야기 등을 글로 풀어내고 있습니다. 포트폴리오의 Essay 섹션에서 확인해보세요!',
       en:'I write HR and career essays in a Brunch-style format. Topics include "The Weight of Hiring People" and the story behind my 50% response rate at ManpowerGroup. Check the Essay section in this portfolio!',
-      f:{ko:['글 어디서 볼 수 있어?','자주 쓰는 주제는?'],en:['Where can I read your essays?','Favorite topics to write about?']}},
-    { cat:3, k:['수상','award','성과','achievement','1등','우수'],
+      f:{ko:['글은 어디서 볼 수 있나요?','자주 쓰는 주제는?'],en:['Where can I read your essays?','Favorite topics to write about?']}},
+    { cat:3, k:['수상','award','성과','achievement','1등','우수'], ql:'주요 성과',
       ko:'주요 수상 및 성과:\n🏆 맨파워그룹 헤드헌터 응답률 1위 (50%)\n📊 CJ 채용 효율 83% 개선 기여\n🎓 경희대 인사관리 우수 논문\n🎤 대학 밴드 공연 최우수상',
       en:'Key awards & achievements:\n🏆 ManpowerGroup #1 headhunter response rate (50%)\n📊 Contributed to 83% CJ recruitment efficiency improvement\n🎓 Kyung Hee University Outstanding HR Management Thesis\n🎤 Best Performance Award at university band concert',
       f:{ko:['가장 자랑스러운 성과는?','앞으로 목표는?'],en:['Proudest achievement?','Future goals?']}},
 
     // ── 가치관 & 철학 ──
-    { cat:4, k:['가치관','철학','신념','belief','value','philosophy','왜 hr'],
+    { cat:4, k:['가치관','철학','신념','belief','value','philosophy','왜 hr'], ql:'HR 철학',
       ko:'"사람이 곧 전략이다" — HR은 단순히 채용하는 부서가 아니라, 조직의 미래를 설계하는 전략적 파트너라고 믿습니다.\n\n가장 좋아하는 말: "Happiness is a perfume you cannot pour on others without getting a few drops on yourself."',
       en:'"People are strategy." — I believe HR is not just a hiring department, but a strategic partner designing the future of the organization.\n\nFavorite quote: "Happiness is a perfume you cannot pour on others without getting a few drops on yourself."',
-      f:{ko:['HR에서 가장 중요한 게 뭐야?','어떤 HR이 되고 싶어?'],en:['What matters most in HR?','What kind of HR professional do you want to be?']}},
-    { cat:4, k:['목표','goal','비전','vision','미래','future','꿈','dream'],
+      f:{ko:['HR에서 가장 중요한 것은?','어떤 HR이 되고 싶으세요?'],en:['What matters most in HR?','What kind of HR professional do you want to be?']}},
+    { cat:4, k:['목표','goal','비전','vision','미래','future','꿈','dream'], ql:'5년 후 목표',
       ko:'5년 후 목표: People Analytics를 활용한 데이터 기반 HR 의사결정 체계를 구축하는 전략적 HR BP가 되는 것입니다.\n\n궁극적으로는 "사람이 행복하게 일할 수 있는 조직 문화"를 만드는 데 기여하고 싶습니다.',
       en:'5-year goal: To become a strategic HR Business Partner who builds data-driven HR decision-making systems using People Analytics.\n\nUltimately, I want to contribute to building "an organizational culture where people can work happily."',
-      f:{ko:['People Analytics가 뭐야?','HR BP가 되려면?'],en:['What is People Analytics?','How to become an HR BP?']}},
-    { cat:4, k:['hr bp','hrbp','business partner','전략','strategic'],
+      f:{ko:['People Analytics란?','HR BP가 되려면?'],en:['What is People Analytics?','How to become an HR BP?']}},
+    { cat:4, k:['hr bp','hrbp','business partner','전략','strategic'], ql:'HR BP·전략',
       ko:'HR BP(Business Partner)는 사업 부서와 파트너십을 맺고 전략적 인사 이슈를 해결하는 역할입니다. 단순 채용/노무를 넘어 조직 진단, 인재 개발, 문화 구축까지 포괄합니다. 이것이 제가 지향하는 HR의 모습입니다.',
       en:"HR Business Partner (HRBP) is a role that partners with business units to solve strategic HR issues — going beyond simple recruitment/labor to encompass organizational diagnosis, talent development, and culture building. This is the HR model I aspire to.",
       f:{ko:['HRBP 준비 어떻게 해?','지금 회사에서도 BP 역할 해?'],en:['How are you preparing for HRBP?','Do you do BP work at CJ too?']}},
-    { cat:4, k:['스트레스','어려움','힘든','challenge','difficult','압박','pressure'],
+    { cat:4, k:['스트레스','어려움','힘든','challenge','difficult','압박','pressure'], ql:'어려웠던 순간',
       ko:'가장 힘든 순간은 좋은 후보자와 좋은 기회가 "타이밍" 때문에 연결되지 못할 때입니다. 이럴 때는 결과보다 과정을 신뢰하고, 다음 기회를 위한 관계를 유지하는 것이 중요하다고 배웠습니다.',
       en:"The hardest moments are when a great candidate and a great opportunity fail to connect due to 'timing.' I've learned that in these moments, it's important to trust the process over the outcome and maintain the relationship for the next opportunity.",
       f:{ko:['번아웃은 어떻게 해결해?','동기부여는 어디서 얻어?'],en:['How do you deal with burnout?','Where do you find motivation?']}},
-    { cat:4, k:['이직','전직','지원','apply','왜 우리 회사','why us'],
+    { cat:4, k:['이직','전직','지원','apply','왜 우리 회사','why us'], ql:'왜 지원하셨나요?',
       ko:'저는 "사람"을 통해 조직이 성장하는 것을 직접 설계하고 싶습니다. 데이터와 인간에 대한 깊은 이해를 함께 갖춘 HR 전문가로, 조직의 전략적 파트너가 되는 것이 목표입니다.',
       en:"I want to directly design how organizations grow through 'people.' My goal is to be a strategic organizational partner as an HR professional who combines data fluency with deep human understanding.",
       f:{ko:['언제부터 HR 하고 싶었어?','HR 말고 다른 길은?'],en:['When did you decide on HR?','Did you consider other paths?']}},
-    { cat:4, k:['조직문화','culture','팀워크','teamwork','협업','collaboration'],
+    { cat:4, k:['조직문화','culture','팀워크','teamwork','협업','collaboration'], ql:'이상적인 조직문화',
       ko:'이상적인 조직 문화: 심리적 안전감이 있어 누구나 의견을 낼 수 있고, 실패를 학습으로 전환하는 문화. 저는 HR로서 그런 문화를 만드는 데 직접 기여하고 싶습니다.',
       en:'Ideal organizational culture: Psychological safety where anyone can voice opinions, and failures are converted into learning. As an HR professional, I want to directly contribute to creating such a culture.',
       f:{ko:['심리적 안전감 어떻게 만들어?','나쁜 조직 문화 경험은?'],en:['How do you build psychological safety?','Experience with toxic culture?']}},
@@ -1991,10 +1812,7 @@ try {
     items.slice(0,5).forEach(item=>{
       const btn = document.createElement('button');
       btn.className = 'sug-btn';
-      const firstKw = item.k[0];
-      btn.textContent = en
-        ? (item.en.split('\n')[0].slice(0,35)+'…')
-        : (item.ko.split('\n')[0].slice(0,25)+'…');
+      btn.textContent = item.ql || item.k[0];
       btn.onclick = ()=>answerItem(item);
       sugs.appendChild(btn);
     });
