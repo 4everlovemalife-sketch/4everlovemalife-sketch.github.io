@@ -1482,13 +1482,14 @@ html.lang-en .ko-only{display:none!important}
 </footer>
 
 <script>
-gsap.registerPlugin(ScrollTrigger);
+// ─── NON-GSAP CODE — always runs ───────────────────────────────────────
 
 // PROGRESS
 window.addEventListener('scroll',()=>{
   const p=(window.scrollY/(document.body.scrollHeight-window.innerHeight))*100;
   document.getElementById('prog').style.width=p+'%';
 });
+
 
 // CURSOR (desktop only)
 try {
@@ -1511,114 +1512,6 @@ try {
   }
 } catch(e){ console.warn('Cursor init failed:', e); }
 
-try {
-// HERO ANIMATION
-// Only animate visible h-word (ko or en based on lang setting)
-const visibleHWords=()=>document.querySelectorAll('.h-word:not(.en-only), html.lang-en .h-word.en-only');
-gsap.set('.h-word',{y:'105%'});
-gsap.to('.h-word:not(.en-only), html:not(.lang-en) .h-word',{y:0,duration:1.0,stagger:.15,ease:'power4.out',delay:.2});
-
-// SCROLL: section displays
-gsap.utils.toArray('.sec-display,.sec-label').forEach(el=>{
-  gsap.from(el,{y:50,opacity:0,duration:.9,ease:'power3.out',
-    scrollTrigger:{trigger:el,start:'top 88%'}});
-});
-
-// SCROLL: about
-gsap.utils.toArray('.about-prose,.str-card').forEach((el,i)=>{
-  gsap.from(el,{y:30,opacity:0,duration:.75,delay:i*.07,ease:'power3.out',
-    scrollTrigger:{trigger:el,start:'top 88%'}});
-});
-} catch(e){ console.warn('Hero/scroll anim failed:', e); }
-
-// CAREER MAP — horizontal interactive
-(function(){
-  const bar=document.getElementById('cmBar');
-  const panel=document.getElementById('cmPanel');
-  const dataRoot=document.getElementById('cmData');
-  const map={};
-  dataRoot.querySelectorAll('[data-key]').forEach(el=>{ map[el.dataset.key]=el.innerHTML; });
-
-  function show(key){
-    bar.classList.add('any-active');
-    bar.querySelectorAll('.cm-h-node').forEach(n=>{
-      n.classList.toggle('active',n.dataset.key===key);
-    });
-    panel.innerHTML='<div class="cm-h-panel-inner">'+map[key]+'</div>';
-    gsap.fromTo(panel,{opacity:0,y:14},{opacity:1,y:0,duration:.5,ease:'power3.out'});
-  }
-
-  bar.querySelectorAll('.cm-h-node').forEach(node=>{
-    node.addEventListener('click',()=>show(node.dataset.key));
-  });
-  // No initial selection — user clicks a firefly dot to expand
-})();
-
-// PROJECT — company tab toggle
-(function(){
-  const tabs=document.querySelectorAll('#projTabs .proj-tab');
-  const cards=document.querySelectorAll('#projStage .proj-company');
-  tabs.forEach(t=>t.addEventListener('click',()=>{
-    const co=t.dataset.co;
-    tabs.forEach(x=>x.classList.toggle('active',x===t));
-    cards.forEach(c=>c.classList.toggle('show',c.dataset.co===co));
-    // close any open preview when switching
-    document.querySelectorAll('.preview-stage.open').forEach(s=>s.classList.remove('open'));
-    document.querySelectorAll('.feat-card.previewable.open').forEach(s=>s.classList.remove('open'));
-  }));
-})();
-
-// PREVIEW — UFO beam toggle
-(function(){
-  const cards=document.querySelectorAll('.feat-card.previewable');
-  cards.forEach(c=>{
-    c.addEventListener('click',()=>{
-      const key=c.dataset.preview;
-      const stage=document.getElementById('preview-'+key);
-      const isOpen=stage.classList.contains('open');
-      // close all
-      document.querySelectorAll('.preview-stage.open').forEach(s=>s.classList.remove('open'));
-      document.querySelectorAll('.feat-card.previewable.open').forEach(s=>s.classList.remove('open'));
-      if(!isOpen){
-        c.classList.add('open');
-        stage.classList.add('open');
-      }
-    });
-  });
-})();
-
-// SCROLL: proj items
-gsap.utils.toArray('.proj-item').forEach((el,i)=>{
-  gsap.from(el,{y:30,opacity:0,duration:.8,delay:i*.05,ease:'power3.out',
-    scrollTrigger:{trigger:el,start:'top 90%'}});
-});
-
-try {
-// SCROLL: contact + fill animation
-gsap.from('.contact-head',{y:40,opacity:0,duration:1.0,ease:'power3.out',
-  scrollTrigger:{trigger:'#contact',start:'top 80%',once:true}});
-gsap.utils.toArray('.c-icon-item').forEach((el,i)=>{
-  gsap.from(el,{y:25,opacity:0,duration:.7,delay:i*.1,ease:'power3.out',
-    scrollTrigger:{trigger:'#contact',start:'top 75%',once:true}});
-});
-// Recalculate triggers after all assets (base64 images) are loaded
-window.addEventListener('load',()=>ScrollTrigger.refresh());
-
-// COUNT-UP for numeric values
-document.querySelectorAll('.paa-keyword.kpi span[data-count]').forEach(el=>{
-  const target=parseInt(el.dataset.count);
-  ScrollTrigger.create({trigger:el,start:'top 85%',once:true,onEnter:()=>{
-    let start=0; const inc=target/55;
-    const tick=()=>{
-      start+=inc;
-      if(start>=target){el.textContent=target;return}
-      el.textContent=Math.round(start);
-      requestAnimationFrame(tick);
-    };
-    tick();
-  }});
-});
-} catch(e){ console.warn('Contact anim failed:', e); }
 
 // ── THEME TOGGLE ──
 (function(){
@@ -1636,6 +1529,7 @@ document.querySelectorAll('.paa-keyword.kpi span[data-count]').forEach(el=>{
   btn.addEventListener('click',()=>{dark=!dark;applyTheme()});
 })();
 
+
 // ── LANGUAGE TOGGLE ──
 (function(){
   const btn=document.getElementById('langBtn');
@@ -1649,6 +1543,7 @@ document.querySelectorAll('.paa-keyword.kpi span[data-count]').forEach(el=>{
   applyLang();
   btn.addEventListener('click',()=>{en=!en;applyLang()});
 })();
+
 
 // ── SCROLL BACKGROUND COLOR ──
 (function(){
@@ -1680,6 +1575,7 @@ document.querySelectorAll('.paa-keyword.kpi span[data-count]').forEach(el=>{
     }
   });
 })();
+
 
 // ── TRANSLATION MAP (project section) ──
 (function(){
@@ -1798,6 +1694,7 @@ Korea',
   }
 })();
 
+
 // ── KPI COUNT-UP ──
 (function(){
   function countUp(el, target, duration){
@@ -1830,6 +1727,63 @@ Korea',
   }, {threshold: 0.3});
 
   items.forEach(item => obs.observe(item));
+})();
+
+
+
+(function(){
+  const bar=document.getElementById('cmBar');
+  const panel=document.getElementById('cmPanel');
+  const dataRoot=document.getElementById('cmData');
+  const map={};
+  dataRoot.querySelectorAll('[data-key]').forEach(el=>{ map[el.dataset.key]=el.innerHTML; });
+
+  function show(key){
+    bar.classList.add('any-active');
+    bar.querySelectorAll('.cm-h-node').forEach(n=>{
+      n.classList.toggle('active',n.dataset.key===key);
+    });
+    panel.innerHTML='<div class="cm-h-panel-inner">'+map[key]+'</div>';
+    if(typeof gsap!=="undefined")gsap.fromTo(panel,{opacity:0,y:14},{opacity:1,y:0,duration:.5,ease:'power3.out'});
+  }
+
+  bar.querySelectorAll('.cm-h-node').forEach(node=>{
+    node.addEventListener('click',()=>show(node.dataset.key));
+  });
+  // No initial selection — user clicks a firefly dot to expand
+})();
+
+
+(function(){
+  const tabs=document.querySelectorAll('#projTabs .proj-tab');
+  const cards=document.querySelectorAll('#projStage .proj-company');
+  tabs.forEach(t=>t.addEventListener('click',()=>{
+    const co=t.dataset.co;
+    tabs.forEach(x=>x.classList.toggle('active',x===t));
+    cards.forEach(c=>c.classList.toggle('show',c.dataset.co===co));
+    // close any open preview when switching
+    document.querySelectorAll('.preview-stage.open').forEach(s=>s.classList.remove('open'));
+    document.querySelectorAll('.feat-card.previewable.open').forEach(s=>s.classList.remove('open'));
+  }));
+})();
+
+
+(function(){
+  const cards=document.querySelectorAll('.feat-card.previewable');
+  cards.forEach(c=>{
+    c.addEventListener('click',()=>{
+      const key=c.dataset.preview;
+      const stage=document.getElementById('preview-'+key);
+      const isOpen=stage.classList.contains('open');
+      // close all
+      document.querySelectorAll('.preview-stage.open').forEach(s=>s.classList.remove('open'));
+      document.querySelectorAll('.feat-card.previewable.open').forEach(s=>s.classList.remove('open'));
+      if(!isOpen){
+        c.classList.add('open');
+        stage.classList.add('open');
+      }
+    });
+  });
 })();
 
 
@@ -2134,6 +2088,46 @@ Korea',
     if(w.classList.contains('open')) initChat();
   };
 })();
+
+// ─── GSAP ANIMATIONS — only if GSAP + ScrollTrigger loaded ─────────────
+if (typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+
+  try {
+
+  // HERO ANIMATION
+  gsap.set('.h-word',{y:'105%'});
+  gsap.to('.h-word:not(.en-only), html:not(.lang-en) .h-word',{y:0,duration:1.0,stagger:.15,ease:'power4.out',delay:.2});
+
+  // SCROLL: section displays
+  gsap.utils.toArray('.sec-display,.sec-label').forEach(el=>{
+    gsap.from(el,{y:50,opacity:0,duration:.9,ease:'power3.out',
+      scrollTrigger:{trigger:el,start:'top 88%'}});
+  });
+
+  // SCROLL: about
+  gsap.utils.toArray('.about-prose,.str-card').forEach((el,i)=>{
+    gsap.from(el,{y:30,opacity:0,duration:.75,delay:i*.07,ease:'power3.out',
+      scrollTrigger:{trigger:el,start:'top 88%'}});
+  });
+
+  // SCROLL: proj items
+  gsap.utils.toArray('.proj-item').forEach((el,i)=>{
+    gsap.from(el,{y:30,opacity:0,duration:.8,delay:i*.05,ease:'power3.out',
+      scrollTrigger:{trigger:el,start:'top 90%'}});
+  });
+
+  // SCROLL: contact
+  gsap.from('.contact-head',{y:40,opacity:0,duration:1.0,ease:'power3.out',
+    scrollTrigger:{trigger:'#contact',start:'top 80%',once:true}});
+  gsap.utils.toArray('.c-icon-item').forEach((el,i)=>{
+    gsap.from(el,{y:25,opacity:0,duration:.7,delay:i*.1,ease:'power3.out',
+      scrollTrigger:{trigger:'#contact',start:'top 75%',once:true}});
+  });
+
+  window.addEventListener("load", () => ScrollTrigger.refresh());
+  } catch(e){ console.warn("GSAP anim failed:", e); }
+}
 </script>
 
 <!-- ═══ CHATBOT ═══ -->
