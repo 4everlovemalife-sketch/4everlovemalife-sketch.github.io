@@ -16,7 +16,7 @@
   --accent:#FFE812;--border:#222222;--border2:#2A2A2A;
   --prob:#E8615C;--act:#FFE812;--ach:#6BCB77;
 }
-html{scroll-behavior:smooth;cursor:none}
+html{scroll-behavior:smooth}@media(pointer:fine){html{cursor:none}}
 body{background:var(--bg);color:var(--text-primary);font-family:'Pretendard',-apple-system,sans-serif;font-size:18px;line-height:1.9;overflow-x:hidden}
 
 /* CURSOR */
@@ -1491,17 +1491,27 @@ window.addEventListener('scroll',()=>{
 });
 
 // CURSOR (desktop only)
-if (window.matchMedia('(min-width:901px)').matches) {
-  const ring=document.getElementById('ring');
-  let mx=0,my=0,rx=0,ry=0;
-  window.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY});
-  (function lp(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(lp)})();
-  document.querySelectorAll('a,button,.str-card,.proj-item,.cm-cat,.c-icon-item,.proj-tab,.cm-h-node,.feat-card.previewable').forEach(el=>{
-    el.addEventListener('mouseenter',()=>ring.classList.add('on'));
-    el.addEventListener('mouseleave',()=>ring.classList.remove('on'));
-  });
-}
+try {
+  if (window.matchMedia('(min-width:901px)').matches) {
+    const ring=document.getElementById('ring');
+    if(ring){
+      let mx=window.innerWidth/2,my=window.innerHeight/2,rx=mx,ry=my,running=true;
+      window.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY});
+      (function lp(){
+        if(!running)return;
+        rx+=(mx-rx)*.12;ry+=(my-ry)*.12;
+        ring.style.left=rx+'px';ring.style.top=ry+'px';
+        requestAnimationFrame(lp);
+      })();
+      document.querySelectorAll('a,button,.str-card,.proj-item,.cm-cat,.c-icon-item,.proj-tab,.cm-h-node,.feat-card.previewable').forEach(el=>{
+        el.addEventListener('mouseenter',()=>ring.classList.add('on'));
+        el.addEventListener('mouseleave',()=>ring.classList.remove('on'));
+      });
+    }
+  }
+} catch(e){ console.warn('Cursor init failed:', e); }
 
+try {
 // HERO ANIMATION
 // Only animate visible h-word (ko or en based on lang setting)
 const visibleHWords=()=>document.querySelectorAll('.h-word:not(.en-only), html.lang-en .h-word.en-only');
@@ -1519,6 +1529,7 @@ gsap.utils.toArray('.about-prose,.str-card').forEach((el,i)=>{
   gsap.from(el,{y:30,opacity:0,duration:.75,delay:i*.07,ease:'power3.out',
     scrollTrigger:{trigger:el,start:'top 88%'}});
 });
+} catch(e){ console.warn('Hero/scroll anim failed:', e); }
 
 // CAREER MAP — horizontal interactive
 (function(){
@@ -1582,6 +1593,7 @@ gsap.utils.toArray('.proj-item').forEach((el,i)=>{
     scrollTrigger:{trigger:el,start:'top 90%'}});
 });
 
+try {
 // SCROLL: contact + fill animation
 gsap.from('.contact-head',{y:40,opacity:0,duration:1.0,ease:'power3.out',
   scrollTrigger:{trigger:'#contact',start:'top 80%',once:true}});
@@ -1606,6 +1618,7 @@ document.querySelectorAll('.paa-keyword.kpi span[data-count]').forEach(el=>{
     tick();
   }});
 });
+} catch(e){ console.warn('Contact anim failed:', e); }
 
 // ── THEME TOGGLE ──
 (function(){
