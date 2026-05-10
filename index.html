@@ -496,31 +496,39 @@ footer p{font-size:.85rem;color:var(--text-secondary);letter-spacing:.08em}
 }
 
 /* ── CHATBOT ── */
-#chatWidget{position:fixed;bottom:2rem;right:2rem;z-index:500;display:flex;flex-direction:column;align-items:flex-end;gap:.7rem}
+#chatWidget{position:fixed;bottom:2rem;right:2rem;z-index:9000;display:flex;flex-direction:column;align-items:flex-end;gap:.8rem}
 .chat-btn-toggle{width:52px;height:52px;border-radius:50%;background:var(--accent);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(255,232,18,.35);transition:transform .25s,box-shadow .25s}
 .chat-btn-toggle:hover{transform:scale(1.08);box-shadow:0 6px 28px rgba(255,232,18,.5)}
-.chat-btn-toggle svg{width:24px;height:24px;stroke:#0A0A0A;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.chat-win{width:320px;background:#161616;border:1px solid var(--border2);border-radius:8px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.5);display:none;flex-direction:column}
+.chat-btn-toggle svg{width:22px;height:22px;stroke:#0A0A0A;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.chat-win{width:340px;background:var(--bg-card);border:1px solid var(--border2);border-radius:14px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.55);display:none;flex-direction:column;max-height:540px}
 .chat-win.open{display:flex}
-.chat-hdr{padding:.9rem 1.2rem;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:.7rem}
-.chat-hdr-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);animation:hfdot 2s ease-in-out infinite}
-.chat-hdr-name{font-size:.88rem;font-weight:800;color:var(--text-primary);letter-spacing:.02em}
-.chat-hdr-sub{font-size:.72rem;color:var(--text-secondary);margin-left:auto}
-.chat-msgs{height:280px;overflow-y:auto;padding:1rem;display:flex;flex-direction:column;gap:.6rem;scroll-behavior:smooth}
-.chat-msgs::-webkit-scrollbar{width:4px}
-.chat-msgs::-webkit-scrollbar-track{background:transparent}
+.chat-hdr{padding:.85rem 1rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.chat-hdr-info{display:flex;align-items:center;gap:.65rem}
+.chat-hdr-dot{width:7px;height:7px;border-radius:50%;background:#6BCB77;flex-shrink:0;animation:hfdot 2s ease-in-out infinite}
+.chat-hdr-name{font-size:.85rem;font-weight:700;color:var(--text-primary);letter-spacing:.02em}
+.chat-hdr-sub{font-size:.7rem;color:var(--text-secondary);margin-top:.08rem}
+.chat-close-btn{background:none;border:none;color:var(--text-secondary);cursor:pointer;font-size:1.25rem;line-height:1;padding:.2rem .35rem;border-radius:4px;transition:color .2s;flex-shrink:0}
+.chat-close-btn:hover{color:var(--text-primary)}
+.chat-msgs{flex:1;overflow-y:auto;padding:.9rem 1rem;display:flex;flex-direction:column;gap:.5rem;min-height:80px}
+.chat-msgs::-webkit-scrollbar{width:3px}
 .chat-msgs::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px}
-.chat-msg{max-width:85%;padding:.55rem .85rem;border-radius:6px;font-size:.85rem;line-height:1.55;text-wrap:pretty}
-.chat-msg.bot{background:#1e1e1e;color:var(--text-primary);align-self:flex-start;border-bottom-left-radius:2px}
-.chat-msg.user{background:var(--accent);color:#0A0A0A;align-self:flex-end;font-weight:600;border-bottom-right-radius:2px}
-.chat-suggestions{display:flex;flex-wrap:wrap;gap:.4rem;padding:.5rem 1rem .8rem}
-.chat-sug{font-size:.75rem;border:1px solid var(--border2);color:var(--text-secondary);background:none;padding:.3rem .7rem;border-radius:999px;cursor:pointer;transition:all .2s;font-family:inherit}
-.chat-sug:hover{border-color:var(--accent);color:var(--accent)}
-.chat-input-row{display:flex;gap:.5rem;padding:.8rem 1rem;border-top:1px solid var(--border)}
-.chat-input-row input{flex:1;background:#111;border:1px solid var(--border2);color:var(--text-primary);font-family:inherit;font-size:.85rem;padding:.45rem .75rem;border-radius:3px;outline:none;transition:border-color .2s}
-.chat-input-row input:focus{border-color:var(--accent)}
-.chat-input-row button{background:var(--accent);border:none;color:#0A0A0A;font-weight:800;font-size:.8rem;padding:.45rem .8rem;border-radius:3px;cursor:pointer;transition:opacity .2s}
-.chat-input-row button:hover{opacity:.85}
+.chat-msg{max-width:88%;padding:.6rem .85rem;border-radius:10px;font-size:.82rem;line-height:1.6;text-wrap:pretty}
+.chat-msg.bot{background:var(--bg-card2);color:var(--text-secondary);align-self:flex-start;border-bottom-left-radius:3px}
+.chat-msg.user{background:var(--accent);color:#0A0A0A;align-self:flex-end;font-weight:600;border-bottom-right-radius:3px}
+.chat-qs{padding:.5rem 1rem .6rem;display:flex;flex-direction:column;gap:.35rem;flex-shrink:0;max-height:210px;overflow-y:auto}
+.chat-qs::-webkit-scrollbar{width:3px}
+.chat-qs::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px}
+.chat-q-btn{background:none;border:1px solid var(--border2);color:var(--text-secondary);padding:.55rem 1rem;border-radius:8px;font-size:.8rem;cursor:pointer;text-align:left;transition:border-color .2s,color .2s,background .2s;font-family:inherit;width:100%;line-height:1.4}
+.chat-q-btn:hover{border-color:var(--accent);color:var(--text-primary)}
+.chat-q-btn.cat-btn{border-color:var(--border);color:var(--text-primary);font-size:.82rem;font-weight:600}
+.chat-q-btn.cat-btn:hover{background:rgba(255,232,18,.06);border-color:var(--accent)}
+.chat-q-btn.back-btn{border:none;color:var(--text-secondary);font-size:.74rem;text-align:center;padding:.3rem;opacity:.65}
+.chat-q-btn.back-btn:hover{opacity:1;color:var(--accent)}
+.chat-q-btn.contact-btn{border-color:var(--accent);color:var(--accent);text-align:center;font-weight:600;text-decoration:none;display:block}
+.chat-q-btn.contact-btn:hover{background:var(--accent);color:#000}
+.chat-footer{border-top:1px solid var(--border);padding:.55rem 1rem;flex-shrink:0}
+.chat-footer a{display:block;text-align:center;font-size:.75rem;color:var(--text-secondary);text-decoration:none;transition:color .2s;letter-spacing:.03em}
+.chat-footer a:hover{color:var(--accent)}
 @media(max-width:900px){#chatWidget{bottom:1.2rem;right:1.2rem}.chat-win{width:calc(100vw - 2.4rem)}}
 
 /* ── ESSAY SECTION ── */
@@ -539,6 +547,7 @@ footer p{font-size:.85rem;color:var(--text-secondary);letter-spacing:.08em}
 .essay-subtitle{font-size:1.25rem;font-weight:800;color:var(--text-primary);margin-bottom:1.5rem;letter-spacing:-.01em}
 .essay-highlight{background:rgba(255,232,18,.1);border:1px solid rgba(255,232,18,.25);border-radius:3px;padding:1.4rem 1.6rem;margin:2rem 0;font-size:.98rem;color:var(--text-secondary);line-height:1.85;text-wrap:pretty}
 .essay-highlight strong{color:var(--accent)}
+.essay-byline{font-size:.8rem;color:var(--text-secondary);opacity:.6;letter-spacing:.04em;margin-bottom:2.2rem;text-align:left}
 
 @media(max-width:900px){.essay-section{padding:5rem 1.5rem}.essay-inner{max-width:100%}.essay-quote{font-size:1rem}.essay-body{font-size:.95rem}}
 
@@ -1396,14 +1405,21 @@ footer p{font-size:.85rem;color:var(--text-secondary);letter-spacing:.08em}
 <!-- ═══ ESSAY: HR 철학 ═══ -->
 <section class="essay-section" id="essay">
   <p class="sec-label">왜 HR인가요?</p>
-  <h2 class="sec-display" style="font-size:clamp(1.6rem,3.5vw,2.8rem);max-width:720px;margin-left:auto;margin-right:auto;line-height:1.3">AI 시대에도 사람만이 할 수 있는 것</h2>
+  <h2 class="sec-display" style="font-size:clamp(1.6rem,3.5vw,2.8rem);max-width:760px;line-height:1.3">AI시대에도 영원할 사람의 손길, HR</h2>
   <div class="essay-inner">
-    <p style="font-size:.85rem;color:var(--text-secondary);letter-spacing:.06em;margin-bottom:2.5rem;text-align:center">✍ 김예지 에세이</p>
+    <p class="essay-byline">✍ 김예지 에세이</p>
+    <div class="essay-body">
+      <p>회사의 가치는 결국 '어떤 사람들'로 이루어져 있는지에 따라 결정된다고 생각합니다. 구성원들이 회사의 비전과 니즈에 꼭 맞는 인재들로 채워질 수 있도록, 저는 단순한 지원 직무가 아닌 회사 성과에 직결되는 비즈니스 파트너로서 HR을 해나가고 싶습니다.</p>
+      <p>단순한 인력 관리가 아닌, 임직원들의 업무 몰입을 구현하고 더 나아가 그들의 삶을 설계하는 일을 하려고 합니다. 너무 귀하고 사명감이 느껴지는 일이라 쉽게 놓고 싶지 않습니다. 우리는 주 5일, 1년에 약 250일 동안 삶에서 가장 많은 시간을 '일'이라는 공간에서 보냅니다. 단순 부품이 아니라 자신의 인생을 맡겨 준 귀한 인재들을 관리하고 돕는 것이 바로 HR의 자리라고 생각합니다. 더 고심하고, 더 원칙적이고, 더 인간적이고, 더 혁신적인 HR을 꿈꿉니다.</p>
+    </div>
     <div class="essay-highlight">
       IT 서치펌 맨파워코리아에서의 인턴 경험이 답을 주었습니다. 당시 저는 팀 내 <strong>월별 포지션 제안 최다 수락</strong>을 달성했는데, 그 비결은 알고리즘도, 기계적인 오퍼 메일도 아니었습니다. 후보자 한 명 한 명의 커리어 패스를 머릿속으로 그려보고, 이 기회가 그들의 삶에 어떤 의미가 될 수 있는지를 함께 상상하며 건넨 <strong>인간적인 연결</strong>이었습니다.
     </div>
     <div class="essay-body">
-      <p>사람의 마음을 움직이는 것. 그것이 HR의 본질이고, 제가 이 일을 놓지 못하는 이유입니다.</p>
+      <p>근 3년간 제가 체감한 가장 큰 변화는 'AI와 자동화 툴의 대중화'입니다. 과거에는 인재를 찾는 것 자체가 HR의 능력이었다면, 이제는 AI 툴이 적합한 인재를 1초 만에 매칭해 주는 시대가 도래했습니다.</p>
+      <p>'그렇다면 HR 담당자의 무기는 무엇이 되어야 하는가?'를 깊이 고민했습니다. 변화와 위기감 속에서, IT 서치펌(맨파워코리아) 인턴 경험을 복기하며 해답을 찾았습니다. 당시 50%라는 높은 응답률을 달성했던 건 단순 키워드 매칭과 기계적인 오퍼 메일이 아니었습니다. 후보자에 공감하고, 고객사에서 어떤 커리어 패스를 그릴 수 있는지 고민하고 설득해 낸 인간적인 연결이었습니다. AI 시대일수록 기계가 대체할 수 없는 AI-Free 역량, 즉 지원자의 숨은 니즈를 파악하고 마음을 움직이는 <strong>'공감과 설득력'</strong>이 HR의 진정한 무기라는 결론을 내렸습니다.</p>
+      <p>이후 저는 기술의 편리함을 이용하되 맹신하지 않고, 인간미와 설득력 있는 HRer가 되려 노력했습니다. 최상급 인재를 AI 툴로 찾아낼 순 있지만, 그들을 움직이는 건 결국 인간의 영역입니다. 기술을 넘어 사람의 마음을 움직이는 차별화된 HR 파트너가 되겠습니다.</p>
+      <p>인재를 찾는 일, 지원 업무의 자동화, 기획·설계·구현·관리까지 AI가 할 수 있는 일은 앞으로 더 늘어날 것입니다. 하지만 그렇다고 해도, 반드시 사람만이 할 수 있고 또 사람이 했을 때 가장 빛나는 일이 HR이라고 믿습니다. AI에게 사규를 입력하고 케이스별로 꺼내 대응할 수 있지만, 구성원들의 입장에서 치열하게 고민할 수 있는 <em>대체 불가한 HR 담당자</em>로 성장하겠습니다.</p>
     </div>
   </div>
 </section>
@@ -1609,300 +1625,210 @@ document.documentElement.dataset.theme='dark';
 // ── CHATBOT ──
 (function(){
   const LANG = {
-    ko: {
-      welcome: '안녕하세요! 김예지의 포트폴리오 챗봇입니다.\n아래 카테고리를 선택하거나 직접 질문해 주세요!',
-      cats: ['🙋 기본 정보','💼 경력 & 프로젝트','🧠 역량 & 스킬','🎯 활동 & 경험','💬 가치관 & 철학'],
-      back: '← 카테고리로 돌아가기',
-      placeholder: '질문을 입력하세요...',
-      noMatch: '죄송해요, 해당 내용을 찾지 못했어요. 카테고리를 선택하거나 다른 키워드로 질문해 주세요!',
-    },
-    en: {
-      welcome: "Hi! I'm Yeji Kim's portfolio chatbot.\nSelect a category below or type your question!",
-      cats: ['🙋 Basic Info','💼 Career & Projects','🧠 Skills & Competencies','🎯 Activities & Experiences','💬 Values & Philosophy'],
-      back: '← Back to categories',
-      placeholder: 'Ask me anything...',
-      noMatch: "Sorry, I couldn't find that. Please choose a category or try different keywords!",
-    }
+    welcome: '안녕하세요! 김예지 포트폴리오 챗봇입니다.\n카테고리를 눌러 궁금한 점을 확인해보세요!',
+    cats: ['🙋 기본 정보','💼 경력 상세','🎓 학교·활동','🧠 역량·도구','💬 철학·가치관','🎯 기타·특이사항'],
   };
 
   const qa = [
     // ── 기본 정보 ──
-    { cat:0, k:['이름','name','누구','who'], ql:'이름이 뭔가요?',
-      ko:'김예지입니다! 경희대학교 경영학과를 졸업하고 현재 HR 전문가로 활동 중입니다.',
-      en:"I'm Yeji Kim! I graduated from Kyung Hee University with a degree in Business Administration and currently work as an HR professional.",
-      f:{ko:['나이는?','어디 사세요?','MBTI는?'],en:['How old are you?','Where do you live?',"What's your MBTI?"]}},
-    { cat:0, k:['나이','age','생년','born','2001'], ql:'나이는요?',
-      ko:'2001년생, 만 25세입니다!',
-      en:"I was born in 1998, so I'm 27 years old!",
-      f:{ko:['전공은?','학교는?'],en:['What was your major?','Which university?']}},
-    { cat:0, k:['학교','대학','경희','university','kyung hee','education','전공','major','경영'], ql:'학교·전공은?',
-      ko:'경희대학교 경영학과를 졸업했습니다. 인사·조직 트랙을 이수하며 HR 이론의 기반을 다졌습니다.',
-      en:"I graduated from Kyung Hee University, Department of Business Administration. I completed the HR & Organization track, building a solid foundation in HR theory.",
-      f:{ko:['학점은?','부전공은?','동아리 활동은?'],en:['What was your GPA?','Any minor?','What clubs did you join?']}},
-    { cat:0, k:['학점','gpa','성적','grade'], ql:'학점은?',
-      ko:'학점은 3.9/4.5입니다. 특히 인사관리, 조직행동론, 노사관계론 등 HR 관련 과목에서 우수한 성과를 거뒀습니다.',
-      en:'My GPA was 3.9/4.5. I excelled particularly in HR-related courses like Personnel Management, Organizational Behavior, and Labor-Management Relations.',
-      f:{ko:['어떤 과목이 좋았나요?','논문 쓰셨나요?'],en:['What was your favorite course?','Did you write a thesis?']}},
-    { cat:0, k:['mbti','성격','personality'], ql:'MBTI는?',
-      ko:'ESTP입니다! 빠른 실행력과 현장 감각이 강점입니다. 직접 부딪히며 문제를 해결하는 걸 즐기고, 사람을 읽는 직관이 HR에서 특히 빛납니다 😊',
-      en:"I'm ENFJ! I value human connection and find fulfillment in seeing the whole team grow. It's basically the perfect MBTI for HR 😊",
-      f:{ko:['강점은?','약점은?'],en:['What are your strengths?','Any weaknesses?']}},
-    { cat:0, k:['거주','살','서울','위치','location','live'], ql:'어디 사세요?',
-      ko:'서울에 거주하고 있습니다.',
-      en:"I'm based in Seoul, South Korea.",
-      f:{ko:['출신은?','이직 의향은?'],en:['Where are you from?','Open to relocation?']}},
-    { cat:0, k:['연락','contact','이메일','email','linkedin'], ql:'연락처는?',
-      ko:'이메일: kimyeji.hr@gmail.com\nLinkedIn 및 상세 연락처는 Contact 섹션을 확인해 주세요!',
-      en:'Email: kimyeji.hr@gmail.com\nFor LinkedIn and more contact details, please check the Contact section!',
-      f:{ko:['포트폴리오 공유 가능한가요?'],en:['Can you share your portfolio?']}},
+    { cat:0, ql:'이름·나이', k:['이름','나이','누구','2001','만 25'],
+      ko:'김예지입니다. 2001년생, 만 25세예요.\n경희대학교 경영학과를 졸업하고 현재 네이버에서 HR 실무를 담당하고 있습니다.',
+      f:['학교·전공은?','MBTI는?','고등학교는?']},
+    { cat:0, ql:'학교·전공', k:['학교','대학','경희','전공','경영','학점','3.9'],
+      ko:'경희대학교(서울) 경영학과 졸업, 인사·조직 트랙 이수.\n학점 3.9/4.5 | 인사관리·조직행동론(A+)·노사관계론 우수 성과\n\n비즈니스애널리틱스(A), 통계기반 데이터 분석(A) 등 데이터 분석 수업도 이수했습니다.',
+      f:['고등학교는?','데이터 분석 경험은?']},
+    { cat:0, ql:'고등학교', k:['고등학교','고교','외고','동두천','영어과'],
+      ko:'동두천외국어고등학교 영어과 전공, 일본어과 부전공입니다.',
+      f:['학교·전공은?','영어 실력은?']},
+    { cat:0, ql:'MBTI', k:['mbti','성격','estp'],
+      ko:'ESTP입니다! 빠른 실행력과 현장 감각이 강점이에요.\n직접 부딪히며 문제를 해결하는 걸 즐기고, 사람을 읽는 직관이 HR에서 빛납니다 😊',
+      f:['소통 스타일은?','핵심 강점은?']},
+    { cat:0, ql:'연락처', k:['연락','이메일','email','linkedin'],
+      ko:'Contact 섹션에서 이메일·전화·LinkedIn을 확인할 수 있어요!\n또는 아래 직접 문의하기 버튼을 이용해 주세요.',
+      f:[]},
+    { cat:0, ql:'이 포트폴리오·챗봇', k:['포트폴리오','챗봇','구현','만들','claude','클로드'],
+      ko:'예지가 직접 기획·설계·코드 수정을 하고,\nClaude Sonnet, Claude Design과 함께 만들었어요 🤖✨',
+      f:['취미는?']},
 
-    // ── 경력 & 프로젝트 ──
-    { cat:1, k:['경력','career','회사','company','직장','work','experience'], ql:'경력 소개',
-      ko:'CJ그룹 인재확보팀(2023~현재), 맨파워그룹 헤드헌터(2022), HR컨설팅 프리랜서(2021) 순으로 경력을 쌓아왔습니다. 자세히 알고 싶은 회사가 있으신가요?',
-      en:"My career: CJ Group Talent Acquisition Team (2023~present), ManpowerGroup Headhunter (2022), HR Consulting Freelancer (2021). Want to know more about any specific role?",
-      f:{ko:['CJ에서 어떤 일 하세요?','맨파워는?','프리랜서 때는?'],en:['What do you do at CJ?','Tell me about ManpowerGroup','What did you do as a freelancer?']}},
-    { cat:1, k:['cj','씨제이','현재','current','채용','recruitment','talent'], ql:'CJ 경험',
-      ko:'CJ그룹 인재확보팀에서 근무 중입니다. 주요 업무:\n• 공채 및 경력직 채용 전반 운영\n• JD 작성 및 채용 공고 최적화\n• 서류·면접 전형 설계 및 운영\n• 채용 데이터 분석 및 개선안 도출\n• 온보딩 프로그램 기획\n\n입사 이후 채용 효율 83% 개선, 사내 추천 제도 도입으로 핵심 포지션 3개 충원에 기여했습니다.',
-      en:'Currently working at CJ Group Talent Acquisition Team. Key responsibilities:\n• End-to-end recruitment operations (campus & experienced hire)\n• JD writing & job posting optimization\n• Screening & interview process design\n• Recruitment data analysis & improvement\n• Onboarding program planning\n\nAchievements: 83% improvement in recruitment efficiency, introduced employee referral program filling 3 key positions.',
-      f:{ko:['채용 효율 83%가 뭔가요?','데이터 분석 어떻게 하세요?','온보딩 어떻게 설계하셨나요?'],en:['What does 83% efficiency mean?','How do you do data analysis?','How did you design onboarding?']}},
-    { cat:1, k:['맨파워','manpower','헤드헌터','headhunter','서치펌','search'], ql:'맨파워 경험',
-      ko:'맨파워그룹에서 헤드헌터로 근무했습니다.\n\n가장 기억에 남는 성과는 응답률 50% 달성입니다. 업계 평균이 10~15%인데, 저는 후보자 데이터를 분석해 개인화된 메시지를 작성하고 타이밍을 최적화했습니다.\n\n"단순히 좋은 기회를 전달하는 것이 아니라, 그 사람이 왜 이 기회를 필요로 하는지를 먼저 이해해야 한다"는 것을 배웠습니다.',
-      en:"I worked as a headhunter at ManpowerGroup.\n\nMy proudest achievement was a 50% response rate — the industry average is 10~15%. I analyzed candidate data, crafted personalized outreach messages, and optimized timing.\n\nI learned that 'it's not about delivering a good opportunity, but understanding WHY that person needs it first.'",
-      f:{ko:['어떻게 응답률을 높이셨나요?','어떤 포지션 서치하셨나요?','가장 어려운 채용은?'],en:['How did you achieve that response rate?','What positions did you search?','Hardest placement?']}},
-    { cat:1, k:['응답률','50%','response rate','메시지','outreach','개인화'], ql:'응답률 비결',
-      ko:'후보자 LinkedIn 프로필, 최근 게시물, 커리어 패턴을 분석해 각 사람에게 맞춤화된 3~4줄 메시지를 작성했습니다.\n예: 이직 공백이 있는 후보자에겐 성장 기회를, 현직 만족도가 높아 보이는 분에겐 업계 트렌드 공유부터 시작했습니다.\n\n업계 평균(10~15%) 대비 50% 응답률은 맨파워그룹 내 최고 성과였습니다.',
-      en:"I analyzed candidate LinkedIn profiles, recent posts, and career patterns to craft personalized 3~4 line messages.\nE.g., for candidates with career gaps — I led with growth opportunities; for those seemingly satisfied in current roles — I started with industry trend insights.\n\nThe 50% response rate was the highest in ManpowerGroup, vs. the 10~15% industry average.",
-      f:{ko:['데이터 분석 도구는?','CJ에서도 비슷하게 활용하시나요?'],en:['What tools did you use?','Do you apply this at CJ too?']}},
-    { cat:1, k:['프리랜서','freelance','컨설팅','consulting','2021'], ql:'프리랜서 경험',
-      ko:'HR 컨설팅 프리랜서로 스타트업 3곳의 채용 체계 수립, 직무 기술서 작성, 면접 가이드 개발을 지원했습니다. 소규모 조직에서 HR 0→1 세팅 경험을 쌓았습니다.',
-      en:'As an HR consulting freelancer, I helped 3 startups establish their recruitment frameworks, write job descriptions, and develop interview guides. I gained experience building HR from 0 to 1 in small organizations.',
-      f:{ko:['스타트업 HR과 대기업의 차이는?','가장 보람된 순간은?'],en:['How is startup HR different from large corps?','Most rewarding moment?']}},
-    { cat:1, k:['네이버','naver','프로젝트','project','데이터','data','분석'], ql:'데이터 프로젝트',
-      ko:'NAVER 채용 데이터 분석 프로젝트를 수행했습니다.\n• 채용 공고 텍스트 마이닝으로 핵심 역량 키워드 추출\n• 지원자 데이터 분석으로 Drop-off 구간 파악\n• 채용 퍼널 개선안 제안 → 전환율 27% 향상 기여',
-      en:'Conducted a NAVER recruitment data analysis project.\n• Text mining of job postings to extract key competency keywords\n• Analyzed applicant data to identify drop-off points\n• Proposed funnel improvements → contributed to 27% conversion rate increase',
-      f:{ko:['어떤 분석 도구 쓰셨나요?','인사이트는?'],en:['What tools did you use?','Key insights?']}},
-    { cat:1, k:['글로벌','global','afro','아프로','해외','international','영어'], ql:'글로벌 경험',
-      ko:'글로벌 프로젝트 경험이 있습니다. 영어 커뮤니케이션으로 해외 파트너사와 협업하며 글로벌 채용 트렌드를 학습했습니다. 영어 비즈니스 커뮤니케이션 능력을 실전에서 검증했습니다.',
-      en:"I have global project experience. I collaborated with overseas partners in English, learning global recruitment trends. My English business communication skills have been validated in real-world settings.",
-      f:{ko:['영어 실력은?','해외 취업 생각 있어?'],en:['How is your English?','Open to working abroad?']}},
+    // ── 경력 상세 ──
+    { cat:1, ql:'경력 전체', k:['경력','회사','커리어','근무 형태','인턴','계약직'],
+      ko:'근무 형태: 인턴 2회, 계약직 1회\n\n• 네이버 Recruiting Operation팀 (2024.12~현재, 계약직)\n• CJ제일제당 Food R&D 인사팀 (2023, 인턴)\n• 맨파워코리아 IT BPO팀 (2022, 인턴)',
+      f:['네이버 경험은?','CJ 경험은?','맨파워 경험은?']},
+    { cat:1, ql:'네이버 경험', k:['네이버','naver','현재','재직','recruiting operation'],
+      ko:'현재 네이버 Recruiting Operation팀 계약직으로 근무 중입니다.\n\n채용 운영 전반을 담당하며, AI 기반 채용 운영 대시보드를 직접 기획·개발해 팀 리더의 긍정 평가를 받았습니다.',
+      f:['CJ 경험은?','핵심 강점은?']},
+    { cat:1, ql:'CJ 경험', k:['cj','씨제이','제일제당','r&d','food hr'],
+      ko:'CJ제일제당 Food R&D 인사팀 인턴으로 다양한 HR 실무를 경험했습니다.\n\n• Talent Map 프로젝트 보조 (DB 리스트업·번역·디자인)\n• 인력관리 파일 제작 — 직급비율·성비·근속년수 시각화\n• 연차·인원변동·발령관리 파일 제작 및 운영\n• 사내공모 채용 전반 (공고 작성→면접 어레인징→합불 안내)\n• 외국인 입사자 온보딩 지원 (영문 체크리스트·비자서류·핸드북 제작)\n• 승진 업무 지원 (승진율 계산·직급비율 시각화 PPT 등)',
+      f:['맨파워 경험은?','경력 전체']},
+    { cat:1, ql:'맨파워 경험', k:['맨파워','manpower','헤드헌터','서치펌','it bpo'],
+      ko:'맨파워코리아 IT BPO팀 채용 컨설턴트 인턴으로 근무했습니다.\n\nIT 전문 인력 파견·서치 업무를 담당하며, 팀 내 월별 포지션 제안 최다 수락을 달성했습니다.\n\n개인화 메시지 전략과 후보자 공감 중심의 접근으로 높은 응답률을 기록했습니다.',
+      f:['맨파워 고객사는?','응답률 비결은?']},
+    { cat:1, ql:'맨파워 고객사', k:['고객사','클라이언트','협업','어떤 회사'],
+      ko:'맨파워코리아 IT BPO팀에서 IT 기업들을 고객사로 하여 IT 전문 인력 파견·서치 업무를 진행했습니다.\n주로 개발자·IT 전문직 포지션을 중심으로 후보자를 발굴하고 매칭했습니다.',
+      f:['응답률 비결은?','맨파워 경험은?']},
+    { cat:1, ql:'응답률 비결', k:['응답률','응답','메시지','개인화','비결'],
+      ko:'단순 키워드 매칭·기계적 오퍼 메일 대신, 후보자의 LinkedIn·경력 패턴을 분석해 맞춤형 3~4줄 메시지를 작성했습니다.\n\n핵심은 "후보자가 이 기회에서 어떤 커리어 패스를 그릴 수 있는지"를 먼저 상상하고 전달하는 인간적인 연결이었습니다.',
+      f:['핵심 강점은?','HR 철학은?']},
 
-    // ── 역량 & 스킬 ──
-    { cat:2, k:['역량','강점','잘하는','skill','strength','competency','능력'], ql:'핵심 강점은?',
-      ko:'3가지 핵심 역량을 꼽는다면:\n1️⃣ 데이터 기반 의사결정 — 채용 데이터 분석, 응답률 최적화\n2️⃣ 커뮤니케이션 — 후보자/HM 신뢰 구축, 개인화 접근\n3️⃣ 구조화된 프로세스 설계 — 채용 체계 0→1 구축 경험',
-      en:'My 3 core competencies:\n1️⃣ Data-driven decision making — recruitment data analysis, response rate optimization\n2️⃣ Communication — building trust with candidates/hiring managers, personalized approach\n3️⃣ Structured process design — experience building recruitment systems from scratch',
-      f:{ko:['데이터 분석 어떻게 하세요?','소통 스타일은?','보완하고 싶은 점은?'],en:['How do you do data analysis?','Communication style?','Any weaknesses?']}},
-    { cat:2, k:['도구','tool','엑셀','excel','파이썬','python','sql','tableau','분석도구'], ql:'활용 도구는?',
-      ko:'활용 가능한 도구:\n• Excel/Sheets: VLOOKUP, 피벗, 데이터 시각화\n• Python: 기초 데이터 처리, 텍스트 분석\n• SQL: 기본 쿼리\n• Notion, Airtable: HR 데이터베이스 관리\n• Figma: 기초 UI 프로토타이핑',
-      en:'Tools I can use:\n• Excel/Sheets: VLOOKUP, pivot tables, data visualization\n• Python: basic data processing, text analysis\n• SQL: basic queries\n• Notion, Airtable: HR database management\n• Figma: basic UI prototyping',
-      f:{ko:['가장 자주 쓰는 도구는?','더 배우고 싶은 건?'],en:['Most frequently used tool?','What do you want to learn next?']}},
-    { cat:2, k:['영어','english','어학','toeic','opic','언어'], ql:'영어 실력은?',
-      ko:'비즈니스 영어 커뮤니케이션이 가능합니다. 글로벌 프로젝트에서 해외 파트너와 영문 이메일, 화상 미팅을 진행한 경험이 있습니다.',
-      en:"I'm proficient in business English. I have experience with written and video communication with overseas partners in global projects.",
-      f:{ko:['영어 이외 외국어는?','해외 근무 가능?'],en:['Any other languages?','Open to international assignments?']}},
-    { cat:2, k:['약점','weakness','단점','부족','개선'], ql:'보완할 점은?',
-      ko:'완벽주의적 성향이 있어 빠른 의사결정이 필요한 상황에서 속도가 느려질 때가 있습니다. 이를 인식하고, 70% 완성도로 빠르게 실행 후 개선하는 Agile 방식을 의식적으로 연습하고 있습니다.',
-      en:"I tend toward perfectionism, which can slow me down when rapid decision-making is needed. I'm aware of this and consciously practice an Agile approach — execute at 70% and improve iteratively.",
-      f:{ko:['그 외 약점은?','강점과 어떻게 균형을 잡으시나요?'],en:['Any other weaknesses?','How do you balance this with your strengths?']}},
-    { cat:2, k:['자격증','certificate','자격','license'], ql:'자격증은?',
-      ko:'인사관리사 2급 취득 예정, 직업상담사 2급 보유, GAIQ(Google Analytics) 등 데이터 분석 관련 자격도 준비 중입니다.',
-      en:"I'm planning to obtain Level 2 Personnel Management certification. I hold Level 2 Career Counselor certification and am preparing for GAIQ (Google Analytics) and other data analytics certifications.",
-      f:{ko:['왜 그 자격증을?','공부 방법이 궁금해요'],en:['Why those certifications?','How do you study?']}},
+    // ── 학교·활동 ──
+    { cat:2, ql:'교내 활동', k:['동아리','학회','교내','탑존','밴드부','독서토론'],
+      ko:'경희대 재학 중 교내 활동:\n\n• 경영전략학회 탑존 (2020~2022): 신규부원 온보딩, 산업/기업분석 세미나\n  — 칠레 수출 전략(돼지고기·와인 중심), 음원사이트 멜론 입지 유지 전략 등 발표\n• 밴드부 임원 (2020~2022): 리크루팅·온보딩, 정기공연 기획 리딩\n• 독서토론동아리 부쿠 (2022)',
+      f:['교외 활동은?','취미는?']},
+    { cat:2, ql:'교외 활동', k:['교외','봉사','서포터즈','펀딩','ifcc','탄소중립','도시재생','해외봉사'],
+      ko:'교외 활동들:\n\n• 크라우드펀딩 팀장 (2020.11~21.08): 친환경 인테리어 소품 기획·런칭, 목표금액 125% 초과 달성. 과제형 정기회의 개최·직책 배분·업무 점검 수행\n• 해외봉사단 (2020.12~21.04): 에티오피아 소외아동 교육 콘텐츠 제작 (기획·음향)\n• 탄소중립 서포터즈 (2021): 에너지 포럼·콘텐츠 발행, 우수 서포터즈 선정\n• IFCC (2021~2022): 교환학생 문화교류 행사 운영·홍보\n• 도시재생 서포터즈 (2020): 지역 상권 활성화 취재·콘텐츠 발행',
+      f:['교내 활동은?','아르바이트 경험은?']},
+    { cat:2, ql:'아르바이트 경험', k:['알바','아르바이트','과외','카페','영어과외','5년'],
+      ko:'2020~2024년, 약 5년간:\n\n• 개인 영어과외 7명 및 수능영어강사 활동\n• 미군부대·파리크라상·던킨·메가커피 등 카페 아르바이트 약 1.5년',
+      f:['교외 활동은?']},
 
-    // ── 활동 & 경험 ──
-    { cat:3, k:['동아리','club','밴드','band','활동','activity','음악','music'], ql:'밴드·음악 활동',
-      ko:'대학 시절 밴드 동아리에서 4년간 활동했습니다! 보컬을 담당했고, 정기 공연과 축제 무대에 섰습니다.\n음악은 협업과 팀워크를 온몸으로 배운 경험입니다. HR과 밴드 — 둘 다 "사람이 맞아야 소리가 난다"는 공통점이 있습니다 🎤',
-      en:"I was in a band club for 4 years in university! I was the vocalist and performed at regular concerts and festivals.\nMusic taught me collaboration and teamwork viscerally. HR and bands share something — 'people need to click for the sound to happen' 🎤",
-      f:{ko:['어떤 장르를 좋아하세요?','지금도 음악 하세요?','가장 기억나는 공연은?'],en:['What genre do you like?','Still making music?','Most memorable performance?']}},
-    { cat:3, k:['취미','hobby','여가','leisure','좋아하는','interest'], ql:'취미는?',
-      ko:'취미는 다양합니다:\n🎤 밴드 보컬 (4년 활동)\n📚 HR 트렌드 리서치 및 아티클 작성\n☕ 카페 탐방 (생산적인 아지트 찾기)\n🏃 러닝 (생각 정리 시간)\n✈️ 여행 (새로운 문화와 사람 만나기)',
-      en:'My hobbies are diverse:\n🎤 Band vocals (4 years)\n📚 HR trend research & article writing\n☕ Café hopping (finding productive hideouts)\n🏃 Running (clearing my head)\n✈️ Travel (meeting new cultures & people)',
-      f:{ko:['여행 가장 기억나는 곳은?','HR 글은 어디에 쓰세요?'],en:['Most memorable travel destination?','Where do you write HR articles?']}},
-    { cat:3, k:['봉사','volunteer','사회','community','공헌'], ql:'봉사·멘토링',
-      ko:'대학생 멘토링 프로그램에서 취업 준비생 대상 커리어 멘토링을 진행했습니다. HR 전문가로서 후배들의 첫 커리어 설계를 돕는 것이 보람 있었습니다.',
-      en:'I conducted career mentoring for job-seekers through a university student mentoring program. As an HR professional, helping juniors design their first career path was very rewarding.',
-      f:{ko:['멘토링에서 가장 많이 받는 질문은?','취준생에게 조언 한마디?'],en:['Most common question from mentees?','One piece of advice for job seekers?']}},
-    { cat:3, k:['브런치','글','에세이','essay','writing','작성','아티클','article'], ql:'에세이·글쓰기',
-      ko:'HR과 커리어에 관한 에세이를 브런치 스타일로 작성합니다. "사람을 뽑는다는 것의 무게", 맨파워 시절 응답률 50% 이야기 등을 글로 풀어내고 있습니다. 포트폴리오의 Essay 섹션에서 확인해보세요!',
-      en:'I write HR and career essays in a Brunch-style format. Topics include "The Weight of Hiring People" and the story behind my 50% response rate at ManpowerGroup. Check the Essay section in this portfolio!',
-      f:{ko:['글은 어디서 볼 수 있나요?','자주 쓰는 주제는?'],en:['Where can I read your essays?','Favorite topics to write about?']}},
-    { cat:3, k:['수상','award','성과','achievement','1등','우수'], ql:'주요 성과',
-      ko:'주요 수상 및 성과:\n🏆 맨파워그룹 헤드헌터 응답률 1위 (50%)\n📊 CJ 채용 효율 83% 개선 기여\n🎓 경희대 인사관리 우수 논문\n🎤 대학 밴드 공연 최우수상',
-      en:'Key awards & achievements:\n🏆 ManpowerGroup #1 headhunter response rate (50%)\n📊 Contributed to 83% CJ recruitment efficiency improvement\n🎓 Kyung Hee University Outstanding HR Management Thesis\n🎤 Best Performance Award at university band concert',
-      f:{ko:['가장 자랑스러운 성과는?','앞으로 목표는?'],en:['Proudest achievement?','Future goals?']}},
+    // ── 역량·도구 ──
+    { cat:3, ql:'핵심 강점', k:['강점','역량','잘하는','능력','집요함','strength'],
+      ko:'핵심 강점 3가지:\n\n1️⃣ 집요함 — \'이 정도면 됐다\'가 없습니다. 문제가 해결될 때까지 파고드는 힘\n2️⃣ 공감·설득력 — 후보자·구성원 입장에서 먼저 생각하는 HR 감각\n3️⃣ 데이터 기반 실행 — 숫자로 뒷받침하는 의사결정',
+      f:['소통 스타일은?','보완할 점은?']},
+    { cat:3, ql:'소통 스타일', k:['소통','커뮤니케이션','스타일','communication'],
+      ko:'두괄식으로 핵심만 전달하는 걸 좋아합니다.\n결론 먼저, 근거는 간결하게 — 상대방의 시간을 아끼는 방식으로 소통하려고 노력합니다.',
+      f:['핵심 강점은?','업무관은?']},
+    { cat:3, ql:'활용 도구', k:['도구','툴','tool','엑셀','excel','노션','notion','r','tableau'],
+      ko:'주요 활용 도구:\n\n• Excel/Sheets: VLOOKUP·피벗·데이터 시각화\n• Notion, Airtable: HR 데이터베이스·업무 관리\n• R, Tableau: 데이터 분석·시각화\n• Figma: 기초 UI 프로토타이핑',
+      f:['데이터 분석 경험은?','영어 실력은?']},
+    { cat:3, ql:'데이터 분석', k:['데이터','분석','통계','비즈니스애널리틱스','서울시','행복도'],
+      ko:'대학에서 \'비즈니스애널리틱스(A)\'·\'통계기반 데이터 분석(A)\'을 수강했습니다.\n\nR·Tableau 활용 \'서울시 주민 행복도 분석\' 프로젝트 진행 — 데이터 부족 상황에서 공공 데이터 포털을 샅샅이 뒤져 변수를 추가 확보하고, 수차례 전처리·회귀분석 끝에 유의미한 상관관계를 도출했습니다.',
+      f:['활용 도구는?','핵심 강점은?']},
+    { cat:3, ql:'영어 실력', k:['영어','english','어학','외국어'],
+      ko:'동두천외국어고 영어과 전공 출신으로, 비즈니스 영어 커뮤니케이션이 가능합니다.\nCJ 재직 중 외국인 임직원 대상 영문 온보딩 가이드·핸드북을 직접 제작·안내했습니다.',
+      f:['활용 도구는?','고등학교는?']},
+    { cat:3, ql:'보완할 점', k:['약점','단점','보완','부족','weakness'],
+      ko:'완벽주의 성향이 있어 빠른 의사결정이 필요한 상황에서 속도가 느려질 수 있습니다.\n이를 인식하고 \'70% 완성도로 빠르게 실행 후 개선\' Agile 방식을 의식적으로 연습하고 있습니다.',
+      f:['핵심 강점은?','업무관은?']},
 
-    // ── 가치관 & 철학 ──
-    { cat:4, k:['가치관','철학','신념','belief','value','philosophy','왜 hr'], ql:'HR 철학',
-      ko:'"사람이 곧 전략이다" — HR은 단순히 채용하는 부서가 아니라, 조직의 미래를 설계하는 전략적 파트너라고 믿습니다.\n\n가장 좋아하는 말: "Happiness is a perfume you cannot pour on others without getting a few drops on yourself."',
-      en:'"People are strategy." — I believe HR is not just a hiring department, but a strategic partner designing the future of the organization.\n\nFavorite quote: "Happiness is a perfume you cannot pour on others without getting a few drops on yourself."',
-      f:{ko:['HR에서 가장 중요한 것은?','어떤 HR이 되고 싶으세요?'],en:['What matters most in HR?','What kind of HR professional do you want to be?']}},
-    { cat:4, k:['목표','goal','비전','vision','미래','future','꿈','dream'], ql:'5년 후 목표',
-      ko:'5년 후 목표: People Analytics를 활용한 데이터 기반 HR 의사결정 체계를 구축하는 전략적 HR BP가 되는 것입니다.\n\n궁극적으로는 "사람이 행복하게 일할 수 있는 조직 문화"를 만드는 데 기여하고 싶습니다.',
-      en:'5-year goal: To become a strategic HR Business Partner who builds data-driven HR decision-making systems using People Analytics.\n\nUltimately, I want to contribute to building "an organizational culture where people can work happily."',
-      f:{ko:['People Analytics란?','HR BP가 되려면?'],en:['What is People Analytics?','How to become an HR BP?']}},
-    { cat:4, k:['hr bp','hrbp','business partner','전략','strategic'], ql:'HR BP·전략',
-      ko:'HR BP(Business Partner)는 사업 부서와 파트너십을 맺고 전략적 인사 이슈를 해결하는 역할입니다. 단순 채용/노무를 넘어 조직 진단, 인재 개발, 문화 구축까지 포괄합니다. 이것이 제가 지향하는 HR의 모습입니다.',
-      en:"HR Business Partner (HRBP) is a role that partners with business units to solve strategic HR issues — going beyond simple recruitment/labor to encompass organizational diagnosis, talent development, and culture building. This is the HR model I aspire to.",
-      f:{ko:['HRBP 준비 어떻게 해?','지금 회사에서도 BP 역할 해?'],en:['How are you preparing for HRBP?','Do you do BP work at CJ too?']}},
-    { cat:4, k:['스트레스','어려움','힘든','challenge','difficult','압박','pressure'], ql:'어려웠던 순간',
-      ko:'가장 힘든 순간은 좋은 후보자와 좋은 기회가 "타이밍" 때문에 연결되지 못할 때입니다. 이럴 때는 결과보다 과정을 신뢰하고, 다음 기회를 위한 관계를 유지하는 것이 중요하다고 배웠습니다.',
-      en:"The hardest moments are when a great candidate and a great opportunity fail to connect due to 'timing.' I've learned that in these moments, it's important to trust the process over the outcome and maintain the relationship for the next opportunity.",
-      f:{ko:['번아웃은 어떻게 해결해?','동기부여는 어디서 얻어?'],en:['How do you deal with burnout?','Where do you find motivation?']}},
-    { cat:4, k:['이직','전직','지원','apply','왜 우리 회사','why us'], ql:'왜 지원하셨나요?',
-      ko:'저는 "사람"을 통해 조직이 성장하는 것을 직접 설계하고 싶습니다. 데이터와 인간에 대한 깊은 이해를 함께 갖춘 HR 전문가로, 조직의 전략적 파트너가 되는 것이 목표입니다.',
-      en:"I want to directly design how organizations grow through 'people.' My goal is to be a strategic organizational partner as an HR professional who combines data fluency with deep human understanding.",
-      f:{ko:['언제부터 HR 하고 싶었어?','HR 말고 다른 길은?'],en:['When did you decide on HR?','Did you consider other paths?']}},
-    { cat:4, k:['조직문화','culture','팀워크','teamwork','협업','collaboration'], ql:'이상적인 조직문화',
-      ko:'이상적인 조직 문화: 심리적 안전감이 있어 누구나 의견을 낼 수 있고, 실패를 학습으로 전환하는 문화. 저는 HR로서 그런 문화를 만드는 데 직접 기여하고 싶습니다.',
-      en:'Ideal organizational culture: Psychological safety where anyone can voice opinions, and failures are converted into learning. As an HR professional, I want to directly contribute to creating such a culture.',
-      f:{ko:['심리적 안전감 어떻게 만들어?','나쁜 조직 문화 경험은?'],en:['How do you build psychological safety?','Experience with toxic culture?']}},
+    // ── 철학·가치관 ──
+    { cat:4, ql:'HR 철학', k:['철학','가치관','신념','왜 hr','사명감','hr이란'],
+      ko:'"사람이 곧 전략이다" — HR은 단순 채용 부서가 아니라 조직의 미래를 설계하는 전략적 파트너라고 믿습니다.\n\n구성원 한 명 한 명에게 인생을 맡겨주신 귀한 분들이라는 마음으로, 더 고심하고·더 원칙적이고·더 인간적인 HR을 추구합니다.',
+      f:['업무관은?','5년 후 목표는?']},
+    { cat:4, ql:'업무관', k:['업무관','일하는 방식','집요함','better','best','효율화'],
+      ko:'\'이 정도면 됐다\' 따위는 없습니다.\n\n끊임없이 최고를 지향하며 문제를 끝까지 해결하는 힘, 안주하지 않고 멈추지 않는 효율화를 통해 better, best 그 이상을 추구하는 집요함을 갖겠습니다.',
+      f:['HR 철학은?','핵심 강점은?']},
+    { cat:4, ql:'5년 후 목표', k:['목표','미래','5년','비전','꿈','bp','strategic'],
+      ko:'데이터 기반의 전략적 HR BP로 성장하는 것이 목표입니다.\n\n구성원이 납득하고 몰입할 수 있는 합리적인 HR 솔루션을 제시하고, 사람이 행복하게 일하는 조직 문화를 만드는 데 기여하고 싶습니다.',
+      f:['HR 철학은?','업무관은?']},
+
+    // ── 기타·특이사항 ──
+    { cat:5, ql:'취미', k:['취미','여가','밴드','음악','공연','사내밴드'],
+      ko:'네이버 사내 밴드에서 공연·합주를 즐기고 있습니다! 🎤\n대학 시절 밴드부 임원으로 4년간 활동했고, 음악이 일상의 활력소입니다.',
+      f:['특이한 경험은?','교내 활동은?']},
+    { cat:5, ql:'특이한 경험', k:['특이','특별','공모전','sigs','정원박람회','퍼포먼스','작곡'],
+      ko:'조금 특이한 경험들이 있어요 😄\n\n• 서울국제정원박람회(SIGS) 작곡 공모전 입선\n• 구로구청 주관 퍼포먼스 마케터 실습교육 이수 (30시간)\n  — 데이터 기반 의사결정 및 온라인 광고 흐름 학습',
+      f:['취미는?','교외 활동은?']},
   ];
 
-  const isEn = () => document.documentElement.classList.contains('lang-en');
-
-  function normalize(s){return s.toLowerCase().replace(/[\s\-_]/g,'');}
-
-  function findAnswer(input){
-    const ni = normalize(input);
-    let best = null, bestScore = 0;
-    qa.forEach(item=>{
-      let score = 0;
-      item.k.forEach(kw=>{
-        if(ni.includes(normalize(kw))) score += kw.length;
-      });
-      if(score > bestScore){bestScore=score; best=item;}
-    });
-    return bestScore > 0 ? best : null;
+  function findAnswer(txt){
+    const q = txt.toLowerCase();
+    return qa.find(item=>item.k.some(k=>q.includes(k.toLowerCase())));
   }
 
   function addMsg(text, who){
     const msgs = document.getElementById('chatMsgs');
     const d = document.createElement('div');
-    d.className = 'chat-msg '+(who==='bot'?'bot':'user');
-    d.innerHTML = '<div class="chat-bubble">'+text.replace(/\n/g,'<br>')+'</div>';
+    d.className = 'chat-msg ' + who;
+    d.innerHTML = text.replace(/\n/g,'<br>');
     msgs.appendChild(d);
     msgs.scrollTop = msgs.scrollHeight;
   }
 
   function renderCategories(){
-    const lang = isEn() ? LANG.en : LANG.ko;
-    const sugs = document.getElementById('chatSugs');
-    sugs.innerHTML = '';
-    lang.cats.forEach((cat,i)=>{
+    const qs = document.getElementById('chatQs');
+    qs.innerHTML = '';
+    LANG.cats.forEach((cat,i)=>{
       const btn = document.createElement('button');
-      btn.className = 'sug-btn cat-btn';
+      btn.className = 'chat-q-btn cat-btn';
       btn.textContent = cat;
       btn.onclick = ()=>renderCategoryQs(i);
-      sugs.appendChild(btn);
+      qs.appendChild(btn);
     });
   }
 
+  function addBackBtn(qs){
+    const btn = document.createElement('button');
+    btn.className = 'chat-q-btn back-btn';
+    btn.textContent = '← 처음으로';
+    btn.onclick = renderCategories;
+    qs.appendChild(btn);
+  }
+
   function renderCategoryQs(catIdx){
-    const en = isEn();
-    const lang = en ? LANG.en : LANG.ko;
-    const sugs = document.getElementById('chatSugs');
-    sugs.innerHTML = '';
-
-    const backBtn = document.createElement('button');
-    backBtn.className = 'sug-btn back-btn';
-    backBtn.textContent = lang.back;
-    backBtn.onclick = renderCategories;
-    sugs.appendChild(backBtn);
-
-    const items = qa.filter(q=>q.cat===catIdx);
-    items.slice(0,5).forEach(item=>{
+    const qs = document.getElementById('chatQs');
+    qs.innerHTML = '';
+    addBackBtn(qs);
+    qa.filter(q=>q.cat===catIdx).forEach(item=>{
       const btn = document.createElement('button');
-      btn.className = 'sug-btn';
+      btn.className = 'chat-q-btn';
       btn.textContent = item.ql || item.k[0];
-      btn.onclick = ()=>answerItem(item);
-      sugs.appendChild(btn);
+      btn.onclick = ()=>answerItem(item, btn.textContent);
+      qs.appendChild(btn);
     });
   }
 
   function renderFollowups(item){
-    const en = isEn();
-    const lang = en ? LANG.en : LANG.ko;
-    const sugs = document.getElementById('chatSugs');
-    sugs.innerHTML = '';
-
-    const backBtn = document.createElement('button');
-    backBtn.className = 'sug-btn back-btn';
-    backBtn.textContent = lang.back;
-    backBtn.onclick = renderCategories;
-    sugs.appendChild(backBtn);
-
-    if(item.f){
-      const followups = en ? item.f.en : item.f.ko;
-      followups.forEach(q=>{
+    const qs = document.getElementById('chatQs');
+    qs.innerHTML = '';
+    addBackBtn(qs);
+    if(item.f && item.f.length > 0){
+      item.f.forEach(q=>{
         const btn = document.createElement('button');
-        btn.className = 'sug-btn';
+        btn.className = 'chat-q-btn';
         btn.textContent = q;
         btn.onclick = ()=>{
-          addMsg(q,'user');
+          addMsg(q, 'user');
           const found = findAnswer(q);
-          if(found) answerItem(found);
-          else{
-            const l = isEn() ? LANG.en : LANG.ko;
-            addMsg(l.noMatch,'bot');
-            renderCategories();
-          }
+          if(found) answerItem(found, q);
+          else showNoMatch();
         };
-        sugs.appendChild(btn);
+        qs.appendChild(btn);
       });
+    } else {
+      const btn = document.createElement('button');
+      btn.className = 'chat-q-btn cat-btn';
+      btn.textContent = '다른 질문 보기';
+      btn.onclick = renderCategories;
+      qs.appendChild(btn);
     }
   }
 
-  function answerItem(item){
-    const answer = isEn() ? item.en : item.ko;
+  function showNoMatch(){
+    addMsg('해당 내용은 아직 등록되지 않았습니다.\n직접 문의해 주시면 빠르게 답변드릴게요!', 'bot');
+    const qs = document.getElementById('chatQs');
+    qs.innerHTML = '';
+    const a = document.createElement('a');
+    a.className = 'chat-q-btn contact-btn';
+    a.href = 'mailto:4ever.lovemalife@gmail.com';
+    a.textContent = '직접 문의하기 →';
+    qs.appendChild(a);
+    addBackBtn(qs);
+  }
+
+  function answerItem(item, label){
+    if(label) addMsg(label, 'user');
     setTimeout(()=>{
-      addMsg(answer,'bot');
+      addMsg(item.ko, 'bot');
       renderFollowups(item);
-    },300);
-  }
-
-  function handleSend(){
-    const inp = document.getElementById('chatInput');
-    const text = inp.value.trim();
-    if(!text) return;
-    addMsg(text,'user');
-    inp.value='';
-    const found = findAnswer(text);
-    if(found) answerItem(found);
-    else{
-      const l = isEn() ? LANG.en : LANG.ko;
-      setTimeout(()=>{
-        addMsg(l.noMatch,'bot');
-        renderCategories();
-      },300);
-    }
+    }, 200);
   }
 
   function initChat(){
-    const lang = isEn() ? LANG.en : LANG.ko;
-    const msgs = document.getElementById('chatMsgs');
-    msgs.innerHTML = '';
-    addMsg(lang.welcome,'bot');
+    document.getElementById('chatMsgs').innerHTML = '';
+    addMsg(LANG.welcome, 'bot');
     renderCategories();
-    document.getElementById('chatInput').placeholder = lang.placeholder;
   }
 
   window.toggleChat = function(){
     const w = document.getElementById('chatWin');
     const open = w.classList.toggle('open');
-    if(open && document.getElementById('chatMsgs').children.length===0) initChat();
+    if(open && document.getElementById('chatMsgs').children.length === 0) initChat();
   };
 
-  document.getElementById('chatInput').addEventListener('keydown',e=>{
-    if(e.key==='Enter') handleSend();
+  document.getElementById('chatClose').addEventListener('click', ()=>{
+    document.getElementById('chatWin').classList.remove('open');
   });
-  document.getElementById('chatSendBtn').addEventListener('click', handleSend);
-
-  // Re-init on language change
-  const origToggleLang = window.toggleLang;
-  window.toggleLang = function(){
-    if(origToggleLang) origToggleLang();
-    const w = document.getElementById('chatWin');
-    if(w.classList.contains('open')) initChat();
-  };
 })();
 
 // ─── GSAP ANIMATIONS — only if GSAP + ScrollTrigger loaded ─────────────
@@ -1950,15 +1876,19 @@ if (typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined") {
 <div id="chatWidget">
   <div class="chat-win" id="chatWin">
     <div class="chat-hdr">
-      <div class="chat-hdr-dot"></div>
-      <div class="chat-hdr-name">예지 AI 어시스턴트</div>
-      <div class="chat-hdr-sub">뭐든 물어보세요!</div>
+      <div class="chat-hdr-info">
+        <div class="chat-hdr-dot"></div>
+        <div>
+          <div class="chat-hdr-name">예지 AI 어시스턴트</div>
+          <div class="chat-hdr-sub">버튼을 눌러 질문해보세요</div>
+        </div>
+      </div>
+      <button class="chat-close-btn" id="chatClose" aria-label="닫기">✕</button>
     </div>
     <div class="chat-msgs" id="chatMsgs"></div>
-    <div class="chat-suggestions" id="chatSugs"></div>
-    <div class="chat-input-row">
-      <input type="text" id="chatInput" placeholder="질문을 입력하세요...">
-      <button id="chatSendBtn">전송</button>
+    <div class="chat-qs" id="chatQs"></div>
+    <div class="chat-footer">
+      <a href="mailto:4ever.lovemalife@gmail.com">직접 문의하기 →</a>
     </div>
   </div>
   <button class="chat-btn-toggle" id="chatToggle" onclick="toggleChat()" aria-label="챗봇 열기">
