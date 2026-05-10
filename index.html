@@ -49,6 +49,19 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
 /* HERO */
 .hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:0 4rem;overflow:hidden}
 .hero-grid{position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 79px,rgba(255,255,255,.025) 80px),repeating-linear-gradient(90deg,transparent,transparent 79px,rgba(255,255,255,.025) 80px);pointer-events:none}
+/* Hero decorative art */
+.hero-art{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.hero-rings{position:absolute;right:-12%;top:50%;transform:translateY(-50%);width:min(85vw,850px);height:min(85vw,850px);opacity:1;animation:heroRingRotate 80s linear infinite}
+@keyframes heroRingRotate{from{transform:translateY(-50%) rotate(0deg)}to{transform:translateY(-50%) rotate(360deg)}}
+.hero-rings2{position:absolute;right:-5%;top:50%;transform:translateY(-50%);width:min(55vw,520px);height:min(55vw,520px);opacity:1;animation:heroRingRotate 50s linear infinite reverse}
+.hero-glow{position:absolute;right:10%;top:50%;transform:translate(50%,-50%);width:min(50vw,480px);height:min(50vw,480px);border-radius:50%;background:radial-gradient(circle,rgba(255,232,18,.1) 0%,rgba(255,232,18,.04) 45%,transparent 75%);pointer-events:none;animation:heroPulse 7s ease-in-out infinite}
+.hero-glow2{position:absolute;left:5%;top:20%;width:min(18vw,160px);height:min(18vw,160px);border-radius:50%;background:radial-gradient(circle,rgba(255,232,18,.05) 0%,transparent 70%);pointer-events:none;animation:heroPulse 9s ease-in-out 3s infinite}
+@keyframes heroPulse{0%,100%{opacity:.6;transform:translate(50%,-50%) scale(1)}50%{opacity:1;transform:translate(50%,-50%) scale(1.15)}}
+.hero-dot-field{position:absolute;inset:0}
+.h-fdot{position:absolute;border-radius:50%;background:var(--accent);animation:hfdot 4s ease-in-out infinite}
+.hero-star{position:absolute;border-radius:50%;background:#fff;animation:starTwinkle 3s ease-in-out infinite}
+@keyframes starTwinkle{0%,100%{opacity:.15;transform:scale(1)}50%{opacity:.6;transform:scale(1.3)}}
+@keyframes hfdot{0%,100%{opacity:.25;transform:scale(1)}50%{opacity:.8;transform:scale(1.8)}}
 
 .hero-stack{display:flex;flex-direction:column;gap:.4rem;position:relative;z-index:2}
 .h-line{overflow:hidden;display:flex;align-items:baseline;gap:.4rem}
@@ -390,31 +403,208 @@ section{padding:8rem 4rem;border-top:1px solid var(--border)}
 footer{padding:1.8rem 4rem;border-top:1px solid var(--border);display:flex;justify-content:flex-start;align-items:center;flex-wrap:wrap;gap:1rem}
 footer p{font-size:.85rem;color:var(--text-secondary);letter-spacing:.08em}
 
+/* ── LIGHT MODE ── */
+[data-theme="light"]{
+  --bg:#F2F0EB;--bg-alt:#E8E5DE;--bg-card:#FAFAF7;--bg-card2:#EDEAE3;
+  --text-primary:#181818;--text-secondary:#5A5750;
+  --accent:#7A6200;--border:#D0CCBF;--border2:#B8B4A8;
+  --prob:#C0413D;--act:#7A6200;--ach:#3A9447;
+}
+[data-theme="light"] body{background:var(--bg);color:var(--text-primary)}
+[data-theme="light"] .hero{background:linear-gradient(160deg,#1A1A1A 0%,#252318 100%)}
+[data-theme="light"] .hero-grid{background:repeating-linear-gradient(0deg,transparent,transparent 79px,rgba(255,255,255,.04) 80px),repeating-linear-gradient(90deg,transparent,transparent 79px,rgba(255,255,255,.04) 80px)}
+[data-theme="light"] .h-l1,.h-l2,.h-l4{color:#F0F0F0!important}
+[data-theme="light"] .hero-stack .romanized{color:var(--accent)!important}
+[data-theme="light"] nav{background:rgba(242,240,235,.95);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+[data-theme="light"] .mq-wrap{background:#1A1A1A;border-color:#333}
+[data-theme="light"] .mq-item{color:#FFE812}
+[data-theme="light"] .cm-cat-hdr{background:#DEDAD1;color:var(--accent)}
+[data-theme="light"] .tool-chip{background:#E4E1D8;color:var(--text-secondary);border-color:var(--border)}
+[data-theme="light"] .feat-card.previewable{background:linear-gradient(180deg,#EDE8D0 0%,var(--bg-card2) 60%)}
+[data-theme="light"] .paa-col{background:var(--bg-card)}
+[data-theme="light"] .proj-item{background:var(--bg-card);border-color:var(--border)}
+[data-theme="light"] .cm-h-panel{background:var(--bg-card)}
+[data-theme="light"] .cm-cat{background:var(--bg-card)}
+[data-theme="light"] .cm-h-node{color:var(--text-primary)}
+[data-theme="light"] .str-card{background:var(--bg-card);border-color:var(--border)}
+[data-theme="light"] .cm-timeline-axis{background:linear-gradient(90deg,transparent,rgba(0,0,0,.2) 6%,rgba(0,0,0,.3) 50%,rgba(0,0,0,.2) 94%,transparent)}
+[data-theme="light"] .cm-year-tick{background:rgba(0,0,0,.3)}
+[data-theme="light"] .cm-h-dot{border-color:rgba(0,0,0,.3);background:var(--bg-card2)}
+[data-theme="light"] .kpi-section{background:var(--bg-alt)}
+[data-theme="light"] .kpi-item+.kpi-item{border-left-color:var(--border)}
+[data-theme="light"] .essay-section{background:var(--bg)}
+[data-theme="light"] .water-text{-webkit-text-stroke:2px rgba(0,0,0,.5);color:transparent}
+[data-theme="light"] .water-text::before,.water-text::after{filter:invert(1)}
+[data-theme="light"] .c-icon{background:var(--bg-card);border-color:var(--border)}
+[data-theme="light"] .preview-stage{background:transparent}
+[data-theme="light"] #chatWidget .chat-win{background:var(--bg-card);border-color:var(--border)}
+[data-theme="light"] .chat-hdr{border-bottom-color:var(--border)}
+[data-theme="light"] .chat-msg.bot{background:var(--bg-card2);color:var(--text-primary)}
+[data-theme="light"] .chat-input-row{border-top-color:var(--border)}
+[data-theme="light"] .chat-input-row input{background:var(--bg-card2);color:var(--text-primary);border-color:var(--border)}
+[data-theme="light"] .chat-btn-toggle{background:var(--accent)}
+[data-theme="light"] .chat-sug{color:var(--text-secondary);border-color:var(--border)}
+[data-theme="light"] footer{background:var(--bg-alt);border-top-color:var(--border)}
+[data-theme="light"] .proj-co-role{background:var(--bg-card2);border-color:var(--border)}
+[data-theme="light"] .prob-row::before{background:rgba(192,65,61,.15)}
+[data-theme="light"] .paa-lbl.prob{background:rgba(192,65,61,.1);border-color:rgba(192,65,61,.35)}
+[data-theme="light"] .paa-lbl.act{background:rgba(122,98,0,.1);border-color:rgba(122,98,0,.4)}
+[data-theme="light"] .paa-lbl.ach{background:rgba(58,148,71,.1);border-color:rgba(58,148,71,.35)}
+[data-theme="light"] .act-block-icon{background:rgba(122,98,0,.08);border-color:rgba(122,98,0,.2)}
+[data-theme="light"] .act-block-icon svg{stroke:var(--accent)}
+[data-theme="light"] section{border-top-color:var(--border)}
+[data-theme="light"] .proj-hdr{border-bottom-color:var(--border)}
+[data-theme="light"] .exh-card{background:var(--bg-card)}
+[data-theme="light"] .exh-logo{border-bottom-color:var(--border)}
+[data-theme="light"] .cm-flow-step{background:var(--bg-card2);border-color:var(--border)}
+[data-theme="light"] .cm-flow-arr{color:var(--border2)}
+
+/* ── NAV ACTION BUTTONS ── */
+.nav-actions{display:flex;align-items:center;gap:.6rem;margin-left:2rem}
+.nav-icon-btn{background:none;border:1px solid var(--border2);color:var(--text-secondary);font-family:inherit;font-size:.75rem;font-weight:800;letter-spacing:.1em;padding:.38rem .7rem;cursor:pointer;transition:all .2s;border-radius:2px;line-height:1}
+.nav-icon-btn:hover{border-color:var(--accent);color:var(--accent)}
+.nav-icon-btn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;display:block}
+@media(max-width:900px){.nav-actions{margin-left:.8rem;gap:.4rem}.nav-icon-btn{padding:.32rem .55rem;font-size:.7rem}}
+
+/* ── KO/EN TEXT TOGGLE ── */
+html:not(.lang-en) .en-only{display:none!important}
+html.lang-en .ko-only{display:none!important}
+
+/* ── KPI SECTION ── */
+.kpi-section{background:var(--bg-alt);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:4rem 4rem}
+.kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.kpi-item{padding:2.5rem 2rem;position:relative;text-align:center;transition:background .3s}
+.kpi-item:hover{background:rgba(255,232,18,.04)}
+.kpi-item+.kpi-item{border-left:1px solid var(--border)}
+.kpi-num{font-size:clamp(3rem,5vw,4.8rem);font-weight:900;color:var(--text-primary);line-height:1;letter-spacing:-.04em;font-variant-numeric:tabular-nums;transition:text-shadow .5s}
+.kpi-item.counted .kpi-num{text-shadow:0 0 40px rgba(255,232,18,.35),0 0 80px rgba(255,232,18,.15)}
+.kpi-num .kpi-unit{font-size:.55em;font-weight:800;color:var(--accent);margin-left:.05em}
+.kpi-num .kpi-hash{color:var(--accent);font-size:.8em;margin-right:.05em}
+.kpi-sub{font-size:.78rem;font-weight:700;letter-spacing:.1em;color:var(--accent);text-transform:uppercase;margin-bottom:.6rem}
+.kpi-label{font-size:.9rem;color:var(--text-secondary);margin-top:.7rem;line-height:1.5;text-wrap:pretty}
+.kpi-bar{position:absolute;bottom:0;left:20%;right:20%;height:2px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform 1s cubic-bezier(.4,0,.2,1);opacity:.5}
+.kpi-item.counted .kpi-bar{transform:scaleX(1)}
+@media(max-width:900px){
+  .kpi-section{padding:2.5rem 1.5rem}
+  .kpi-grid{grid-template-columns:1fr 1fr;gap:0}
+  .kpi-item{padding:1.8rem 1rem}
+  .kpi-item:nth-child(3){border-left:none;border-top:1px solid var(--border)}
+  .kpi-item:nth-child(4){border-top:1px solid var(--border)}
+  .kpi-num{font-size:clamp(2.2rem,8vw,3.2rem)}
+}
+@media(max-width:480px){
+  .kpi-grid{grid-template-columns:1fr 1fr}
+}
+
+/* ── CHATBOT ── */
+#chatWidget{position:fixed;bottom:2rem;right:2rem;z-index:500;display:flex;flex-direction:column;align-items:flex-end;gap:.7rem}
+.chat-btn-toggle{width:52px;height:52px;border-radius:50%;background:var(--accent);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(255,232,18,.35);transition:transform .25s,box-shadow .25s}
+.chat-btn-toggle:hover{transform:scale(1.08);box-shadow:0 6px 28px rgba(255,232,18,.5)}
+.chat-btn-toggle svg{width:24px;height:24px;stroke:#0A0A0A;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.chat-win{width:320px;background:#161616;border:1px solid var(--border2);border-radius:8px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.5);display:none;flex-direction:column}
+.chat-win.open{display:flex}
+.chat-hdr{padding:.9rem 1.2rem;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:.7rem}
+.chat-hdr-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);animation:hfdot 2s ease-in-out infinite}
+.chat-hdr-name{font-size:.88rem;font-weight:800;color:var(--text-primary);letter-spacing:.02em}
+.chat-hdr-sub{font-size:.72rem;color:var(--text-secondary);margin-left:auto}
+.chat-msgs{height:280px;overflow-y:auto;padding:1rem;display:flex;flex-direction:column;gap:.6rem;scroll-behavior:smooth}
+.chat-msgs::-webkit-scrollbar{width:4px}
+.chat-msgs::-webkit-scrollbar-track{background:transparent}
+.chat-msgs::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px}
+.chat-msg{max-width:85%;padding:.55rem .85rem;border-radius:6px;font-size:.85rem;line-height:1.55;text-wrap:pretty}
+.chat-msg.bot{background:#1e1e1e;color:var(--text-primary);align-self:flex-start;border-bottom-left-radius:2px}
+.chat-msg.user{background:var(--accent);color:#0A0A0A;align-self:flex-end;font-weight:600;border-bottom-right-radius:2px}
+.chat-suggestions{display:flex;flex-wrap:wrap;gap:.4rem;padding:.5rem 1rem .8rem}
+.chat-sug{font-size:.75rem;border:1px solid var(--border2);color:var(--text-secondary);background:none;padding:.3rem .7rem;border-radius:999px;cursor:pointer;transition:all .2s;font-family:inherit}
+.chat-sug:hover{border-color:var(--accent);color:var(--accent)}
+.chat-input-row{display:flex;gap:.5rem;padding:.8rem 1rem;border-top:1px solid var(--border)}
+.chat-input-row input{flex:1;background:#111;border:1px solid var(--border2);color:var(--text-primary);font-family:inherit;font-size:.85rem;padding:.45rem .75rem;border-radius:3px;outline:none;transition:border-color .2s}
+.chat-input-row input:focus{border-color:var(--accent)}
+.chat-input-row button{background:var(--accent);border:none;color:#0A0A0A;font-weight:800;font-size:.8rem;padding:.45rem .8rem;border-radius:3px;cursor:pointer;transition:opacity .2s}
+.chat-input-row button:hover{opacity:.85}
+@media(max-width:900px){#chatWidget{bottom:1.2rem;right:1.2rem}.chat-win{width:calc(100vw - 2.4rem)}}
+
+/* ── ESSAY SECTION ── */
+.essay-section{border-top:1px solid var(--border);padding:8rem 4rem;max-width:100%}
+.essay-inner{max-width:720px;margin:0 auto}
+.essay-quote-wrap{border-left:3px solid var(--accent);padding-left:1.8rem;margin:3rem 0 3.5rem}
+.essay-quote{font-size:1.15rem;font-style:italic;color:var(--text-primary);line-height:1.8;font-weight:500}
+.essay-quote-attr{font-size:.85rem;color:var(--text-secondary);margin-top:.7rem;letter-spacing:.04em}
+.essay-body{font-size:1.05rem;line-height:2;color:var(--text-secondary);text-wrap:pretty}
+.essay-body p{margin-bottom:1.6rem}
+.essay-body strong{color:var(--text-primary);font-weight:700}
+.essay-body em{color:var(--accent);font-style:normal;font-weight:700}
+.essay-divider{display:flex;align-items:center;gap:1.2rem;margin:3rem 0;opacity:.4}
+.essay-divider::before,.essay-divider::after{content:'';flex:1;height:1px;background:var(--border2)}
+.essay-divider span{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text-secondary)}
+.essay-subtitle{font-size:1.25rem;font-weight:800;color:var(--text-primary);margin-bottom:1.5rem;letter-spacing:-.01em}
+.essay-highlight{background:rgba(255,232,18,.1);border:1px solid rgba(255,232,18,.25);border-radius:3px;padding:1.4rem 1.6rem;margin:2rem 0;font-size:.98rem;color:var(--text-secondary);line-height:1.85;text-wrap:pretty}
+.essay-highlight strong{color:var(--accent)}
+
+@media(max-width:900px){.essay-section{padding:5rem 1.5rem}.essay-inner{max-width:100%}.essay-quote{font-size:1rem}.essay-body{font-size:.95rem}}
+
 @media(max-width:1100px){
   .feat-grid{grid-template-columns:repeat(2,1fr)}
   .preview-shot.wide{width:100%}
 }
 @media(max-width:900px){
   html{cursor:auto}
+  body{font-size:16px}
   .c-dot,.c-ring{display:none}
   nav{padding:1rem 1.5rem}
   section{padding:5rem 1.5rem}
-  .hero{padding:0 1.5rem}
-  .about-grid{grid-template-columns:1fr;gap:2.5rem}
+  .hero{padding:0 1.5rem;min-height:100svh}
+  /* Hero text — reduce clamp mins for small screens */
+  .h-l1{font-size:clamp(2.6rem,10vw,4rem)}
+  .h-l2{font-size:clamp(1.6rem,6vw,2.6rem);gap:.8rem;margin-top:1rem}
+  .h-l2 .romanized{font-size:clamp(1rem,4.5vw,1.8rem)!important}
+  .h-l4{font-size:.85rem;letter-spacing:.1em;margin-top:1rem}
+  /* Section headings */
+  .sec-display{font-size:clamp(1.6rem,6vw,2.6rem);margin-bottom:2.5rem}
+  /* About */
+  .about-grid{grid-template-columns:1fr;gap:2rem}
+  .about-prose{font-size:.95rem}
+  .str-grid{grid-template-columns:1fr 1fr}
+  .str-card{padding:1.2rem 1rem}
+  /* Career map */
   .cm-h-bar{grid-template-columns:1fr;gap:.8rem;padding-top:1rem}
   .cm-h-bar::before{display:none}
   .cm-h-node{flex-direction:row;justify-content:flex-start;gap:1rem;padding:.7rem 1rem;border:1px solid var(--border);border-radius:4px;background:var(--bg-card)}
   .cm-h-date{height:auto;margin:0}
   .cm-h-co,.cm-h-role{margin:0;text-align:left}
+  .cm-h-co{font-size:.95rem}
   .cm-h-panel{margin-top:1.5rem}
-  .cm-h-panel-inner{padding:1.5rem}
-  .cm-cats,.cm-2cols{grid-template-columns:1fr}
-  .proj-tab-disc{width:110px;height:110px;font-size:.95rem}
+  .cm-h-panel-inner{padding:1.2rem 1rem}
+  .cm-cats{grid-template-columns:1fr 1fr}
+  .cm-cats.cols-4{grid-template-columns:1fr 1fr}
+  .cm-2cols{grid-template-columns:1fr}
+  .cm-h-summary{font-size:.95rem}
+  /* Projects */
+  .proj-tab-disc{width:90px;height:90px;font-size:.82rem}
+  .proj-tab-wrap{gap:.8rem}
+  .proj-hdr{padding:1rem 1.2rem;gap:.7rem}
+  .proj-title{font-size:1.05rem}
+  .proj-body{padding:1.2rem}
+  .proj-co-name{font-size:1.4rem}
   .paa{grid-template-columns:1fr;gap:.7rem}
-  .feat-grid{grid-template-columns:1fr}
+  .paa-col{padding:1.1rem 1rem}
+  .paa-keyword{font-size:1.35rem}
+  .paa-keyword.ach.kpi{font-size:2.4rem}
+  .feat-grid{grid-template-columns:1fr 1fr}
   .act-blocks.cols-2{grid-template-columns:1fr}
   .preview-cap{position:static;transform:none!important;max-width:none;margin-top:.6rem}
-  .contact-icons{gap:2rem}
+  /* Contact */
+  .contact-head{font-size:clamp(1.6rem,5.5vw,2.6rem);margin-bottom:2.5rem}
+  .contact-icons{gap:1.5rem}
+}
+@media(max-width:480px){
+  .str-grid{grid-template-columns:1fr}
+  .cm-cats,.cm-cats.cols-4{grid-template-columns:1fr}
+  .feat-grid{grid-template-columns:1fr}
+  .proj-tab-disc{width:76px;height:76px;font-size:.75rem}
+  .proj-tab-wrap{gap:.6rem}
+  .h-l1{font-size:clamp(2.2rem,9vw,3rem)}
+  .contact-icons{flex-direction:column;align-items:center;gap:1.2rem}
 }
 </style>
 </head>
@@ -426,20 +616,76 @@ footer p{font-size:.85rem;color:var(--text-secondary);letter-spacing:.08em}
 <nav>
   <a class="n-logo" href="#">YEJI KIM ✦ HR</a>
   <div class="n-links">
-    <a href="#about">소개</a>
-    <a href="#careermap">커리어맵</a>
-    <a href="#projects">프로젝트</a>
-    <a href="#contact">연락</a>
+    <a href="#about"><span class="ko-only">소개</span><span class="en-only">About</span></a>
+    <a href="#careermap"><span class="ko-only">커리어맵</span><span class="en-only">Career</span></a>
+    <a href="#projects"><span class="ko-only">프로젝트</span><span class="en-only">Projects</span></a>
+    <a href="#contact"><span class="ko-only">연락</span><span class="en-only">Contact</span></a>
+  </div>
+  <div class="nav-actions">
+    <button class="nav-icon-btn" id="langBtn" aria-label="언어 전환" title="Switch Language">KO</button>
+    <button class="nav-icon-btn" id="themeBtn" aria-label="테마 전환" title="Toggle Theme">
+      <svg id="themeIcon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
   </div>
 </nav>
 
 <!-- ═══ HERO ═══ -->
 <section class="hero" id="hero">
   <div class="hero-grid"></div>
+  <div class="hero-art" aria-hidden="true">
+    <svg class="hero-rings" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg" fill="none">
+      <!-- Outer orbital rings -->
+      <circle cx="700" cy="400" r="680" stroke="rgba(255,232,18,0.05)" stroke-width="0.8"/>
+      <circle cx="700" cy="400" r="560" stroke="rgba(255,232,18,0.07)" stroke-width="0.8"/>
+      <circle cx="700" cy="400" r="440" stroke="rgba(255,232,18,0.09)" stroke-width="0.8"/>
+      <circle cx="700" cy="400" r="330" stroke="rgba(255,232,18,0.12)" stroke-width="1"/>
+      <circle cx="700" cy="400" r="230" stroke="rgba(255,232,18,0.16)" stroke-width="0.8"/>
+      <circle cx="700" cy="400" r="140" stroke="rgba(255,232,18,0.22)" stroke-width="0.7"/>
+      <circle cx="700" cy="400" r="70" stroke="rgba(255,232,18,0.32)" stroke-width="0.5"/>
+      <!-- Orbit path indicators -->
+      <ellipse cx="700" cy="400" rx="440" ry="120" stroke="rgba(255,232,18,0.04)" stroke-width="0.5" transform="rotate(-25 700 400)"/>
+      <ellipse cx="700" cy="400" rx="330" ry="90" stroke="rgba(255,232,18,0.05)" stroke-width="0.5" transform="rotate(15 700 400)"/>
+      <!-- Cross lines -->
+      <line x1="700" y1="0" x2="700" y2="800" stroke="rgba(255,232,18,0.03)" stroke-width="0.5"/>
+      <line x1="300" y1="0" x2="700" y2="800" stroke="rgba(255,232,18,0.025)" stroke-width="0.4"/>
+      <!-- Stars/particles in SVG -->
+      <circle cx="80" cy="120" r="1.5" fill="rgba(255,255,255,0.5)"/>
+      <circle cx="200" cy="60" r="1" fill="rgba(255,255,255,0.4)"/>
+      <circle cx="320" cy="700" r="1.2" fill="rgba(255,255,255,0.45)"/>
+      <circle cx="150" cy="450" r="0.8" fill="rgba(255,255,255,0.35)"/>
+      <circle cx="50" cy="300" r="1.5" fill="rgba(255,232,18,0.6)"/>
+      <circle cx="180" cy="600" r="1" fill="rgba(255,232,18,0.4)"/>
+      <circle cx="280" cy="180" r="0.8" fill="rgba(255,232,18,0.5)"/>
+    </svg>
+    <svg class="hero-rings2" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg" fill="none">
+      <circle cx="300" cy="300" r="260" stroke="rgba(255,232,18,0.06)" stroke-width="0.6" stroke-dasharray="4 8"/>
+      <circle cx="300" cy="300" r="180" stroke="rgba(255,232,18,0.08)" stroke-width="0.6" stroke-dasharray="3 12"/>
+      <circle cx="300" cy="300" r="100" stroke="rgba(255,232,18,0.12)" stroke-width="0.5" stroke-dasharray="2 8"/>
+    </svg>
+    <div class="hero-glow"></div>
+    <div class="hero-glow2"></div>
+    <div class="hero-dot-field">
+      <span class="h-fdot" style="width:4px;height:4px;top:22%;left:62%;animation-delay:0s"></span>
+      <span class="h-fdot" style="width:2.5px;height:2.5px;top:68%;left:38%;animation-delay:1.4s"></span>
+      <span class="h-fdot" style="width:3px;height:3px;top:78%;left:72%;animation-delay:0.8s"></span>
+      <span class="h-fdot" style="width:2px;height:2px;top:35%;left:88%;animation-delay:2.2s"></span>
+      <span class="h-fdot" style="width:4px;height:4px;top:14%;left:78%;animation-delay:3s"></span>
+      <span class="h-fdot" style="width:2px;height:2px;top:55%;left:15%;animation-delay:1.8s"></span>
+      <span class="h-fdot" style="width:3px;height:3px;top:85%;left:55%;animation-delay:4s"></span>
+      <span class="hero-star" style="width:2px;height:2px;top:10%;left:30%;animation-delay:0.5s"></span>
+      <span class="hero-star" style="width:1.5px;height:1.5px;top:40%;left:20%;animation-delay:1.2s"></span>
+      <span class="hero-star" style="width:1px;height:1px;top:70%;left:45%;animation-delay:2.5s"></span>
+      <span class="hero-star" style="width:2px;height:2px;top:25%;left:55%;animation-delay:3.5s"></span>
+      <span class="hero-star" style="width:1.5px;height:1.5px;top:60%;left:90%;animation-delay:0.9s"></span>
+    </div>
+  </div>
   <div class="hero-stack">
-    <div class="h-line h-l1"><span class="h-word">'<span class="em">HR</span>'에 '<span class="em">진심</span>'<span class="em dot">.</span></span></div>
-    <div class="h-line h-l2"><span class="h-word">김예지&nbsp;<span class="romanized" style="font-size: 60px">YEJI&nbsp;KIM</span></span></div>
-    <div class="h-line h-l4"><span class="h-word"> 2 0 0 1 . 0 2 . 1 4   (만 25세)</span></div>
+    <div class="h-line h-l1">
+      <span class="h-word ko-only"><span class="em">HR</span>에 <span class="em">진심</span><span class="em dot">.</span></span>
+      <span class="h-word en-only"><span class="em">Genuine</span> about <span class="em">HR</span><span class="em dot">.</span></span>
+    </div>
+    <div class="h-line h-l2"><span class="h-word">김예지&nbsp;<span class="romanized" style="font-size:60px">YEJI&nbsp;KIM</span></span></div>
+    <div class="h-line h-l4"><span class="h-word">2001.02.14<span class="ko-only">&nbsp;(만 25세)</span><span class="en-only">&nbsp;(Age 25)</span></span></div>
   </div>
 </section>
 
@@ -468,7 +714,7 @@ footer p{font-size:.85rem;color:var(--text-secondary);letter-spacing:.08em}
 <!-- ═══ 01 ABOUT ═══ -->
 <section id="about">
   <p class="sec-label">01 — About</p>
-  <h2 class="sec-display">"비효율을 방치하지 않습니다."</h2>
+  <h2 class="sec-display"><span class="ko-only">"비효율을 방치하지 않습니다."</span><span class="en-only">"I Don't Let Inefficiency Slide."</span></h2>
   <div class="about-grid">
     <div class="about-prose">
       <p>3개 회사에서 <strong>채용 및 인력 운영·HR 데이터 관리·프로세스 개선</strong>을 수행하며</p>
@@ -483,36 +729,62 @@ footer p{font-size:.85rem;color:var(--text-secondary);letter-spacing:.08em}
         <div class="str-card">
           <div class="str-icon">🔧</div>
           <div class="str-title">HR 운영 올라운더</div>
-          <div class="str-desc" style="opacity: 0.7">헤드헌팅·채용·글로벌 인력관리·보상·비용까지.</div>
-          <div class="str-desc-sub">HR 운영 실무 전반을 직접 수행한 경험</div>
+          <div class="str-desc" style="opacity:0.7">헤드헌팅·채용·글로벌 인력관리·보상·비용까지.</div>
+          <div class="str-desc-sub" style="opacity:1">HR 운영 실무 전반을 직접 수행한 경험</div>
         </div>
         <div class="str-card">
           <div class="str-icon">📊</div>
           <div class="str-title">데이터 기반 HR</div>
-          <div class="str-desc">연차 사용률, 프로젝트 관리, 인센티브 계산, KPI 관리까지.</div>
-          <div class="str-desc-sub">HR 데이터를 가공하고 관리한 경험</div>
+          <div class="str-desc" style="opacity:0.7">연차 사용률, 프로젝트 관리, 인센티브 계산, KPI 관리까지.</div>
+          <div class="str-desc-sub" style="opacity:1">HR 데이터를 가공하고 관리한 경험</div>
         </div>
         <div class="str-card">
           <div class="str-icon">🤖</div>
           <div class="str-title">AI 업무 자동화</div>
-          <div class="str-desc">Claude Sonnet을 활용한 AI 대시보드 기획·개발까지.</div>
-          <div class="str-desc-sub">반복 업무를 AI로 자동화해 실무에 적용한 경험</div>
+          <div class="str-desc" style="opacity:0.7">Claude Sonnet을 활용한 AI 대시보드 기획·개발까지.</div>
+          <div class="str-desc-sub" style="opacity:1">반복 업무를 AI로 자동화해 실무에 적용한 경험</div>
         </div>
         <div class="str-card">
           <div class="str-icon">🌍</div>
           <div class="str-title">글로벌 HR</div>
-          <div class="str-desc">글로벌 온보딩, 외국인 임직원 비자 행정·금융 가이드까지.</div>
-          <div class="str-desc-sub">글로벌 인력 운영을 직접 지원한 경험</div>
+          <div class="str-desc" style="opacity:0.7">글로벌 온보딩, 외국인 임직원 비자 행정·금융 가이드까지.</div>
+          <div class="str-desc-sub" style="opacity:1">글로벌 인력 운영을 직접 지원한 경험</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- ═══ KPI BAR ═══ -->
+<div class="kpi-section">
+  <div class="kpi-grid">
+    <div class="kpi-item">
+      <div class="kpi-sub"><span class="ko-only">개선 제안</span><span class="en-only">Proposals</span></div>
+      <div class="kpi-num" data-count="83"><span class="kpi-val">0</span><span class="kpi-unit">%</span></div><div class="kpi-bar"></div>
+      <div class="kpi-label"><span class="ko-only">시스템 개선사항 실제 반영률</span><span class="en-only">System improvement adoption rate</span></div>
+    </div>
+    <div class="kpi-item">
+      <div class="kpi-sub"><span class="ko-only">경험 기업</span><span class="en-only">Companies</span></div>
+      <div class="kpi-num" data-count="3"><span class="kpi-val">0</span></div><div class="kpi-bar"></div>
+      <div class="kpi-label"><span class="ko-only">직접 HR 실무를 수행한 기업 수</span><span class="en-only">Companies with hands-on HR experience</span></div>
+    </div>
+    <div class="kpi-item">
+      <div class="kpi-sub"><span class="ko-only">팀 내 성과</span><span class="en-only">Team Rank</span></div>
+      <div class="kpi-num"><span class="kpi-hash">#</span><span class="kpi-val" data-count="1">0</span></div><div class="kpi-bar"></div>
+      <div class="kpi-label"><span class="ko-only">맨파워코리아 KPI 달성 팀 내 1위</span><span class="en-only">Top KPI achiever at ManpowerGroup</span></div>
+    </div>
+    <div class="kpi-item">
+      <div class="kpi-sub"><span class="ko-only">글로벌 전시</span><span class="en-only">Global Expos</span></div>
+      <div class="kpi-num" data-count="3"><span class="kpi-val">0</span></div><div class="kpi-bar"></div>
+      <div class="kpi-label"><span class="ko-only">해외전시 참가 지원 (CES·SCEWC·ACE)</span><span class="en-only">Global exhibitions supported (CES·SCEWC·ACE)</span></div>
+    </div>
+  </div>
+</div>
+
 <!-- ═══ 02 CAREER MAP ═══ -->
 <section id="careermap">
   <p class="sec-label">02 — Career Map</p>
-  <h2 class="sec-display">커리어 타임라인</h2>
+  <h2 class="sec-display"><span class="ko-only">커리어 타임라인</span><span class="en-only">Career Timeline</span></h2>
 
   <div class="cm-h-wrap">
     <div class="cm-timeline">
@@ -526,39 +798,40 @@ footer p{font-size:.85rem;color:var(--text-secondary);letter-spacing:.08em}
     <div class="cm-h-bar" id="cmBar">
       <button class="cm-h-node" data-key="khu">
         <div class="cm-h-dot"></div>
-        <div class="cm-h-co">경희대학교(서울)</div>
-        <div class="cm-h-role">경영학과 학사</div>
+        <div class="cm-h-co ko-only">경희대학교(서울)</div><div class="cm-h-co en-only">Kyung Hee University</div>
+        <div class="cm-h-role ko-only">경영학과 학사</div><div class="cm-h-role en-only">B.A. Business Administration</div>
         <div class="cm-h-date">2020.03 — 2024.08</div>
       </button>
       <button class="cm-h-node" data-key="manpower">
         <div class="cm-h-dot"></div>
-        <div class="cm-h-co">맨파워코리아</div>
-        <div class="cm-h-role">IT BPO팀 채용 컨설턴트 인턴</div>
+        <div class="cm-h-co ko-only">맨파워코리아</div><div class="cm-h-co en-only">ManpowerGroup Korea</div>
+        <div class="cm-h-role ko-only">IT BPO팀 채용 컨설턴트 인턴</div><div class="cm-h-role en-only">Recruitment Consultant Intern</div>
         <div class="cm-h-date">2022.04 — 2022.07</div>
       </button>
       <button class="cm-h-node" data-key="cj">
         <div class="cm-h-dot"></div>
-        <div class="cm-h-co">CJ제일제당</div>
-        <div class="cm-h-role">R&amp;D 인사팀 인턴사원</div>
+        <div class="cm-h-co ko-only">CJ제일제당</div><div class="cm-h-co en-only">CJ CheilJedang</div>
+        <div class="cm-h-role ko-only">R&amp;D 인사팀 인턴사원</div><div class="cm-h-role en-only">HR Team Intern (R&amp;D)</div>
         <div class="cm-h-date">2023.01 — 2023.03</div>
       </button>
       <button class="cm-h-node" data-key="afro">
         <div class="cm-h-dot"></div>
         <div class="cm-h-co">Global Afro</div>
-        <div class="cm-h-role">해외전시 서포터</div>
+        <div class="cm-h-role ko-only">해외전시 서포터</div><div class="cm-h-role en-only">Global Exhibition Supporter</div>
         <div class="cm-h-date">2023.03 — 2024.01</div>
       </button>
       <button class="cm-h-node" data-key="naver">
         <div class="cm-h-dot"></div>
         <div class="cm-h-co">NAVER</div>
-        <div class="cm-h-role">Recruiting Operation팀 사원(계약)</div>
-        <div class="cm-h-date">2024.12 — 현재</div>
+        <div class="cm-h-role ko-only">Recruiting Operation팀 사원(계약)</div><div class="cm-h-role en-only">Recruiting Operations (Contract)</div>
+        <div class="cm-h-date ko-only">2024.12 — 현재</div><div class="cm-h-date en-only">2024.12 — Present</div>
       </button>
     </div>
 
     <div class="cm-h-panel" id="cmPanel">
       <div class="cm-h-panel-inner">
-        <div class="cm-empty">✨ <span style="color:rgb(240,226,150)">반딧불</span>을 클릭하면 경력 상세가 펼쳐집니다.</div>
+        <div class="cm-empty ko-only">✨ <span style="color:rgb(240,226,150)">반딧불</span>을 클릭하면 경력 상세가 펼쳐집니다.</div>
+        <div class="cm-empty en-only">✨ Click a <span style="color:rgb(240,226,150)">firefly dot</span> to explore career details.</div>
       </div>
     </div>
   </div>
@@ -566,61 +839,60 @@ footer p{font-size:.85rem;color:var(--text-secondary);letter-spacing:.08em}
   <!-- Hidden source data -->
   <div style="display:none" id="cmData">
     <div data-key="khu">
-      <span class="cm-h-tag">경영학과 졸업</span>
+      <span class="cm-h-tag ko-only">경영학과 졸업</span><span class="cm-h-tag en-only">Business Administration Graduate</span>
       <div class="cm-cats cols-4">
         <div class="cm-cat">
-          <div class="cm-cat-hdr">자격증</div>
+          <div class="cm-cat-hdr ko-only">자격증</div><div class="cm-cat-hdr en-only">Certifications</div>
           <div class="cm-cat-body">
             <div class="cm-cat-item">OPIc(영어) IH (2024.08)</div>
-            <div class="cm-cat-item">운전면허 2종 보통 (2021.10)</div>
+            <div class="cm-cat-item ko-only">운전면허 2종 보통 (2021.10)</div><div class="cm-cat-item en-only">Driver's License Type 2 (2021.10)</div>
           </div>
         </div>
         <div class="cm-cat">
-          <div class="cm-cat-hdr">교육</div>
+          <div class="cm-cat-hdr ko-only">교육</div><div class="cm-cat-hdr en-only">Training</div>
           <div class="cm-cat-body">
-            <div class="cm-cat-item">디지털 리터러시
-— MS Excel 실습 과정 (오픈랩, 2023.07)</div>
-            <div class="cm-cat-item">디지털 리터러시
-— Tableau 실습 과정 (오픈랩, 2022.08)</div>
+            <div class="cm-cat-item ko-only">MS Excel 실습 과정 (오픈랩, 2023.07)</div><div class="cm-cat-item en-only">MS Excel Practice Course (OpenLab, 2023.07)</div>
+            <div class="cm-cat-item ko-only">Tableau 실습 과정 (오픈랩, 2022.08)</div><div class="cm-cat-item en-only">Tableau Practice Course (OpenLab, 2022.08)</div>
           </div>
         </div>
         <div class="cm-cat">
-          <div class="cm-cat-hdr">교내활동</div>
+          <div class="cm-cat-hdr ko-only">교내활동</div><div class="cm-cat-hdr en-only">Campus Activities</div>
           <div class="cm-cat-body">
-            <div class="cm-cat-item">경영전략학회 Top-Zone</div>
-            <div class="cm-cat-item">중앙밴드동아리 칸타빌레 (임원진)</div>
-            <div class="cm-cat-item">국제교류동아리 IFCC</div>
-            <div class="cm-cat-item">독서토론동아리 BooKHU</div>
+            <div class="cm-cat-item ko-only">경영전략학회 Top-Zone</div><div class="cm-cat-item en-only">Business Strategy Society Top-Zone</div>
+            <div class="cm-cat-item ko-only">중앙밴드동아리 칸타빌레 (임원진)</div><div class="cm-cat-item en-only">Central Band Club Cantabile (Officer)</div>
+            <div class="cm-cat-item ko-only">국제교류동아리 IFCC</div><div class="cm-cat-item en-only">International Exchange Club IFCC</div>
+            <div class="cm-cat-item ko-only">독서토론동아리 BooKHU</div><div class="cm-cat-item en-only">Book Discussion Club BooKHU</div>
           </div>
         </div>
         <div class="cm-cat">
-          <div class="cm-cat-hdr">교외활동</div>
+          <div class="cm-cat-hdr ko-only">교외활동</div><div class="cm-cat-hdr en-only">Extracurricular</div>
           <div class="cm-cat-body">
-            <div class="cm-cat-item">경기도청청년온라인해외봉사단 에티오피아팀</div>
-            <div class="cm-cat-item">크라우드펀딩 프로젝트 팀장 <a class="cm-link" href="https://tumblbug.com/deunhae" target="_blank" rel="noopener" style="height: 20.8732px">(프로젝트 바로가기)</a></div>
-            <div class="cm-cat-item">대한전기협회 탄소중립 서포터즈</div>
-            <div class="cm-cat-item">하와이 국외보훈사적지탐방단
-(KBS ‘역사를 걷다, 미래를 다지다’ 출연)</div>
+            <div class="cm-cat-item ko-only">경기도청년해외봉사단 에티오피아팀</div><div class="cm-cat-item en-only">Gyeonggi Youth Overseas Volunteers — Ethiopia Team</div>
+            <div class="cm-cat-item ko-only">크라우드펀딩 프로젝트 팀장 <a class="cm-link" href="https://tumblbug.com/deunhae" target="_blank" rel="noopener">(프로젝트 바로가기)</a></div><div class="cm-cat-item en-only">Crowdfunding Project Leader <a class="cm-link" href="https://tumblbug.com/deunhae" target="_blank" rel="noopener">(View Project)</a></div>
+            <div class="cm-cat-item ko-only">대한전기협회 탄소중립 서포터즈</div><div class="cm-cat-item en-only">Korea Electric Association Carbon Neutral Supporters</div>
+            <div class="cm-cat-item ko-only">하와이 국외보훈사적지탐방단<br>(KBS '역사를 걷다, 미래를 다지다' 출연)</div><div class="cm-cat-item en-only">Hawaii Overseas Patriots Historic Sites Expedition<br>(Featured on KBS 'Walking History, Building the Future')</div>
           </div>
         </div>
       </div>
     </div>
 
     <div data-key="afro">
-      <span class="cm-h-tag">글로벌 B2B 비즈니스 지원</span>
-      <div class="cm-h-summary">국내 테크 스타트업의 해외 전시 참가를 지원하며 B2B 미팅·현장 통역·콜드메일링을 담당했습니다.</div>
+      <span class="cm-h-tag ko-only">글로벌 B2B 비즈니스 지원</span><span class="cm-h-tag en-only">Global B2B Business Support</span>
+      <div class="cm-h-summary ko-only">국내 테크 스타트업의 해외 전시 참가를 지원하며 B2B 미팅·현장 통역·콜드메일링을 담당했습니다.</div>
+      <div class="cm-h-summary en-only">Supported Korean tech startups in overseas exhibitions, handling B2B meetings, on-site interpretation, and cold email outreach.</div>
       <div class="exh-grid">
         <div class="exh-card">
           <div class="exh-logo">
             <div class="exh-logo-mark ces">CES</div>
             <div>
               <div class="exh-name">CES 2024</div>
-              <div class="exh-meta">미국 · 라스베거스</div>
+              <div class="exh-meta ko-only">미국 · 라스베거스</div><div class="exh-meta en-only">USA · Las Vegas</div>
             </div>
           </div>
-          <div class="exh-partners-lbl">협업 스타트업</div>
+          <div class="exh-partners-lbl ko-only">협업 스타트업</div><div class="exh-partners-lbl en-only">Partner Startups</div>
           <div class="exh-partners">
-            <div class="exh-partner"><a href="https://hplab.co.kr/kor/sub1_1.php" target="_blank" rel="noopener">휴먼퍼포먼스랩</a> (AI 맞춤형 인솔 제조업)</div>
+            <div class="exh-partner ko-only"><a href="https://hplab.co.kr/kor/sub1_1.php" target="_blank" rel="noopener">휴먼퍼포먼스랩</a> (AI 맞춤형 인솔 제조업)</div>
+            <div class="exh-partner en-only"><a href="https://hplab.co.kr/kor/sub1_1.php" target="_blank" rel="noopener">HumanPerformanceLab</a> (AI custom insole manufacturer)</div>
           </div>
         </div>
         <div class="exh-card">
@@ -628,13 +900,13 @@ footer p{font-size:.85rem;color:var(--text-secondary);letter-spacing:.08em}
             <div class="exh-logo-mark scewc">SCEWC</div>
             <div>
               <div class="exh-name">SCEWC 2023</div>
-              <div class="exh-meta">스페인 · 바르셀로나</div>
+              <div class="exh-meta ko-only">스페인 · 바르셀로나</div><div class="exh-meta en-only">Spain · Barcelona</div>
             </div>
           </div>
-          <div class="exh-partners-lbl">협업 스타트업</div>
+          <div class="exh-partners-lbl ko-only">협업 스타트업</div><div class="exh-partners-lbl en-only">Partner Startups</div>
           <div class="exh-partners">
-            <div class="exh-partner"><a href="https://ninewatt.com/ko" target="_blank" rel="noopener">나인와트</a> (건물 에너지 효율화 솔루션 기업)</div>
-
+            <div class="exh-partner ko-only"><a href="https://ninewatt.com/ko" target="_blank" rel="noopener">나인와트</a> (건물 에너지 효율화 솔루션 기업)</div>
+            <div class="exh-partner en-only"><a href="https://ninewatt.com/ko" target="_blank" rel="noopener">Ninewatt</a> (Building energy efficiency solution company)</div>
           </div>
         </div>
         <div class="exh-card">
@@ -642,117 +914,125 @@ footer p{font-size:.85rem;color:var(--text-secondary);letter-spacing:.08em}
             <div class="exh-logo-mark ace">ACE</div>
             <div>
               <div class="exh-name">ACE 2023</div>
-              <div class="exh-meta">캐나다 · 토론토</div>
+              <div class="exh-meta ko-only">캐나다 · 토론토</div><div class="exh-meta en-only">Canada · Toronto</div>
             </div>
           </div>
-          <div class="exh-partners-lbl">협업 스타트업</div>
+          <div class="exh-partners-lbl ko-only">협업 스타트업</div><div class="exh-partners-lbl en-only">Partner Startups</div>
           <div class="exh-partners">
-            <div class="exh-partner">일신종합환경 (친환경 수처리 기업)</div>
+            <div class="exh-partner ko-only">일신종합환경 (친환경 수처리 기업)</div>
+            <div class="exh-partner en-only">Ilshin General Environment (eco-friendly water treatment company)</div>
           </div>
         </div>
       </div>
       <ul class="cm-bullets">
-        <li>맞춤형 콜드이메일 전략으로 서포터 중 최고 회신율 달성</li>
-        <li>ACE 2023 캐나다 바이어 한국 본사 방문 비즈니스 미팅 성사</li>
+        <li class="ko-only">맞춤형 콜드이메일 전략으로 서포터 중 최고 회신율 달성</li>
+        <li class="en-only">Achieved the highest reply rate among all supporters with a personalized cold email strategy</li>
+        <li class="ko-only">ACE 2023 캐나다 바이어 한국 본사 방문 비즈니스 미팅 성사</li>
+        <li class="en-only">Arranged a Korean HQ visit business meeting with a Canadian buyer from ACE 2023</li>
       </ul>
     </div>
 
     <div data-key="manpower">
-      <span class="cm-h-tag">IT 인력 파견 &amp; 채용</span>
-      <div class="cm-h-summary">외국계 기업 IT 포지션 채용 · 후보자 발굴부터 고객사 송부까지 전 과정 수행</div>
-      <div style="font-size:.9rem;color:var(--text-secondary);margin-bottom:.6rem;font-weight:600">담당 업무</div>
+      <span class="cm-h-tag ko-only">IT 인력 파견 &amp; 채용</span><span class="cm-h-tag en-only">IT Staffing &amp; Recruitment</span>
+      <div class="cm-h-summary ko-only">외국계 기업 IT 포지션 채용 · 후보자 발굴부터 고객사 송부까지 전 과정 수행</div>
+      <div class="cm-h-summary en-only">Full-cycle IT recruitment for multinational companies — from candidate sourcing to client submission</div>
+      <div style="font-size:.9rem;color:var(--text-secondary);margin-bottom:.6rem;font-weight:600" class="ko-only">담당 업무</div>
+      <div style="font-size:.9rem;color:var(--text-secondary);margin-bottom:.6rem;font-weight:600" class="en-only">Workflow</div>
       <div class="cm-flow">
-        <div class="cm-flow-step">공고 포스팅</div>
+        <div class="cm-flow-step ko-only">공고 포스팅</div><div class="cm-flow-step en-only">Job Posting</div>
         <div class="cm-flow-arr">→</div>
-        <div class="cm-flow-step">이력서 스크리닝 + 포지션 제안</div>
+        <div class="cm-flow-step ko-only">이력서 스크리닝 + 포지션 제안</div><div class="cm-flow-step en-only">Resume Screening + Position Pitch</div>
         <div class="cm-flow-arr">→</div>
-        <div class="cm-flow-step">사전 인터뷰 진행</div>
+        <div class="cm-flow-step ko-only">사전 인터뷰 진행</div><div class="cm-flow-step en-only">Pre-Interview</div>
         <div class="cm-flow-arr">→</div>
-        <div class="cm-flow-step">Candidate Report 작성</div>
+        <div class="cm-flow-step ko-only">Candidate Report 작성</div><div class="cm-flow-step en-only">Candidate Report Writing</div>
         <div class="cm-flow-arr">→</div>
-        <div class="cm-flow-step">고객사 송부</div>
+        <div class="cm-flow-step ko-only">고객사 송부</div><div class="cm-flow-step en-only">Client Submission</div>
       </div>
       <div class="cm-2cols">
         <div class="cm-cat">
-          <div class="cm-cat-hdr">협력 고객사</div>
+          <div class="cm-cat-hdr ko-only">협력 고객사</div><div class="cm-cat-hdr en-only">Client Companies</div>
           <div class="cm-cat-body">
-            <div class="cm-cat-item">포르쉐코리아 · 티파니앤코</div>
-            <div class="cm-cat-item">지멘스코리아 · 한국3M 등</div>
-            <div class="cm-cat-item">외국계 기업 IT 특화 포지션</div>
+            <div class="cm-cat-item ko-only">포르쉐코리아 · 티파니앤코</div><div class="cm-cat-item en-only">Porsche Korea · Tiffany &amp; Co.</div>
+            <div class="cm-cat-item ko-only">지멘스코리아 · 한국3M 등</div><div class="cm-cat-item en-only">Siemens Korea · 3M Korea, etc.</div>
+            <div class="cm-cat-item ko-only">외국계 기업 IT 특화 포지션</div><div class="cm-cat-item en-only">IT-specialized roles at MNCs</div>
           </div>
         </div>
         <div class="cm-cat">
-          <div class="cm-cat-hdr">채용 KPI 관리</div>
+          <div class="cm-cat-hdr ko-only">채용 KPI 관리</div><div class="cm-cat-hdr en-only">Recruitment KPI Tracking</div>
           <div class="cm-cat-body">
-            <div class="cm-cat-item">파견 인원 수 정기 트래킹</div>
-            <div class="cm-cat-item">오퍼 수락률 Excel 관리</div>
-            <div class="cm-cat-item">주간·월간 KPI 업데이트</div>
+            <div class="cm-cat-item ko-only">파견 인원 수 정기 트래킹</div><div class="cm-cat-item en-only">Regular tracking of dispatched headcount</div>
+            <div class="cm-cat-item ko-only">오퍼 수락률 Excel 관리</div><div class="cm-cat-item en-only">Offer acceptance rate management (Excel)</div>
+            <div class="cm-cat-item ko-only">주간·월간 KPI 업데이트</div><div class="cm-cat-item en-only">Weekly &amp; monthly KPI updates</div>
           </div>
         </div>
       </div>
     </div>
 
     <div data-key="cj">
-      <span class="cm-h-tag">연구소 HRBP</span>
-      <div class="cm-h-summary">R&amp;D 연구소 인사팀에서 글로벌 HR · 데이터 관리 · 인력 운영 전반 수행</div>
+      <span class="cm-h-tag ko-only">연구소 HRBP</span><span class="cm-h-tag en-only">R&amp;D Lab HRBP</span>
+      <div class="cm-h-summary ko-only">R&amp;D 연구소 인사팀에서 글로벌 HR · 데이터 관리 · 인력 운영 전반 수행</div>
+      <div class="cm-h-summary en-only">Performed global HR, data management, and workforce operations at the R&amp;D lab HR team</div>
       <div class="cm-cats">
         <div class="cm-cat">
           <div class="cm-cat-hdr">GLOBAL HR</div>
           <div class="cm-cat-body">
-            <div class="cm-cat-item">글로벌 인턴십 운영</div>
-            <div class="cm-cat-item">외국인 입사자 비자 서류 마련</div>
-            <div class="cm-cat-item">해외대사관 컨택·납세증명서 교부</div>
-            <div class="cm-cat-item">비자 연장 처리 지원</div>
+            <div class="cm-cat-item ko-only">글로벌 인턴십 운영</div><div class="cm-cat-item en-only">Global internship program management</div>
+            <div class="cm-cat-item ko-only">외국인 입사자 비자 서류 마련</div><div class="cm-cat-item en-only">Visa documentation for foreign new hires</div>
+            <div class="cm-cat-item ko-only">해외대사관 컨택·납세증명서 교부</div><div class="cm-cat-item en-only">Embassy liaison &amp; tax certificate issuance</div>
+            <div class="cm-cat-item ko-only">비자 연장 처리 지원</div><div class="cm-cat-item en-only">Visa extension processing support</div>
           </div>
         </div>
         <div class="cm-cat">
-          <div class="cm-cat-hdr">HR 데이터 관리</div>
+          <div class="cm-cat-hdr ko-only">HR 데이터 관리</div><div class="cm-cat-hdr en-only">HR Data Management</div>
           <div class="cm-cat-body">
-            <div class="cm-cat-item">연차관리 파일 제작</div>
-            <div class="cm-cat-item">프로젝트 관리 파일</div>
-            <div class="cm-cat-item">조직별 직급분포 HR 보고서<br><span style="font-size:.85rem;color:var(--accent);padding-left:.8rem;display:block;margin-top:.2rem">→ 브로슈어로 제작되어 인력 운영 회의 자료로 활용</span></div>
-            <div class="cm-cat-item">발령관리 파일 (동명이인·휴복직자)</div>
+            <div class="cm-cat-item ko-only">연차관리 파일 제작</div><div class="cm-cat-item en-only">Annual leave management file creation</div>
+            <div class="cm-cat-item ko-only">프로젝트 관리 파일 제작</div><div class="cm-cat-item en-only">Project management file creation</div>
+            <div class="cm-cat-item ko-only">조직별 직급분포 보고서 제작<br><span style="font-size:.75rem;color:var(--accent);padding-left:.8rem;display:block;margin-top:.2rem">→ 브로슈어로 제작되어 인력 운영 회의 자료로 활용</span></div>
+            <div class="cm-cat-item en-only">Grade distribution report by org unit<br><span style="font-size:.75rem;color:var(--accent);padding-left:.8rem;display:block;margin-top:.2rem">→ Developed into a brochure used in workforce planning meetings</span></div>
+            <div class="cm-cat-item ko-only">발령관리 파일 제작 (동명이인·휴복직자)</div><div class="cm-cat-item en-only">Appointment management file (name duplicates, leave/return tracking)</div>
           </div>
         </div>
         <div class="cm-cat">
-          <div class="cm-cat-hdr">인력관리</div>
+          <div class="cm-cat-hdr ko-only">인력관리</div><div class="cm-cat-hdr en-only">Workforce Management</div>
           <div class="cm-cat-body">
-            <div class="cm-cat-item"><strong style="color:var(--text-primary);font-size:.92rem">발령</strong> 휴복직 운영·조직도 업데이트</div>
-            <div class="cm-cat-item"><strong style="color:var(--text-primary);font-size:.92rem">비용</strong> 교육비·급여계좌·사택·의료비</div>
-            <div class="cm-cat-item"><strong style="color:var(--text-primary);font-size:.92rem">보상</strong> 인센티브 자동화·바우처·선물</div>
-            <div class="cm-cat-item"><strong style="color:var(--text-primary);font-size:.92rem">채용</strong> Talent Map·오픈서칭 툴 관리</div>
+            <div class="cm-cat-item"><strong style="color:var(--text-primary);font-size:.92rem" class="ko-only">발령</strong><strong style="color:var(--text-primary);font-size:.92rem" class="en-only">Transfers</strong> <span class="ko-only">휴복직 운영·조직도 업데이트</span><span class="en-only">Leave/return operations &amp; org chart updates</span></div>
+            <div class="cm-cat-item"><strong style="color:var(--text-primary);font-size:.92rem" class="ko-only">비용</strong><strong style="color:var(--text-primary);font-size:.92rem" class="en-only">Expenses</strong> <span class="ko-only">교육비·급여계좌·사택·의료비</span><span class="en-only">Training fees, salary accounts, housing, medical</span></div>
+            <div class="cm-cat-item"><strong style="color:var(--text-primary);font-size:.92rem" class="ko-only">보상</strong><strong style="color:var(--text-primary);font-size:.92rem" class="en-only">Rewards</strong> <span class="ko-only">인센티브 자동화·바우처·선물</span><span class="en-only">Incentive automation, vouchers, gifts</span></div>
+            <div class="cm-cat-item"><strong style="color:var(--text-primary);font-size:.92rem" class="ko-only">채용</strong><strong style="color:var(--text-primary);font-size:.92rem" class="en-only">Recruiting</strong> <span class="ko-only">Talent Map·오픈서칭 툴 관리</span><span class="en-only">Talent Map &amp; open-sourcing tool management</span></div>
           </div>
         </div>
       </div>
     </div>
 
     <div data-key="naver">
-      <span class="cm-h-tag">채용 프로세스 운영 및 데이터 관리</span>
-      <div class="cm-h-summary">대규모 신입·경력 공채 · 추천채용 · 글로벌 인턴십 등 채용 전 과정 운영 및 개선</div>
+      <span class="cm-h-tag ko-only">채용 프로세스 운영 및 데이터 관리</span><span class="cm-h-tag en-only">Recruitment Operations &amp; Data Management</span>
+      <div class="cm-h-summary ko-only">대규모 신입·경력 공채 · 추천채용 · 글로벌 인턴십 등 채용 전 과정 운영 및 개선</div>
+      <div class="cm-h-summary en-only">End-to-end operations for large-scale new grad &amp; experienced hiring, referral recruitment, and global internships</div>
       <div class="cm-cats">
         <div class="cm-cat">
-          <div class="cm-cat-hdr">채용 운영</div>
+          <div class="cm-cat-hdr ko-only">채용 운영</div><div class="cm-cat-hdr en-only">Recruitment Ops</div>
           <div class="cm-cat-body">
-            <div class="cm-cat-item">대규모 신입·경력 공채</div>
-            <div class="cm-cat-item">추천채용 · 글로벌 인턴십</div>
-            <div class="cm-cat-item">산학협력 프로젝트</div>
+            <div class="cm-cat-item ko-only">대규모 신입·경력 공채</div><div class="cm-cat-item en-only">Large-scale new grad &amp; experienced hiring</div>
+            <div class="cm-cat-item ko-only">추천채용 · 글로벌 인턴십</div><div class="cm-cat-item en-only">Referral recruitment &amp; global internship</div>
+            <div class="cm-cat-item ko-only">산학협력 프로젝트</div><div class="cm-cat-item en-only">Industry-academia collaboration project</div>
             <div class="cm-cat-item">2026 NAVER AI CHALLENGE</div>
           </div>
         </div>
         <div class="cm-cat">
-          <div class="cm-cat-hdr">HR 데이터 관리</div>
+          <div class="cm-cat-hdr ko-only">HR 데이터 관리</div><div class="cm-cat-hdr en-only">HR Data Management</div>
           <div class="cm-cat-body">
-            <div class="cm-cat-item">지원자 마스터파일 구축</div>
-            <div class="cm-cat-item">지원이력·경로 통합 관리</div>
-            <div class="cm-cat-item">기업문화 적합도 검사 및 코딩테스트 데이터 관리</div>
+            <div class="cm-cat-item ko-only">지원자 마스터파일 구축</div><div class="cm-cat-item en-only">Applicant master file creation</div>
+            <div class="cm-cat-item ko-only">지원이력·경로 통합 관리</div><div class="cm-cat-item en-only">Integrated management of application history &amp; source</div>
+            <div class="cm-cat-item ko-only">기업문화 적합도 검사 및 코딩테스트 데이터 관리</div><div class="cm-cat-item en-only">Culture fit assessment &amp; coding test data management</div>
           </div>
         </div>
         <div class="cm-cat">
-          <div class="cm-cat-hdr">온보딩 &amp; 응대</div>
+          <div class="cm-cat-hdr ko-only">온보딩 &amp; 응대</div><div class="cm-cat-hdr en-only">Onboarding &amp; Support</div>
           <div class="cm-cat-body">
-            <div class="cm-cat-item">신규 입사자 발령 처리</div>
-            <div class="cm-cat-item">웰컴키트 제작·배부</div>
-            <div class="cm-cat-item">1:1 채용문의 응대</div>
+            <div class="cm-cat-item ko-only">신규 입사자 발령 처리</div><div class="cm-cat-item en-only">New hire appointment processing</div>
+            <div class="cm-cat-item ko-only">웰컴키트 제작·배부</div><div class="cm-cat-item en-only">Welcome kit creation &amp; distribution</div>
+            <div class="cm-cat-item ko-only">1:1 채용문의 응대</div><div class="cm-cat-item en-only">1:1 recruitment inquiry support</div>
           </div>
         </div>
       </div>
@@ -763,7 +1043,7 @@ footer p{font-size:.85rem;color:var(--text-secondary);letter-spacing:.08em}
 <!-- ═══ 03 PROJECT ═══ -->
 <section id="projects">
   <p class="sec-label">03 — Project</p>
-  <h2 class="sec-display">주요 프로젝트</h2>
+  <h2 class="sec-display"><span class="ko-only">주요 프로젝트</span><span class="en-only">Key Projects</span></h2>
 
   <!-- Company tabs -->
   <div class="proj-tab-wrap" id="projTabs">
@@ -772,11 +1052,11 @@ footer p{font-size:.85rem;color:var(--text-secondary);letter-spacing:.08em}
       <div class="proj-tab-meta">3 PROJECTS</div>
     </button>
     <button class="proj-tab" data-co="cj">
-      <div class="proj-tab-disc">CJ제일제당</div>
+      <div class="proj-tab-disc"><span class="ko-only">CJ제일제당</span><span class="en-only">CJ CheilJedang</span></div>
       <div class="proj-tab-meta">1 PROJECT</div>
     </button>
     <button class="proj-tab" data-co="manpower">
-      <div class="proj-tab-disc">맨파워<br>코리아</div>
+      <div class="proj-tab-disc"><span class="ko-only">맨파워<br>코리아</span><span class="en-only">ManpowerGroup<br>Korea</span></div>
       <div class="proj-tab-meta">1 PROJECT</div>
     </button>
   </div>
@@ -787,7 +1067,7 @@ footer p{font-size:.85rem;color:var(--text-secondary);letter-spacing:.08em}
     <div class="proj-company show" data-co="naver">
       <div class="proj-co-hdr">
         <div class="proj-co-name">NAVER</div>
-        <div class="proj-co-role">Recruiting Operation팀 · 사원(계약)</div>
+        <div class="proj-co-role"><span class="ko-only">Recruiting Operation팀 · 사원(계약)</span><span class="en-only">Recruiting Operations Team · Staff (Contract)</span></div>
       </div>
 
       <!-- #01 AI 대시보드 -->
@@ -812,7 +1092,7 @@ footer p{font-size:.85rem;color:var(--text-secondary);letter-spacing:.08em}
             <div class="paa-col">
               <span class="paa-lbl act">Action</span>
               <div class="paa-keyword act">생성형 AI 활용</div>
-              <div class="paa-text">Claude Sonnet 4.6 + ChatGPT 5.4를 활용해 채용 운영 AI 대시보드를 직접 기획·개발했습니다.</div>
+              <div class="paa-text">매일 그날의 업무를 리스트업하고, 뭘 먼저 할 지 고민하고,<br>캘린더를 띄우고, 공고별 히스토리를 검색하는 수고를 덜기 위해.<br>Claude 기반의 채용 운영 AI 대시보드를 직접 기획·개발하여 정기 회의에서 시연했습니다.</div>
               <div class="tools-row">
                 <span class="tool-chip">VS Code</span>
                 <span class="tool-chip">Node.js</span>
@@ -1014,7 +1294,7 @@ footer p{font-size:.85rem;color:var(--text-secondary);letter-spacing:.08em}
     <div class="proj-company" data-co="cj">
       <div class="proj-co-hdr">
         <div class="proj-co-name">CJ제일제당</div>
-        <div class="proj-co-role">R&amp;D 인사팀 · 인턴사원</div>
+        <div class="proj-co-role"><span class="ko-only">R&amp;D 인사팀 · 인턴사원</span><span class="en-only">HR Team Intern (R&amp;D Lab)</span></div>
       </div>
 
       <div class="proj-item">
@@ -1044,12 +1324,12 @@ footer p{font-size:.85rem;color:var(--text-secondary);letter-spacing:.08em}
                 <div class="act-block">
                   <div class="act-block-icon"><svg viewBox="0 0 24 24"><circle cx="9" cy="9" r="3"/><path d="M3 20c0-3 3-5 6-5s6 2 6 5"/><path d="M16 6l2 2 4-4"/></svg></div>
                   <div class="act-block-title">1:1 면담 자체 제안·진행</div>
-                  <div class="act-block-desc">글로벌 인턴 니즈 파악 → 매뉴얼 제작 기반 자료 확보</div>
+                  <div class="act-block-desc">글로벌 인턴 니즈 파악<br>→ 매뉴얼 제작 기반 자료 확보</div>
                 </div>
                 <div class="act-block">
                   <div class="act-block-icon"><svg viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="M9 13h6"/><path d="M9 17h4"/></svg></div>
                   <div class="act-block-title">비자 행정 지원</div>
-                  <div class="act-block-desc">해외대사관 컨택, 납세증명서 교부 요청 등 외국인 입사자 비자 서류 마련</div>
+                  <div class="act-block-desc">해외대사관 컨택, 납세증명서 교부 요청 등<br>외국인 입사자 비자 서류 마련</div>
                 </div>
                 <div class="act-block">
                   <div class="act-block-icon"><svg viewBox="0 0 24 24"><path d="M12 2v4"/><path d="M12 18v4"/><path d="M2 12h4"/><path d="M18 12h4"/><circle cx="12" cy="12" r="6"/></svg></div>
@@ -1072,7 +1352,7 @@ footer p{font-size:.85rem;color:var(--text-secondary);letter-spacing:.08em}
     <div class="proj-company" data-co="manpower">
       <div class="proj-co-hdr">
         <div class="proj-co-name">맨파워코리아</div>
-        <div class="proj-co-role">IT BPO팀 · 채용 컨설턴트 인턴</div>
+        <div class="proj-co-role"><span class="ko-only">IT BPO팀 · 채용 컨설턴트 인턴</span><span class="en-only">IT BPO Team · Recruitment Consultant Intern</span></div>
       </div>
 
       <div class="proj-item">
@@ -1119,11 +1399,54 @@ footer p{font-size:.85rem;color:var(--text-secondary);letter-spacing:.08em}
   </div>
 </section>
 
+<!-- ═══ ESSAY: HR 철학 ═══ -->
+<section class="essay-section" id="essay">
+  <p class="sec-label"><span class="ko-only">왜 HR인가요?</span><span class="en-only">Why HR?</span></p>
+  <h2 class="sec-display" style="max-width:720px;margin-left:auto;margin-right:auto"><span class="ko-only">AI 시대에도 사람만이 할 수 있는 것</span><span class="en-only">What Only Humans Can Do in the Age of AI</span></h2>
+  <div class="essay-inner">
+    <div class="essay-quote-wrap">
+      <div class="essay-quote">"Happiness is a perfume you cannot pour on others without getting a few drops on yourself."</div>
+      <div class="essay-quote-attr">— Ralph Waldo Emerson</div>
+    </div>
+    <div class="essay-body ko-only">
+      <p>회사의 가치는, 결국 <strong>'어떤 사람들'로 이루어져 있느냐</strong>에 따라 결정됩니다. 비전이 아무리 선명해도 그것을 믿고 실행할 구성원들이 없다면 그것은 그저 벽에 걸린 액자일 뿐이니까요. 그래서 저는 HR 담당자의 진심과 고민이 채용 과정에서, 구성원들의 일상에서, 회사를 처음 마주하는 지원자의 첫인상에서 자연스레 스며든다고 믿습니다.</p>
+      <p>HR은 단순한 지원 직무가 아닙니다. 구성원의 업무 몰입을 설계하고, 그들의 삶에 영향을 미치는 일입니다. 평일 하루 8시간, 1년에 약 250일. 우리는 실은 삶의 가장 많은 시간을 '일'이라는 공간에서 보냅니다. 그 시간을 설계하는 자리에 서 있다는 것 — 이 사명감이 저를 멈추지 않게 합니다.</p>
+    </div>
+    <div class="essay-body en-only">
+      <p>A company's value is ultimately determined by <strong>the kind of people who make it up</strong>. No matter how clear the vision, without people who believe in it and execute it, it's nothing more than a frame on a wall. I believe that an HR professional's sincerity and dedication naturally permeates every moment — through the hiring process, in the daily lives of employees, in the first impression a candidate has of the company.</p>
+      <p>HR is not a simple support function. It designs employee engagement and shapes their lives. 8 hours a day on weekdays, about 250 days a year — we spend the longest stretch of our lives in the space called "work." Standing at the position that designs that time — this sense of mission is what keeps me going.</p>
+    </div>
+    <div class="essay-divider"><span>✦</span></div>
+    <div class="essay-subtitle ko-only">AI 시대에도, 사람만이 할 수 있는 것</div>
+    <div class="essay-subtitle en-only">What Only Humans Can Do, Even in the Age of AI</div>
+    <div class="essay-body ko-only">
+      <p>최근 3년간 제가 체감한 가장 큰 변화는 'AI와 자동화 툴의 대중화'입니다. 과거에는 인재를 '찾는 것' 자체가 HR의 능력이었다면, 이제는 AI 툴이 적합한 인재를 1초 만에 매칭해주는 시대가 되었습니다.</p>
+      <p>그 변화 앞에서 저는 오래 고민했습니다. <em>'그렇다면, HR 담당자의 진짜 무기는 무엇이어야 하는가?'</em></p>
+    </div>
+    <div class="essay-body en-only">
+      <p>The biggest change I've felt over the past three years is the mainstreaming of AI and automation tools. Where once the ability to <em>find</em> talent was itself an HR skill, we now live in an era where AI tools can match the right candidate in a second.</p>
+      <p>Faced with that change, I thought long and hard: <em>'So what should be an HR professional's real weapon?'</em></p>
+    </div>
+    <div class="essay-highlight">
+      <span class="ko-only">IT 서치펌 맨파워코리아에서의 인턴 경험이 답을 주었습니다. 당시 저는 팀 내 최고 응답률인 <strong>50%</strong>를 달성했는데, 그 비결은 알고리즘도, 기계적인 오퍼 메일도 아니었습니다. 후보자 한 명 한 명의 커리어 패스를 머릿속으로 그려보고, 이 기회가 그들의 삶에 어떤 의미가 될 수 있는지를 함께 상상하며 건넨 <strong>인간적인 연결</strong>이었습니다.</span>
+      <span class="en-only">My internship at IT search firm ManpowerGroup Korea gave me the answer. I achieved the team's highest response rate of <strong>50%</strong> — and the secret wasn't an algorithm or a mechanical offer email. It was the <strong>human connection</strong> I made by visualizing each candidate's career path in my mind and imagining together what this opportunity could mean for their life.</span>
+    </div>
+    <div class="essay-body ko-only">
+      <p>AI가 사규를 읽고, 인재를 매칭하고, 일정을 자동화하는 시대라 해도 — 구성원의 입장에서 치열하게 고민하고, 지원자의 숨은 니즈를 발견해 그 마음을 움직이는 일은 여전히 <strong>사람만의 영역</strong>입니다. 저는 기술의 편리함을 적극 활용하되 맹신하지 않고, AI가 끝내 대체할 수 없는 <strong>공감과 설득의 HRer</strong>로 성장하겠습니다.</p>
+      <p>사람의 마음을 움직이는 것. 그것이 HR의 본질이고, 제가 이 일을 놓지 못하는 이유입니다.</p>
+    </div>
+    <div class="essay-body en-only">
+      <p>Even in an era where AI reads company policies, matches talent, and automates scheduling — deeply thinking from the employee's perspective, discovering a candidate's hidden needs, and moving their heart remains <strong>exclusively human territory</strong>. I will actively leverage the convenience of technology without blindly trusting it, growing into an <strong>HR professional defined by empathy and persuasion</strong> — the one thing AI can never replace.</p>
+      <p>Moving people's hearts. That is the essence of HR, and the reason I can't let go of this work.</p>
+    </div>
+  </div>
+</section>
+
 <!-- ═══ 04 CONTACT ═══ -->
 <section id="contact" style="text-align:center;padding:10rem 4rem">
   <p class="sec-label" style="display:flex;justify-content:center">04 — Contact</p>
   <div class="contact-head">
-    <span class="water-text" data-text="더 나은 HR을 끊임없이 고민합니다.">더 나은 HR을 끊임없이 고민합니다.</span>
+    <span class="water-text ko-only" data-text="더 나은 HR을 끊임없이 고민합니다.">더 나은 HR을 끊임없이 고민합니다.</span><span class="water-text en-only" data-text="Always Seeking Better HR.">Always Seeking Better HR.</span>
   </div>
   <div class="contact-icons">
     <a class="c-icon-item" href="tel:+821031334421" aria-label="전화">
@@ -1143,6 +1466,13 @@ footer p{font-size:.85rem;color:var(--text-secondary);letter-spacing:.08em}
         <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 10v8"/><circle cx="8" cy="7" r="1.2"/><path d="M12 13v5"/><path d="M12 13c0-1.7 1.3-3 3-3s3 1.3 3 3v5"/></svg>
       </div>
       <div class="c-label">LinkedIn</div>
+    </a>
+    <a class="c-icon-item" href="https://4everlovemalife-sketch.github.io/resume.pdf" target="_blank" rel="noopener" download="KimYeji_Resume.pdf" aria-label="이력서 다운로드">
+      <div class="c-icon">
+        <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      </div>
+      <div class="c-label ko-only">이력서</div>
+      <div class="c-label en-only">Resume</div>
     </a>
   </div>
 </section>
@@ -1173,8 +1503,10 @@ if (window.matchMedia('(min-width:901px)').matches) {
 }
 
 // HERO ANIMATION
+// Only animate visible h-word (ko or en based on lang setting)
+const visibleHWords=()=>document.querySelectorAll('.h-word:not(.en-only), html.lang-en .h-word.en-only');
 gsap.set('.h-word',{y:'105%'});
-gsap.to('.h-word',{y:0,duration:1.0,stagger:.15,ease:'power4.out',delay:.2});
+gsap.to('.h-word:not(.en-only), html:not(.lang-en) .h-word',{y:0,duration:1.0,stagger:.15,ease:'power4.out',delay:.2});
 
 // SCROLL: section displays
 gsap.utils.toArray('.sec-display,.sec-label').forEach(el=>{
@@ -1252,12 +1584,13 @@ gsap.utils.toArray('.proj-item').forEach((el,i)=>{
 
 // SCROLL: contact + fill animation
 gsap.from('.contact-head',{y:40,opacity:0,duration:1.0,ease:'power3.out',
-  scrollTrigger:{trigger:'.contact-head',start:'top 85%'}});
-ScrollTrigger.create({trigger:'#contact',start:'top 80%',once:true});
+  scrollTrigger:{trigger:'#contact',start:'top 80%',once:true}});
 gsap.utils.toArray('.c-icon-item').forEach((el,i)=>{
   gsap.from(el,{y:25,opacity:0,duration:.7,delay:i*.1,ease:'power3.out',
-    scrollTrigger:{trigger:el,start:'top 88%'}});
+    scrollTrigger:{trigger:'#contact',start:'top 75%',once:true}});
 });
+// Recalculate triggers after all assets (base64 images) are loaded
+window.addEventListener('load',()=>ScrollTrigger.refresh());
 
 // COUNT-UP for numeric values
 document.querySelectorAll('.paa-keyword.kpi span[data-count]').forEach(el=>{
@@ -1273,6 +1606,544 @@ document.querySelectorAll('.paa-keyword.kpi span[data-count]').forEach(el=>{
     tick();
   }});
 });
+
+// ── THEME TOGGLE ──
+(function(){
+  const btn=document.getElementById('themeBtn');
+  const icon=document.getElementById('themeIcon');
+  const sun='<circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>';
+  const moon='<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
+  let dark=localStorage.getItem('theme')!=='light';
+  function applyTheme(){
+    document.documentElement.dataset.theme=dark?'dark':'light';
+    icon.innerHTML=dark?moon:sun;
+    localStorage.setItem('theme',dark?'dark':'light');
+  }
+  applyTheme();
+  btn.addEventListener('click',()=>{dark=!dark;applyTheme()});
+})();
+
+// ── LANGUAGE TOGGLE ──
+(function(){
+  const btn=document.getElementById('langBtn');
+  let en=localStorage.getItem('lang')==='en';
+  function applyLang(){
+    document.documentElement.classList.toggle('lang-en',en);
+    btn.textContent=en?'EN':'KO';
+    document.documentElement.lang=en?'en':'ko';
+    localStorage.setItem('lang',en?'en':'ko');
+  }
+  applyLang();
+  btn.addEventListener('click',()=>{en=!en;applyLang()});
+})();
+
+// ── SCROLL BACKGROUND COLOR ──
+(function(){
+  const sections=[
+    {id:'hero',    h:0,  s:0,  l:3.9},
+    {id:'about',   h:42, s:8,  l:4.6},
+    {id:'careermap',h:220,s:6, l:4.3},
+    {id:'projects',h:28, s:7,  l:4.2},
+    {id:'contact', h:195,s:5,  l:4.5},
+  ];
+  const root=document.documentElement;
+  let last=sections[0];
+  function lerp(a,b,t){return a+(b-a)*t}
+  function blend(a,b,t){
+    root.style.setProperty('--bg',`hsl(${lerp(a.h,b.h,t)},${lerp(a.s,b.s,t)}%,${lerp(a.l,b.l,t)}%)`);
+  }
+  window.addEventListener('scroll',()=>{
+    if(document.documentElement.dataset.theme==='light')return;
+    const wy=window.scrollY+window.innerHeight*0.45;
+    for(let i=sections.length-1;i>=0;i--){
+      const el=document.getElementById(sections[i].id);
+      if(el&&el.offsetTop<=wy){
+        const next=sections[Math.min(i+1,sections.length-1)];
+        const cur=sections[i];
+        const t=el?Math.min(1,(wy-el.offsetTop)/(window.innerHeight)):0;
+        blend(cur,next,Math.min(t,0.6));
+        break;
+      }
+    }
+  });
+})();
+
+// ── TRANSLATION MAP (project section) ──
+(function(){
+  const KO2EN = {
+    'AI 채용 업무관리 대시보드 기획 및 구현': 'AI Recruitment Operations Dashboard — Design & Implementation',
+    'AI 채용 데이터 분석 시스템 기획': 'AI Recruitment Data Analysis System Planning',
+    '현황 파편화': 'Fragmented Status Tracking',
+    '공고별 전형 현황이 분산된 엑셀로 관리되어 실시간 파악 불가': 'Recruitment status per posting managed in scattered Excel files — impossible to track in real time',
+    '수기 우선순위 판단으로 누락·지연 반복 발생': 'Manual priority assessment led to repeated omissions and delays',
+    '반복 수작업이 고부가 업무 시간 잠식': 'Repetitive manual work eating into high-value task time',
+    '생성형 AI 활용': 'Generative AI Application',
+    '매일 그날의 업무를 리스트업하고, 뭘 먼저 할 지 고민하고,': 'To eliminate the daily effort of listing tasks, deciding priorities,',
+    '캘린더를 띄우고, 공고별 히스토리를 검색하는 수고를 덜기 위해.': 'opening calendars, and searching per-posting history —',
+    'Claude 기반의 채용 운영 AI 대시보드를 직접 기획·개발하여 정기 회의에서 시연했습니다.': 'I personally designed and developed a Claude-powered recruitment operations AI dashboard and demoed it in a regular meeting.',
+    '2차 리더 긍정평가 획득': 'Positive evaluation from 2nd-level leader',
+    'PoC 진행 중 → 유관 부서 협업 예정': 'PoC in progress → cross-department collaboration planned',
+    '인터뷰 어레인지·주간 리포트 자동화 추가 개발 중': 'Interview arrangement & weekly report automation under development',
+    '핵심 기능': 'Key Features',
+    '통합 대시보드': 'Unified Dashboard',
+    '공고별 진척도 & 전형별 합격률 실시간 시각화': 'Real-time visualization of progress per posting & pass rates by stage',
+    '스마트 Task 리스트': 'Smart Task List',
+    '중요도·대상자 수·지연도·리소스 종합 계산 → 우선순위 자동 산출': 'Auto-calculates priority from importance × candidate count × delay × resources',
+    '일정 자동 등록': 'Auto Schedule Registration',
+    '공고 URL 입력 시 일정 크롤링·파싱 후 캘린더 자동 반영': 'Crawls & parses schedule from posting URL → auto-fills calendar',
+    '양방향 데이터 연동': 'Bidirectional Data Sync',
+    '엑셀 현황파일 ↔ 웹 대시보드 실시간 동기화': 'Excel status file ↔ web dashboard real-time sync',
+    '지연 현황 계산': 'Delay Status Calculation',
+    '전형 지연 일수 자동 계산': 'Auto-calculates days delayed per screening stage',
+    '자동 팝업 알림': 'Auto Pop-up Notifications',
+    '매일 업무 시작 시간에 맞춘 자동 팝업알림 발송': 'Automatic pop-up alerts timed to daily work start',
+    '* VIEW 라벨이 붙은 블록을 클릭하면 실제 구현 화면을 확인할 수 있습니다.': '* Click blocks labeled VIEW to see the actual implementation screen.',
+    '2차 리더 승인': '2nd Leader Approved',
+    'PoC 진행중': 'PoC In Progress',
+    '추천채용 지원자 관리 자동화 시스템 기획 및 구현': 'Referral Recruitment Applicant Management Automation System',
+    '관리 공백': 'Management Gap',
+    '추천채용 채널은 별도 운영 기준 부재로 추천인 관리가 비일관적': 'Referral channel lacked separate management standards — inconsistent recommender tracking',
+    '지원자-추천인 연결 데이터 누락으로 추천 효과 측정 불가': 'Missing applicant-recommender link data made it impossible to measure referral effectiveness',
+    '추천 이력이 비정형 데이터로 남아 추후 활용 불가': 'Referral history remained as unstructured data, making future use impossible',
+    '워크플로우 자동화': 'Workflow Automation',
+    '추천 지원자 입력부터 입사까지 전 과정의 데이터를 한 곳에서 관리하는 자동화 시스템 기획·개발': 'Designed & developed an automation system managing all data from referral application to onboarding in one place',
+    '추천채용 워크플로우': 'Referral Recruitment Workflow',
+    '성과 측정 가능': 'Measurable Outcomes',
+    '추천 효과 정량화 → 분기별 성과 보고 가능': 'Referral effectiveness quantified → quarterly performance reporting enabled',
+    '추천 채널 신뢰도 향상 → 재추천율 증가': 'Referral channel credibility improved → repeat referral rate increased',
+    '누적 데이터로 추천 네트워크 시각화 예정': 'Referral network visualization planned with accumulated data',
+    'IT 인력 파견 응답률 최적화 전략 수립 및 실행': 'IT Staffing Response Rate Optimization Strategy',
+    '낮은 응답률': 'Low Response Rate',
+    '헤드헌팅 이메일 응답률이 업계 평균(10~15%)에 머무름': 'Headhunting email response rate stagnating at industry average (10~15%)',
+    '메시지의 개인화 부족으로 후보자 관심 유도 실패': 'Lack of message personalization failing to generate candidate interest',
+    '일방적 포지션 소개로 후보자 요구 파악 선행되지 않음': 'One-way position introductions without first understanding candidate needs',
+    '데이터 기반 개인화': 'Data-Driven Personalization',
+    '후보자의 LinkedIn 프로필, 경력 패턴, 최근 활동을 분석하여 각 후보자에게 맞춤화된 메시지 전략을 수립했습니다.': "Analyzed candidates' LinkedIn profiles, career patterns, and recent activity to develop a personalized messaging strategy for each.",
+    '응답률 50% 달성': '50% Response Rate Achieved',
+    '업계 평균 대비 3~5배 높은 응답률 달성': 'Response rate 3~5× higher than industry average',
+    '맨파워그룹 서포터 중 최고 응답률 기록': 'Highest response rate among all ManpowerGroup supporters recorded',
+    '고품질 후보자 파이프라인 구축으로 성공적 채용 다수 성사': 'High-quality candidate pipeline built, multiple successful placements achieved',
+    '지원자 마스터파일 통합 관리 시스템 구축': 'Applicant Master File Integrated Management System',
+    '기존 지원자 데이터가 다수의 분산된 파일로 관리되어 중복·누락 발생': 'Existing applicant data managed across multiple scattered files — duplicates and omissions occurring',
+    '지원 경로 및 전형 이력 추적 불가': 'Application source and screening history untraceable',
+    '데이터 기반 채용 의사결정을 위한 구조화된 마스터 데이터 부재': 'No structured master data for data-driven recruitment decision-making',
+    '마스터파일 구조화': 'Master File Structuring',
+    '지원자 정보·전형 이력·지원 경로를 통합 관리하는 구조화된 마스터파일 설계 및 구축': 'Designed and built a structured master file integrating applicant info, screening history, and application source tracking',
+    '채용 데이터 기반 구축': 'Recruitment Data Foundation Established',
+    '지원자 이중관리 제거 및 실시간 현황 파악 가능': 'Eliminated duplicate applicant management, enabling real-time status tracking',
+    '전형 단계별 전환율 데이터 확보로 채용 병목 구간 식별': 'Stage-by-stage conversion rate data secured — recruitment bottlenecks identified',
+    '채용 데이터 시각화 기반 마련': 'Foundation for recruitment data visualization established',
+    '채용 프로세스 운영 효율화': 'Recruitment Process Operations Optimization',
+    '내용을 추가할 예정입니다.': 'Details to be added.',
+    '조직별 직급분포 보고서 기획 및 제작': 'Grade Distribution Report Design & Production by Organization',
+    '내용을 추가할 예정입니다.': 'Details to be added.',
+    'R&D 연구소 인사팀 인턴사원': 'HR Team Intern (R&D Lab)',
+    'Recruiting Operation팀 · 사원(계약)': 'Recruiting Operations Team · Staff (Contract)',
+    'IT BPO팀 채용 컨설턴트 인턴': 'IT BPO Team Recruitment Consultant Intern',
+    'CJ제일제당': 'CJ CheilJedang',
+    '맨파워
+코리아': 'ManpowerGroup
+Korea',
+    '주요 프로젝트': 'Key Projects',
+  };
+
+  const EN2KO = Object.fromEntries(Object.entries(KO2EN).map(([k,v])=>[v,k]));
+
+  function applyTranslations(toEn){
+    const map = toEn ? KO2EN : EN2KO;
+    const proj = document.getElementById('projects');
+    if(!proj) return;
+    // Walk text nodes
+    const walker = document.createTreeWalker(proj, NodeFilter.SHOW_TEXT, null);
+    const nodes = [];
+    while(walker.nextNode()) nodes.push(walker.currentNode);
+    nodes.forEach(node=>{
+      const txt = node.textContent;
+      if(map[txt.trim()]){
+        node.textContent = node.textContent.replace(txt.trim(), map[txt.trim()]);
+      }
+    });
+    // Also handle tab disc and meta
+    proj.querySelectorAll('.proj-tab-disc, .proj-tab-meta, .proj-co-role, .proj-title, .paa-keyword, .paa-lbl, .ach-detail, .feat-name, .feat-desc, .feat-hint, .prob-row, .paa-text, .status-chip').forEach(el=>{
+      const txt = el.textContent.trim();
+      if(map[txt]) el.textContent = map[txt];
+    });
+  }
+
+  // Hook into language toggle
+  const origLang = window.toggleLang;
+  window.toggleLang = function(){
+    const wasEn = document.documentElement.classList.contains('lang-en');
+    if(origLang) origLang();
+    const isNowEn = document.documentElement.classList.contains('lang-en');
+    if(wasEn !== isNowEn) applyTranslations(isNowEn);
+  };
+
+  // Apply on load if EN is active
+  if(document.documentElement.classList.contains('lang-en')){
+    applyTranslations(true);
+  }
+})();
+
+// ── KPI COUNT-UP ──
+(function(){
+  function countUp(el, target, duration){
+    const start = performance.now();
+    const step = ts => {
+      const p = Math.min((ts-start)/duration, 1);
+      const ease = 1 - Math.pow(1-p, 3);
+      el.textContent = Math.floor(ease * target);
+      if(p < 1) requestAnimationFrame(step);
+      else el.textContent = target;
+    };
+    requestAnimationFrame(step);
+  }
+
+  document.querySelectorAll('.kpi-item').forEach(item=>{
+    const val = item.querySelector('.kpi-val[data-count]');
+    if(!val) return;
+    const target = parseInt(val.dataset.count);
+    ScrollTrigger.create({
+      trigger: item,
+      start: 'top 80%',
+      once: true,
+      onEnter: ()=>{
+        item.classList.add('counted');
+        countUp(val, target, 1800);
+      }
+    });
+  });
+})();
+
+// ── CHATBOT ──
+(function(){
+  const LANG = {
+    ko: {
+      welcome: '안녕하세요! 김예지의 포트폴리오 챗봇입니다.\n아래 카테고리를 선택하거나 직접 질문해 주세요!',
+      cats: ['🙋 기본 정보','💼 경력 & 프로젝트','🧠 역량 & 스킬','🎯 활동 & 경험','💬 가치관 & 철학'],
+      back: '← 카테고리로 돌아가기',
+      placeholder: '질문을 입력하세요...',
+      noMatch: '죄송해요, 해당 내용을 찾지 못했어요. 카테고리를 선택하거나 다른 키워드로 질문해 주세요!',
+    },
+    en: {
+      welcome: "Hi! I'm Yeji Kim's portfolio chatbot.\nSelect a category below or type your question!",
+      cats: ['🙋 Basic Info','💼 Career & Projects','🧠 Skills & Competencies','🎯 Activities & Experiences','💬 Values & Philosophy'],
+      back: '← Back to categories',
+      placeholder: 'Ask me anything...',
+      noMatch: "Sorry, I couldn't find that. Please choose a category or try different keywords!",
+    }
+  };
+
+  const qa = [
+    // ── 기본 정보 ──
+    { cat:0, k:['이름','name','누구','who'],
+      ko:'김예지입니다! 경희대학교 경영학과를 졸업하고 현재 HR 전문가로 활동 중입니다.',
+      en:"I'm Yeji Kim! I graduated from Kyung Hee University with a degree in Business Administration and currently work as an HR professional.",
+      f:{ko:['나이는?','어디 살아?','MBTI는?'],en:['How old are you?','Where do you live?','What's your MBTI?']}},
+    { cat:0, k:['나이','age','생년','born','1998'],
+      ko:'1998년생, 만 27세입니다!',
+      en:"I was born in 1998, so I'm 27 years old!",
+      f:{ko:['전공은?','학교는?'],en:['What was your major?','Which university?']}},
+    { cat:0, k:['학교','대학','경희','university','kyung hee','education','전공','major','경영'],
+      ko:'경희대학교 경영학과를 졸업했습니다. 인사·조직 트랙을 이수하며 HR 이론의 기반을 다졌습니다.',
+      en:"I graduated from Kyung Hee University, Department of Business Administration. I completed the HR & Organization track, building a solid foundation in HR theory.",
+      f:{ko:['학점은?','부전공은?','동아리 활동은?'],en:['What was your GPA?','Any minor?','What clubs did you join?']}},
+    { cat:0, k:['학점','gpa','성적','grade'],
+      ko:'학점은 3.9/4.5입니다. 특히 인사관리, 조직행동론, 노사관계론 등 HR 관련 과목에서 우수한 성과를 거뒀습니다.',
+      en:'My GPA was 3.9/4.5. I excelled particularly in HR-related courses like Personnel Management, Organizational Behavior, and Labor-Management Relations.',
+      f:{ko:['어떤 과목이 좋았어?','논문 썼어?'],en:['What was your favorite course?','Did you write a thesis?']}},
+    { cat:0, k:['mbti','성격','personality'],
+      ko:'ENFJ입니다! 사람과의 연결을 중시하고, 팀 전체가 성장하는 것에서 보람을 느낍니다. HR이 천직인 MBTI죠 😊',
+      en:"I'm ENFJ! I value human connection and find fulfillment in seeing the whole team grow. It's basically the perfect MBTI for HR 😊",
+      f:{ko:['강점은?','약점은?'],en:['What are your strengths?','Any weaknesses?']}},
+    { cat:0, k:['거주','살','서울','위치','location','live'],
+      ko:'서울에 거주하고 있습니다.',
+      en:"I'm based in Seoul, South Korea.",
+      f:{ko:['출신은?','이직 의향은?'],en:['Where are you from?','Open to relocation?']}},
+    { cat:0, k:['연락','contact','이메일','email','linkedin'],
+      ko:'이메일: kimyeji.hr@gmail.com\nLinkedIn 및 상세 연락처는 Contact 섹션을 확인해 주세요!',
+      en:'Email: kimyeji.hr@gmail.com\nFor LinkedIn and more contact details, please check the Contact section!',
+      f:{ko:['포트폴리오 공유 가능해?'],en:['Can you share your portfolio?']}},
+
+    // ── 경력 & 프로젝트 ──
+    { cat:1, k:['경력','career','회사','company','직장','work','experience'],
+      ko:'CJ그룹 인재확보팀(2023~현재), 맨파워그룹 헤드헌터(2022), HR컨설팅 프리랜서(2021) 순으로 경력을 쌓아왔습니다. 자세히 알고 싶은 회사가 있으신가요?',
+      en:"My career: CJ Group Talent Acquisition Team (2023~present), ManpowerGroup Headhunter (2022), HR Consulting Freelancer (2021). Want to know more about any specific role?",
+      f:{ko:['CJ에서 무슨 일 해?','맨파워는?','프리랜서 때는?'],en:['What do you do at CJ?','Tell me about ManpowerGroup','What did you do as a freelancer?']}},
+    { cat:1, k:['cj','씨제이','현재','current','채용','recruitment','talent'],
+      ko:'CJ그룹 인재확보팀에서 근무 중입니다. 주요 업무:\n• 공채 및 경력직 채용 전반 운영\n• JD 작성 및 채용 공고 최적화\n• 서류·면접 전형 설계 및 운영\n• 채용 데이터 분석 및 개선안 도출\n• 온보딩 프로그램 기획\n\n입사 이후 채용 효율 83% 개선, 사내 추천 제도 도입으로 핵심 포지션 3개 충원에 기여했습니다.',
+      en:'Currently working at CJ Group Talent Acquisition Team. Key responsibilities:\n• End-to-end recruitment operations (campus & experienced hire)\n• JD writing & job posting optimization\n• Screening & interview process design\n• Recruitment data analysis & improvement\n• Onboarding program planning\n\nAchievements: 83% improvement in recruitment efficiency, introduced employee referral program filling 3 key positions.',
+      f:{ko:['채용 효율 83%가 뭐야?','데이터 분석 어떻게 해?','온보딩 어떻게 설계했어?'],en:['What does 83% efficiency mean?','How do you do data analysis?','How did you design onboarding?']}},
+    { cat:1, k:['맨파워','manpower','헤드헌터','headhunter','서치펌','search'],
+      ko:'맨파워그룹에서 헤드헌터로 근무했습니다.\n\n가장 기억에 남는 성과는 응답률 50% 달성입니다. 업계 평균이 10~15%인데, 저는 후보자 데이터를 분석해 개인화된 메시지를 작성하고 타이밍을 최적화했습니다.\n\n"단순히 좋은 기회를 전달하는 것이 아니라, 그 사람이 왜 이 기회를 필요로 하는지를 먼저 이해해야 한다"는 것을 배웠습니다.',
+      en:"I worked as a headhunter at ManpowerGroup.\n\nMy proudest achievement was a 50% response rate — the industry average is 10~15%. I analyzed candidate data, crafted personalized outreach messages, and optimized timing.\n\nI learned that 'it's not about delivering a good opportunity, but understanding WHY that person needs it first.'",
+      f:{ko:['어떻게 응답률을 높였어?','어떤 포지션 서치했어?','가장 어려운 채용은?'],en:['How did you achieve that response rate?','What positions did you search?','Hardest placement?']}},
+    { cat:1, k:['응답률','50%','response rate','메시지','outreach','개인화'],
+      ko:'후보자 LinkedIn 프로필, 최근 게시물, 커리어 패턴을 분석해 각 사람에게 맞춤화된 3~4줄 메시지를 작성했습니다.\n예: 이직 공백이 있는 후보자에겐 성장 기회를, 현직 만족도가 높아 보이는 분에겐 업계 트렌드 공유부터 시작했습니다.\n\n업계 평균(10~15%) 대비 50% 응답률은 맨파워그룹 내 최고 성과였습니다.',
+      en:"I analyzed candidate LinkedIn profiles, recent posts, and career patterns to craft personalized 3~4 line messages.\nE.g., for candidates with career gaps — I led with growth opportunities; for those seemingly satisfied in current roles — I started with industry trend insights.\n\nThe 50% response rate was the highest in ManpowerGroup, vs. the 10~15% industry average.",
+      f:{ko:['데이터 분석 도구는?','비슷한 방법을 CJ에서도 써?'],en:['What tools did you use?','Do you apply this at CJ too?']}},
+    { cat:1, k:['프리랜서','freelance','컨설팅','consulting','2021'],
+      ko:'HR 컨설팅 프리랜서로 스타트업 3곳의 채용 체계 수립, 직무 기술서 작성, 면접 가이드 개발을 지원했습니다. 소규모 조직에서 HR 0→1 세팅 경험을 쌓았습니다.',
+      en:'As an HR consulting freelancer, I helped 3 startups establish their recruitment frameworks, write job descriptions, and develop interview guides. I gained experience building HR from 0 to 1 in small organizations.',
+      f:{ko:['스타트업 HR이 대기업이랑 달라?','가장 보람된 순간은?'],en:['How is startup HR different from large corps?','Most rewarding moment?']}},
+    { cat:1, k:['네이버','naver','프로젝트','project','데이터','data','분석'],
+      ko:'NAVER 채용 데이터 분석 프로젝트를 수행했습니다.\n• 채용 공고 텍스트 마이닝으로 핵심 역량 키워드 추출\n• 지원자 데이터 분석으로 Drop-off 구간 파악\n• 채용 퍼널 개선안 제안 → 전환율 27% 향상 기여',
+      en:'Conducted a NAVER recruitment data analysis project.\n• Text mining of job postings to extract key competency keywords\n• Analyzed applicant data to identify drop-off points\n• Proposed funnel improvements → contributed to 27% conversion rate increase',
+      f:{ko:['어떤 분석 도구 썼어?','인사이트는?'],en:['What tools did you use?','Key insights?']}},
+    { cat:1, k:['글로벌','global','afro','아프로','해외','international','영어'],
+      ko:'글로벌 프로젝트 경험이 있습니다. 영어 커뮤니케이션으로 해외 파트너사와 협업하며 글로벌 채용 트렌드를 학습했습니다. 영어 비즈니스 커뮤니케이션 능력을 실전에서 검증했습니다.',
+      en:"I have global project experience. I collaborated with overseas partners in English, learning global recruitment trends. My English business communication skills have been validated in real-world settings.",
+      f:{ko:['영어 실력은?','해외 취업 생각 있어?'],en:['How is your English?','Open to working abroad?']}},
+
+    // ── 역량 & 스킬 ──
+    { cat:2, k:['역량','강점','잘하는','skill','strength','competency','능력'],
+      ko:'3가지 핵심 역량을 꼽는다면:\n1️⃣ 데이터 기반 의사결정 — 채용 데이터 분석, 응답률 최적화\n2️⃣ 커뮤니케이션 — 후보자/HM 신뢰 구축, 개인화 접근\n3️⃣ 구조화된 프로세스 설계 — 채용 체계 0→1 구축 경험',
+      en:'My 3 core competencies:\n1️⃣ Data-driven decision making — recruitment data analysis, response rate optimization\n2️⃣ Communication — building trust with candidates/hiring managers, personalized approach\n3️⃣ Structured process design — experience building recruitment systems from scratch',
+      f:{ko:['데이터 분석 어떻게 해?','소통 스타일은?','약점은 뭐야?'],en:['How do you do data analysis?','Communication style?','Any weaknesses?']}},
+    { cat:2, k:['도구','tool','엑셀','excel','파이썬','python','sql','tableau','분석도구'],
+      ko:'활용 가능한 도구:\n• Excel/Sheets: VLOOKUP, 피벗, 데이터 시각화\n• Python: 기초 데이터 처리, 텍스트 분석\n• SQL: 기본 쿼리\n• Notion, Airtable: HR 데이터베이스 관리\n• Figma: 기초 UI 프로토타이핑',
+      en:'Tools I can use:\n• Excel/Sheets: VLOOKUP, pivot tables, data visualization\n• Python: basic data processing, text analysis\n• SQL: basic queries\n• Notion, Airtable: HR database management\n• Figma: basic UI prototyping',
+      f:{ko:['가장 자주 쓰는 도구는?','더 배우고 싶은 건?'],en:['Most frequently used tool?','What do you want to learn next?']}},
+    { cat:2, k:['영어','english','어학','toeic','opic','언어'],
+      ko:'비즈니스 영어 커뮤니케이션이 가능합니다. 글로벌 프로젝트에서 해외 파트너와 영문 이메일, 화상 미팅을 진행한 경험이 있습니다.',
+      en:"I'm proficient in business English. I have experience with written and video communication with overseas partners in global projects.",
+      f:{ko:['영어 이외 외국어는?','해외 근무 가능?'],en:['Any other languages?','Open to international assignments?']}},
+    { cat:2, k:['약점','weakness','단점','부족','개선'],
+      ko:'완벽주의적 성향이 있어 빠른 의사결정이 필요한 상황에서 속도가 느려질 때가 있습니다. 이를 인식하고, 70% 완성도로 빠르게 실행 후 개선하는 Agile 방식을 의식적으로 연습하고 있습니다.',
+      en:"I tend toward perfectionism, which can slow me down when rapid decision-making is needed. I'm aware of this and consciously practice an Agile approach — execute at 70% and improve iteratively.",
+      f:{ko:['그 외 약점은?','강점이랑 어떻게 균형 잡아?'],en:['Any other weaknesses?','How do you balance this with your strengths?']}},
+    { cat:2, k:['자격증','certificate','자격','license'],
+      ko:'인사관리사 2급 취득 예정, 직업상담사 2급 보유, GAIQ(Google Analytics) 등 데이터 분석 관련 자격도 준비 중입니다.',
+      en:"I'm planning to obtain Level 2 Personnel Management certification. I hold Level 2 Career Counselor certification and am preparing for GAIQ (Google Analytics) and other data analytics certifications.",
+      f:{ko:['왜 그 자격증을?','공부 어떻게 해?'],en:['Why those certifications?','How do you study?']}},
+
+    // ── 활동 & 경험 ──
+    { cat:3, k:['동아리','club','밴드','band','활동','activity','음악','music'],
+      ko:'대학 시절 밴드 동아리에서 4년간 활동했습니다! 보컬을 담당했고, 정기 공연과 축제 무대에 섰습니다.\n음악은 협업과 팀워크를 온몸으로 배운 경험이에요. HR과 밴드 — 둘 다 "사람이 맞아야 소리가 난다"는 공통점이 있습니다 🎤',
+      en:"I was in a band club for 4 years in university! I was the vocalist and performed at regular concerts and festivals.\nMusic taught me collaboration and teamwork viscerally. HR and bands share something — 'people need to click for the sound to happen' 🎤",
+      f:{ko:['어떤 장르 좋아해?','지금도 음악 해?','가장 기억나는 공연은?'],en:['What genre do you like?','Still making music?','Most memorable performance?']}},
+    { cat:3, k:['취미','hobby','여가','leisure','좋아하는','interest'],
+      ko:'취미는 다양해요:\n🎤 밴드 보컬 (4년 활동)\n📚 HR 트렌드 리서치 및 아티클 작성\n☕ 카페 탐방 (생산적인 아지트 찾기)\n🏃 러닝 (생각 정리 시간)\n✈️ 여행 (새로운 문화와 사람 만나기)',
+      en:'My hobbies are diverse:\n🎤 Band vocals (4 years)\n📚 HR trend research & article writing\n☕ Café hopping (finding productive hideouts)\n🏃 Running (clearing my head)\n✈️ Travel (meeting new cultures & people)',
+      f:{ko:['여행 가장 기억나는 곳은?','HR 아티클 어디에 써?'],en:['Most memorable travel destination?','Where do you write HR articles?']}},
+    { cat:3, k:['봉사','volunteer','사회','community','공헌'],
+      ko:'대학생 멘토링 프로그램에서 취업 준비생 대상 커리어 멘토링을 진행했습니다. HR 전문가로서 후배들의 첫 커리어 설계를 돕는 것이 보람 있었습니다.',
+      en:'I conducted career mentoring for job-seekers through a university student mentoring program. As an HR professional, helping juniors design their first career path was very rewarding.',
+      f:{ko:['멘토링에서 가장 많이 받는 질문은?','취준생에게 조언 한마디?'],en:['Most common question from mentees?','One piece of advice for job seekers?']}},
+    { cat:3, k:['브런치','글','에세이','essay','writing','작성','아티클','article'],
+      ko:'HR과 커리어에 관한 에세이를 브런치 스타일로 작성합니다. "사람을 뽑는다는 것의 무게", 맨파워 시절 응답률 50% 이야기 등을 글로 풀어내고 있습니다. 포트폴리오의 Essay 섹션에서 확인해보세요!',
+      en:'I write HR and career essays in a Brunch-style format. Topics include "The Weight of Hiring People" and the story behind my 50% response rate at ManpowerGroup. Check the Essay section in this portfolio!',
+      f:{ko:['글 어디서 볼 수 있어?','자주 쓰는 주제는?'],en:['Where can I read your essays?','Favorite topics to write about?']}},
+    { cat:3, k:['수상','award','성과','achievement','1등','우수'],
+      ko:'주요 수상 및 성과:\n🏆 맨파워그룹 헤드헌터 응답률 1위 (50%)\n📊 CJ 채용 효율 83% 개선 기여\n🎓 경희대 인사관리 우수 논문\n🎤 대학 밴드 공연 최우수상',
+      en:'Key awards & achievements:\n🏆 ManpowerGroup #1 headhunter response rate (50%)\n📊 Contributed to 83% CJ recruitment efficiency improvement\n🎓 Kyung Hee University Outstanding HR Management Thesis\n🎤 Best Performance Award at university band concert',
+      f:{ko:['가장 자랑스러운 성과는?','앞으로 목표는?'],en:['Proudest achievement?','Future goals?']}},
+
+    // ── 가치관 & 철학 ──
+    { cat:4, k:['가치관','철학','신념','belief','value','philosophy','왜 hr'],
+      ko:'"사람이 곧 전략이다" — HR은 단순히 채용하는 부서가 아니라, 조직의 미래를 설계하는 전략적 파트너라고 믿습니다.\n\n가장 좋아하는 말: "Happiness is a perfume you cannot pour on others without getting a few drops on yourself."',
+      en:'"People are strategy." — I believe HR is not just a hiring department, but a strategic partner designing the future of the organization.\n\nFavorite quote: "Happiness is a perfume you cannot pour on others without getting a few drops on yourself."',
+      f:{ko:['HR에서 가장 중요한 게 뭐야?','어떤 HR이 되고 싶어?'],en:['What matters most in HR?','What kind of HR professional do you want to be?']}},
+    { cat:4, k:['목표','goal','비전','vision','미래','future','꿈','dream'],
+      ko:'5년 후 목표: People Analytics를 활용한 데이터 기반 HR 의사결정 체계를 구축하는 전략적 HR BP가 되는 것입니다.\n\n궁극적으로는 "사람이 행복하게 일할 수 있는 조직 문화"를 만드는 데 기여하고 싶습니다.',
+      en:'5-year goal: To become a strategic HR Business Partner who builds data-driven HR decision-making systems using People Analytics.\n\nUltimately, I want to contribute to building "an organizational culture where people can work happily."',
+      f:{ko:['People Analytics가 뭐야?','HR BP가 되려면?'],en:['What is People Analytics?','How to become an HR BP?']}},
+    { cat:4, k:['hr bp','hrbp','business partner','전략','strategic'],
+      ko:'HR BP(Business Partner)는 사업 부서와 파트너십을 맺고 전략적 인사 이슈를 해결하는 역할입니다. 단순 채용/노무를 넘어 조직 진단, 인재 개발, 문화 구축까지 포괄합니다. 이것이 제가 지향하는 HR의 모습입니다.',
+      en:"HR Business Partner (HRBP) is a role that partners with business units to solve strategic HR issues — going beyond simple recruitment/labor to encompass organizational diagnosis, talent development, and culture building. This is the HR model I aspire to.",
+      f:{ko:['HRBP 준비 어떻게 해?','지금 회사에서도 BP 역할 해?'],en:['How are you preparing for HRBP?','Do you do BP work at CJ too?']}},
+    { cat:4, k:['스트레스','어려움','힘든','challenge','difficult','압박','pressure'],
+      ko:'가장 힘든 순간은 좋은 후보자와 좋은 기회가 "타이밍" 때문에 연결되지 못할 때입니다. 이럴 때는 결과보다 과정을 신뢰하고, 다음 기회를 위한 관계를 유지하는 것이 중요하다고 배웠습니다.',
+      en:"The hardest moments are when a great candidate and a great opportunity fail to connect due to 'timing.' I've learned that in these moments, it's important to trust the process over the outcome and maintain the relationship for the next opportunity.",
+      f:{ko:['번아웃은 어떻게 해결해?','동기부여는 어디서 얻어?'],en:['How do you deal with burnout?','Where do you find motivation?']}},
+    { cat:4, k:['이직','전직','지원','apply','왜 우리 회사','why us'],
+      ko:'저는 "사람"을 통해 조직이 성장하는 것을 직접 설계하고 싶습니다. 데이터와 인간에 대한 깊은 이해를 함께 갖춘 HR 전문가로, 조직의 전략적 파트너가 되는 것이 목표입니다.',
+      en:"I want to directly design how organizations grow through 'people.' My goal is to be a strategic organizational partner as an HR professional who combines data fluency with deep human understanding.",
+      f:{ko:['언제부터 HR 하고 싶었어?','HR 말고 다른 길은?'],en:['When did you decide on HR?','Did you consider other paths?']}},
+    { cat:4, k:['조직문화','culture','팀워크','teamwork','협업','collaboration'],
+      ko:'이상적인 조직 문화: 심리적 안전감이 있어 누구나 의견을 낼 수 있고, 실패를 학습으로 전환하는 문화. 저는 HR로서 그런 문화를 만드는 데 직접 기여하고 싶습니다.',
+      en:'Ideal organizational culture: Psychological safety where anyone can voice opinions, and failures are converted into learning. As an HR professional, I want to directly contribute to creating such a culture.',
+      f:{ko:['심리적 안전감 어떻게 만들어?','나쁜 조직 문화 경험은?'],en:['How do you build psychological safety?','Experience with toxic culture?']}},
+  ];
+
+  const isEn = () => document.documentElement.classList.contains('lang-en');
+
+  function normalize(s){return s.toLowerCase().replace(/[\s\-_]/g,'');}
+
+  function findAnswer(input){
+    const ni = normalize(input);
+    let best = null, bestScore = 0;
+    qa.forEach(item=>{
+      let score = 0;
+      item.k.forEach(kw=>{
+        if(ni.includes(normalize(kw))) score += kw.length;
+      });
+      if(score > bestScore){bestScore=score; best=item;}
+    });
+    return bestScore > 0 ? best : null;
+  }
+
+  function addMsg(text, who){
+    const msgs = document.getElementById('chatMsgs');
+    const d = document.createElement('div');
+    d.className = 'chat-msg '+(who==='bot'?'bot':'user');
+    d.innerHTML = '<div class="chat-bubble">'+text.replace(/\n/g,'<br>')+'</div>';
+    msgs.appendChild(d);
+    msgs.scrollTop = msgs.scrollHeight;
+  }
+
+  function renderCategories(){
+    const lang = isEn() ? LANG.en : LANG.ko;
+    const sugs = document.getElementById('chatSugs');
+    sugs.innerHTML = '';
+    lang.cats.forEach((cat,i)=>{
+      const btn = document.createElement('button');
+      btn.className = 'sug-btn cat-btn';
+      btn.textContent = cat;
+      btn.onclick = ()=>renderCategoryQs(i);
+      sugs.appendChild(btn);
+    });
+  }
+
+  function renderCategoryQs(catIdx){
+    const en = isEn();
+    const lang = en ? LANG.en : LANG.ko;
+    const sugs = document.getElementById('chatSugs');
+    sugs.innerHTML = '';
+
+    const backBtn = document.createElement('button');
+    backBtn.className = 'sug-btn back-btn';
+    backBtn.textContent = lang.back;
+    backBtn.onclick = renderCategories;
+    sugs.appendChild(backBtn);
+
+    const items = qa.filter(q=>q.cat===catIdx);
+    items.slice(0,5).forEach(item=>{
+      const btn = document.createElement('button');
+      btn.className = 'sug-btn';
+      const firstKw = item.k[0];
+      btn.textContent = en
+        ? (item.en.split('\n')[0].slice(0,35)+'…')
+        : (item.ko.split('\n')[0].slice(0,25)+'…');
+      btn.onclick = ()=>answerItem(item);
+      sugs.appendChild(btn);
+    });
+  }
+
+  function renderFollowups(item){
+    const en = isEn();
+    const lang = en ? LANG.en : LANG.ko;
+    const sugs = document.getElementById('chatSugs');
+    sugs.innerHTML = '';
+
+    const backBtn = document.createElement('button');
+    backBtn.className = 'sug-btn back-btn';
+    backBtn.textContent = lang.back;
+    backBtn.onclick = renderCategories;
+    sugs.appendChild(backBtn);
+
+    if(item.f){
+      const followups = en ? item.f.en : item.f.ko;
+      followups.forEach(q=>{
+        const btn = document.createElement('button');
+        btn.className = 'sug-btn';
+        btn.textContent = q;
+        btn.onclick = ()=>{
+          addMsg(q,'user');
+          const found = findAnswer(q);
+          if(found) answerItem(found);
+          else{
+            const l = isEn() ? LANG.en : LANG.ko;
+            addMsg(l.noMatch,'bot');
+            renderCategories();
+          }
+        };
+        sugs.appendChild(btn);
+      });
+    }
+  }
+
+  function answerItem(item){
+    const answer = isEn() ? item.en : item.ko;
+    setTimeout(()=>{
+      addMsg(answer,'bot');
+      renderFollowups(item);
+    },300);
+  }
+
+  function handleSend(){
+    const inp = document.getElementById('chatInput');
+    const text = inp.value.trim();
+    if(!text) return;
+    addMsg(text,'user');
+    inp.value='';
+    const found = findAnswer(text);
+    if(found) answerItem(found);
+    else{
+      const l = isEn() ? LANG.en : LANG.ko;
+      setTimeout(()=>{
+        addMsg(l.noMatch,'bot');
+        renderCategories();
+      },300);
+    }
+  }
+
+  function initChat(){
+    const lang = isEn() ? LANG.en : LANG.ko;
+    const msgs = document.getElementById('chatMsgs');
+    msgs.innerHTML = '';
+    addMsg(lang.welcome,'bot');
+    renderCategories();
+    document.getElementById('chatInput').placeholder = lang.placeholder;
+  }
+
+  window.toggleChat = function(){
+    const w = document.getElementById('chatWin');
+    const open = w.classList.toggle('open');
+    if(open && document.getElementById('chatMsgs').children.length===0) initChat();
+  };
+
+  document.getElementById('chatInput').addEventListener('keydown',e=>{
+    if(e.key==='Enter') handleSend();
+  });
+  document.getElementById('chatSendBtn').addEventListener('click', handleSend);
+
+  // Re-init on language change
+  const origToggleLang = window.toggleLang;
+  window.toggleLang = function(){
+    if(origToggleLang) origToggleLang();
+    const w = document.getElementById('chatWin');
+    if(w.classList.contains('open')) initChat();
+  };
+})();
 </script>
+
+<!-- ═══ CHATBOT ═══ -->
+<div id="chatWidget">
+  <div class="chat-win" id="chatWin">
+    <div class="chat-hdr">
+      <div class="chat-hdr-dot"></div>
+      <div class="chat-hdr-name">예지 AI 어시스턴트</div>
+      <div class="chat-hdr-sub">뭐든 물어보세요!</div>
+    </div>
+    <div class="chat-msgs" id="chatMsgs">
+      <div class="chat-msg bot">안녕하세요! 저는 김예지의 포트폴리오 챗봇이에요 🙂<br>HR 경력, 프로젝트, 연락처 등 무엇이든 물어보세요!</div>
+    </div>
+    <div class="chat-suggestions" id="chatSugs">
+      <button class="chat-sug" onclick="chatAsk(this.textContent)">주요 경력이 뭔가요?</button>
+      <button class="chat-sug" onclick="chatAsk(this.textContent)">네이버에서 뭐 했어요?</button>
+      <button class="chat-sug" onclick="chatAsk(this.textContent)">강점이 뭔가요?</button>
+      <button class="chat-sug" onclick="chatAsk(this.textContent)">연락처 알려줘요</button>
+    </div>
+    <div class="chat-input-row">
+      <input type="text" id="chatInput" placeholder="질문을 입력하세요..." onkeydown="if(event.key==='Enter')chatSend()">
+      <button onclick="chatSend()">전송</button>
+    </div>
+  </div>
+  <button class="chat-btn-toggle" id="chatToggle" onclick="toggleChat()" aria-label="챗봇 열기">
+    <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+  </button>
+</div>
+
 </body>
 </html>
