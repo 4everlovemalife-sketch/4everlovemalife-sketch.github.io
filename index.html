@@ -539,8 +539,8 @@ footer p{font-size:.85rem;color:var(--text-secondary);letter-spacing:.08em}
 .essay-glow-r2{position:absolute;right:18%;top:15%;width:min(22vw,200px);height:min(22vw,200px);border-radius:50%;background:radial-gradient(circle,rgba(255,232,18,.05) 0%,transparent 70%);animation:essayPulse 12s ease-in-out 4s infinite}
 @keyframes essayPulse{0%,100%{opacity:.65}50%{opacity:1}}
 @keyframes essayPulse2{0%,100%{opacity:.5}50%{opacity:.9}}
-.essay-wrap{display:block}
-.essay-inner{max-width:620px}
+.essay-wrap{display:flex;align-items:flex-start}
+.essay-inner{flex:1;min-width:0}
 .essay-quote-wrap{border-left:3px solid var(--accent);padding-left:1.8rem;margin:3rem 0 3.5rem}
 .essay-quote{font-size:1.15rem;font-style:italic;color:var(--text-primary);line-height:1.8;font-weight:500}
 .essay-quote-attr{font-size:.85rem;color:var(--text-secondary);margin-top:.7rem;letter-spacing:.04em}
