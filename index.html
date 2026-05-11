@@ -1668,7 +1668,7 @@ function countUp(el, target, duration){
       ko:'ESTP입니다!\n빠른 실행력과 현장 감각이 강점이에요.\n직접 부딪히며 문제를 해결하는 걸 즐기고,\n사람을 읽는 직관이 HR에서 빛납니다 😊'},
     { cat:0, ql:'특이한 경험이 있나요?',
       ko:'조금 특이한 경험들이 있어요 😄\n\n• 서울국제정원박람회(SIGS) 작곡 공모전 입선\n• 구로구청 주관 퍼포먼스 마케터 실습교육 이수 (30시간)\n  — 데이터 기반 의사결정 및 온라인 광고 흐름 학습'},
-    { cat:0, ql:'취미는 뭔가요?', isHobby:true,
+    { cat:0, ql:'취미는 뭔가요?',
       ko:'네이버 사내 밴드에서 공연·합주를 즐기고 있습니다! 🎤\n대학 시절 밴드부로 3년간 활동했고, 음악이 일상의 활력소입니다.'},
 
     // ── 경력 상세 ──
@@ -1700,12 +1700,11 @@ function countUp(el, target, duration){
       ko:'\'이 정도면 됐다\' 따위는 없습니다.\n\n끊임없이 최고를 지향하며 문제를 끝까지 해결하는 집요함,\n안주하지 않고 멈추지 않는 효율화를 통해\nbetter, best 그 이상을 추구하는 HR이 되고자 노력합니다.'},
   ];
 
-  function addMsg(text, who, extraEl){
+  function addMsg(text, who){
     const msgs = document.getElementById('chatMsgs');
     const d = document.createElement('div');
     d.className = 'chat-msg ' + who;
     d.innerHTML = text.replace(/\n/g,'<br>');
-    if(extraEl) d.appendChild(extraEl);
     msgs.appendChild(d);
     msgs.scrollTop = msgs.scrollHeight;
   }
@@ -1737,17 +1736,7 @@ function countUp(el, target, duration){
       btn.onclick = ()=>{
         btn.remove();
         addMsg(item.ql, 'user');
-        setTimeout(()=>{
-          let extra = null;
-          if(item.isHobby){
-            const img = document.createElement('img');
-            img.src = 'assets/band.jpg';
-            img.style.cssText = 'width:100%;border-radius:8px;margin-top:.65rem;display:block;object-fit:cover;max-height:160px';
-            img.onerror = ()=>img.remove();
-            extra = img;
-          }
-          addMsg(item.ko, 'bot', extra);
-        }, 200);
+        setTimeout(()=>addMsg(item.ko, 'bot'), 200);
       };
       qs.appendChild(btn);
     });
