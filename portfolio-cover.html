@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>김예지 | HR Portfolio</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<style>
+  @page {
+    size: A4 portrait;
+    margin: 0;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    width: 210mm;
+    height: 297mm;
+    background: #0A0A0A;
+    color: #F0F0F0;
+    font-family: 'Pretendard', -apple-system, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* background grid */
+  .bg-grid {
+    position: absolute;
+    inset: 0;
+    background:
+      repeating-linear-gradient(0deg, transparent, transparent 59px, rgba(255,255,255,.018) 60px),
+      repeating-linear-gradient(90deg, transparent, transparent 59px, rgba(255,255,255,.018) 60px);
+  }
+
+  /* glow */
+  .glow {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  .glow-1 {
+    width: 480px; height: 480px;
+    right: -80px; top: 50%;
+    transform: translateY(-50%);
+    background: radial-gradient(circle, rgba(255,232,18,.08) 0%, rgba(255,232,18,.03) 45%, transparent 72%);
+  }
+  .glow-2 {
+    width: 240px; height: 240px;
+    left: -40px; top: 20%;
+    background: radial-gradient(circle, rgba(255,232,18,.05) 0%, transparent 70%);
+  }
+
+  /* dots */
+  .dot {
+    position: absolute;
+    border-radius: 50%;
+    background: #FFE812;
+    opacity: .45;
+  }
+  .star {
+    position: absolute;
+    border-radius: 50%;
+    background: #ffffff;
+    opacity: .3;
+  }
+
+  /* card */
+  .card {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    padding: 0 72px;
+    width: 100%;
+  }
+
+  /* label */
+  .label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .32em;
+    text-transform: uppercase;
+    color: #FFE812;
+    opacity: .75;
+    margin-bottom: 28px;
+  }
+
+  /* name */
+  .name-ko {
+    font-size: 72px;
+    font-weight: 900;
+    letter-spacing: -.03em;
+    line-height: 1;
+    color: #F0F0F0;
+  }
+  .name-en {
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: .22em;
+    color: #888;
+    margin-top: 10px;
+    text-transform: uppercase;
+  }
+
+  /* divider */
+  .divider {
+    width: 48px;
+    height: 2px;
+    background: #FFE812;
+    margin: 36px 0;
+    opacity: .7;
+  }
+
+  /* role */
+  .role {
+    font-size: 15px;
+    font-weight: 600;
+    color: #888;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    margin-bottom: 48px;
+  }
+
+  /* contact row */
+  .contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+    margin-bottom: 56px;
+  }
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 13.5px;
+    color: #AAAAAA;
+    letter-spacing: .02em;
+  }
+  .contact-item svg {
+    width: 14px;
+    height: 14px;
+    stroke: #FFE812;
+    fill: none;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    flex-shrink: 0;
+    opacity: .8;
+  }
+
+  /* portfolio section */
+  .portfolio-row {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    padding: 28px 32px;
+    border: 1px solid rgba(255,232,18,.2);
+    border-radius: 4px;
+    background: rgba(255,232,18,.03);
+    width: 100%;
+    max-width: 460px;
+  }
+  .qr-wrap {
+    flex-shrink: 0;
+    width: 96px;
+    height: 96px;
+    background: #ffffff;
+    border-radius: 4px;
+    padding: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .qr-wrap img {
+    width: 84px;
+    height: 84px;
+    display: block;
+  }
+  .portfolio-text {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .portfolio-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+    color: #FFE812;
+    opacity: .7;
+  }
+  .portfolio-cta {
+    font-size: 13px;
+    font-weight: 600;
+    color: #F0F0F0;
+    line-height: 1.5;
+  }
+  .portfolio-url {
+    font-size: 11px;
+    color: #666;
+    letter-spacing: .03em;
+    margin-top: 4px;
+    word-break: break-all;
+  }
+
+  /* bottom accent */
+  .bottom-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(to right, transparent, #FFE812 30%, #FFE812 70%, transparent);
+    opacity: .35;
+  }
+
+  @media print {
+    body { width: 210mm; height: 297mm; }
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-grid"></div>
+<div class="glow glow-1"></div>
+<div class="glow glow-2"></div>
+
+<!-- scattered dots -->
+<span class="dot" style="width:4px;height:4px;top:12%;left:72%"></span>
+<span class="dot" style="width:2.5px;height:2.5px;top:28%;left:86%"></span>
+<span class="dot" style="width:3px;height:3px;top:65%;left:78%"></span>
+<span class="dot" style="width:2px;height:2px;top:80%;left:90%"></span>
+<span class="dot" style="width:3.5px;height:3.5px;top:45%;left:94%"></span>
+<span class="dot" style="width:2px;height:2px;top:8%;left:60%"></span>
+<span class="dot" style="width:3px;height:3px;top:88%;left:68%"></span>
+<span class="star" style="width:2px;height:2px;top:20%;left:64%"></span>
+<span class="star" style="width:1.5px;height:1.5px;top:38%;left:82%"></span>
+<span class="star" style="width:1px;height:1px;top:55%;left:70%"></span>
+<span class="star" style="width:2px;height:2px;top:72%;left:85%"></span>
+<span class="star" style="width:1.5px;height:1.5px;top:5%;left:80%"></span>
+<span class="star" style="width:1px;height:1px;top:92%;left:75%"></span>
+
+<div class="card">
+  <p class="label">HR Portfolio · 2026</p>
+
+  <h1 class="name-ko">김예지</h1>
+  <p class="name-en">Kim Yeji</p>
+
+  <div class="divider"></div>
+
+  <p class="role">HR Specialist</p>
+
+  <div class="contacts">
+    <div class="contact-item">
+      <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      010-3133-4421
+    </div>
+    <div class="contact-item">
+      <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+      4ever.lovemalife@gmail.com
+    </div>
+    <div class="contact-item">
+      <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 10v8"/><circle cx="8" cy="7" r="1.2"/><path d="M12 13v5"/><path d="M12 13c0-1.7 1.3-3 3-3s3 1.3 3 3v5"/></svg>
+      linkedin.com/in/yeji-kim-hr
+    </div>
+  </div>
+
+  <div class="portfolio-row">
+    <div class="qr-wrap">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=168x168&data=https://4everlovemalife-sketch.github.io&bgcolor=ffffff&color=0a0a0a&margin=0" alt="QR Code" crossorigin="anonymous">
+    </div>
+    <div class="portfolio-text">
+      <p class="portfolio-label">Online Portfolio</p>
+      <p class="portfolio-cta">QR코드 또는 링크로<br>포트폴리오를 확인하세요</p>
+      <p class="portfolio-url">https://4everlovemalife-sketch.github.io</p>
+    </div>
+  </div>
+</div>
+
+<div class="bottom-bar"></div>
+
+</body>
+</html>
